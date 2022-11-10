@@ -1,0 +1,49 @@
+name: check
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**/.md'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '**/.md'
+  workflow_dispatch:
+
+jobs:
+  check:
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        architecture: [ x64, arm64 ]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v3
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: zulu
+          java-version: 11
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@v1
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      - name: Clean all modules
+        run: ./gradlew clean
+      - name: Run screens-navigation tests
+        run: ./gradlew screens-navigation:check
+      - name: Run viewmodel tests
+        run: ./gradlew viewmodel:jsTest viewmodel:jvmTest
+      - name: Run viewmodel-screens-navigation tests
+        run: ./gradlew viewmodel-screens-navigation:jvmTest
+      - name: Run windows-navigation tests
+        run: ./gradlew windows-navigation:test
