@@ -41,11 +41,5 @@ jobs:
         uses: browser-actions/setup-chrome@latest
       - name: Clean all modules
         run: ./gradlew clean
-      - name: Run screens-navigation tests
-        run: ./gradlew screens-navigation:check
-      - name: Run viewmodel tests
-        run: ./gradlew viewmodel:jsTest viewmodel:jvmTest
-      - name: Run viewmodel-screens-navigation tests
-        run: ./gradlew viewmodel-screens-navigation:jvmTest
-      - name: Run windows-navigation tests
-        run: ./gradlew windows-navigation:jvmTest
+      - name: Test all modules
+        run: ./gradlew check
