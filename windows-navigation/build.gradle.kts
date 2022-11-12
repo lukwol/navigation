@@ -1,26 +1,28 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
+@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION")
 
 plugins {
-    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.dokka)
     id("maven-publish")
 }
 
-dependencies {
-    implementation(compose.desktop.currentOs)
-
-    testImplementation(libs.junit4)
-    testImplementation(libs.coroutines.test)
-    testImplementation(libs.kotest.assertions.core)
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("jvm") {
-            artifactId = "windows-navigation-jvm"
-
-            from(components["java"])
+kotlin {
+    jvm {
+        withJava()
+    }
+    sourceSets {
+        val jvmMain by getting {
+            dependencies {
+                implementation(compose.desktop.currentOs)
+            }
+        }
+        val jvmTest by getting {
+            dependencies {
+                implementation(libs.junit4)
+                implementation(libs.coroutines.test)
+                implementation(libs.kotest.assertions.core)
+            }
         }
     }
 }

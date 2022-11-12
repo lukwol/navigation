@@ -46,4 +46,4 @@ jobs:
       - name: Run viewmodel-screens-navigation tests
         run: ./gradlew viewmodel-screens-navigation:jvmTest
       - name: Run windows-navigation tests
-        run: ./gradlew windows-navigation:test
+        run: ./gradlew windows-navigation:jvmTest
