@@ -13,8 +13,11 @@ kotlin {
     }
     js(IR) {
         browser {
-            commonWebpackConfig {
-                cssSupport.enabled = true
+            testTask {
+                testLogging.showStandardStreams = true
+                useKarma {
+                    useChromeHeadless()
+                }
             }
         }
     }
@@ -60,6 +63,4 @@ kotlin {
     }
 }
 
-compose {
-    kotlinCompilerPlugin.set(libs.versions.compose.compiler)
-}
+compose.kotlinCompilerPlugin.set(libs.versions.compose.compiler)

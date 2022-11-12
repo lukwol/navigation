@@ -37,6 +37,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
+      - name: Install Chrome
+        uses: browser-actions/setup-chrome@latest
       - name: Clean all modules
         run: ./gradlew clean
       - name: Run screens-navigation tests
