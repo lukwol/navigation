@@ -30,7 +30,7 @@ compose {
             mainClass = "io.github.lukwol.examples.MainKt"
             nativeDistributions {
                 targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-                packageName = "SingleWindow"
+                packageName = "BasicSingleWindow"
                 packageVersion = "1.0.0"
             }
         }
