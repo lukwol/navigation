@@ -1,5 +1,11 @@
 rootProject.name = "cm-navigation"
 
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
+}
+
 include(":screens-navigation")
 include(":viewmodel")
 include(":viewmodel-screens-navigation")

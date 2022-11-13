@@ -11,7 +11,7 @@ plugins {
     alias(libs.plugins.dependency.updates)
 }
 
-allprojects {
+subprojects {
     apply {
         plugin("org.jmailen.kotlinter")
     }
