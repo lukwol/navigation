@@ -15,6 +15,8 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
+                implementation(libs.coroutines.swing)
+                implementation(libs.koin.core)
                 implementation(project(":viewmodel-screens-navigation"))
                 implementation(project(":windows-navigation"))
             }

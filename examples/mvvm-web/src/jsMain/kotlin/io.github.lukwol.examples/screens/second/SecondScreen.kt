@@ -1,21 +1,15 @@
-package io.github.lukwol.examples
+package io.github.lukwol.examples.screens.second
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import io.github.lukwol.screens.navigation.LocalScreensController
-import org.jetbrains.compose.web.attributes.placeholder
 import org.jetbrains.compose.web.css.*
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
-import org.jetbrains.compose.web.dom.TextInput
 
 @Composable
-fun FirstScreen(viewModel: FirstScreenViewModel) {
+fun SecondScreen(viewModel: SecondScreenViewModel) {
     val screensController = LocalScreensController.current
-
-    var text by viewModel.text
 
     Div(
         attrs = {
@@ -24,12 +18,7 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
             }
         }
     ) {
-        TextInput(value = text) {
-            placeholder("Type something...")
-            onInput {
-                text = it.value
-            }
-        }
+        Text(viewModel.text)
     }
 
     Div(
@@ -44,11 +33,11 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
         Button(
             attrs = {
                 onClick {
-                    screensController.push(AppRoutes.SecondScreenRoute, text)
+                    screensController.pop()
                 }
             }
         ) {
-            Text("Go to second screen")
+            Text("Go back")
         }
     }
 }

@@ -1,4 +1,4 @@
-package io.github.lukwol.examples
+package io.github.lukwol.examples.screens.first
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
 import androidx.compose.foundation.layout.*
@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.windows.navigation.LocalWindowController
 
 @Composable

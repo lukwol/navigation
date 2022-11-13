@@ -2,6 +2,9 @@ package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
+import io.github.lukwol.examples.di.ViewModelProvider
+import io.github.lukwol.examples.screens.first.FirstScreen
+import io.github.lukwol.examples.screens.second.SecondScreen
 import io.github.lukwol.screens.navigation.ScreensNavigation
 import io.github.lukwol.viewmodel.screens.navigation.screen
 import io.github.lukwol.windows.navigation.LocalWindowController
@@ -21,9 +24,9 @@ fun AppNavigation() {
             ) {
                 screen(
                     route = AppRoutes.FirstScreenRoute,
-                    viewModelFactory = { FirstScreenViewModel() }
-                ) { viewModel ->
-                    FirstScreen(viewModel)
+                    viewModelFactory = { ViewModelProvider.getFirstScreenViewModel() }
+                ) { viewmodel ->
+                    FirstScreen(viewmodel)
                 }
             }
         }
@@ -47,9 +50,9 @@ fun AppNavigation() {
             ) {
                 screen(
                     route = AppRoutes.SecondScreenRoute,
-                    viewModelFactory = { SecondScreenViewModel(windowArguments as String) }
-                ) { viewModel ->
-                    SecondScreen(viewModel)
+                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArguments as String) }
+                ) { viewmodel ->
+                    SecondScreen(viewmodel)
                 }
             }
         }
