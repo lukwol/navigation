@@ -10,9 +10,9 @@ import androidx.compose.ui.window.Window
 class WindowsMapBuilder {
 
     /**
-     * Map of all registered [windows][WindowRoute] to their [content][Composable].
+     * Map of all registered [routes][WindowRoute] to their [content][Composable].
      */
-    private val windowsMap = mutableMapOf<WindowRoute, @Composable () -> Unit>()
+    private val windowsMap = mutableMapOf<WindowRoute, @Composable (args: WindowArguments?) -> Unit>()
 
     /**
      * Declare window [content] for [route] and add it to [windowsMap].
@@ -25,7 +25,7 @@ class WindowsMapBuilder {
     fun window(
         route: WindowRoute,
         title: String = route.value,
-        content: @Composable FrameWindowScope.() -> Unit
+        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit
     ) {
         window(
             route = route,
@@ -58,13 +58,13 @@ class WindowsMapBuilder {
     fun window(
         route: WindowRoute,
         windowFactory: @Composable (content: @Composable FrameWindowScope.() -> Unit) -> Unit,
-        content: @Composable FrameWindowScope.() -> Unit
+        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit
     ) {
         if (windowsMap.containsKey(route)) {
             throw IllegalArgumentException("$route is already registered")
         } else {
             windowsMap[route] = {
-                windowFactory { content() }
+                windowFactory { content(it) }
             }
         }
     }

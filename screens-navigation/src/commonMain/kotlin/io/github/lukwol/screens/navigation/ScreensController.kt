@@ -20,9 +20,9 @@ interface ScreensController {
      * Pushes new [ScreenRoute] on the [routes] stack.
      *
      * @param route [ScreenRoute] to navigate to
-     * @param arguments optional [Arguments] passed when navigating to [route]
+     * @param arguments optional [ScreenArguments] passed when navigating to [route]
      */
-    fun push(route: ScreenRoute, arguments: Arguments? = null)
+    fun push(route: ScreenRoute, arguments: ScreenArguments? = null)
 
     /**
      * Pops back to previous [ScreenRoute] on the [routes] stack.
@@ -36,12 +36,12 @@ interface ScreensController {
  * Actual implementation of the [ScreensController]
  */
 internal class ScreensControllerImpl(startRoute: ScreenRoute) : ScreensController {
-    internal val routesState = mutableStateOf(listOf(RouteWithArguments(startRoute)))
+    internal val routesState = mutableStateOf(listOf(ScreenRouteWithArguments(startRoute)))
 
-    override val routes get() = routesState.value.map(RouteWithArguments::route)
+    override val routes get() = routesState.value.map(ScreenRouteWithArguments::route)
 
-    override fun push(route: ScreenRoute, arguments: Arguments?) {
-        routesState.value += RouteWithArguments(route, arguments)
+    override fun push(route: ScreenRoute, arguments: ScreenArguments?) {
+        routesState.value += ScreenRouteWithArguments(route, arguments)
     }
 
     /**
@@ -72,7 +72,7 @@ internal class ScreensControllerImpl(startRoute: ScreenRoute) : ScreensControlle
 internal object ScreensControllerNoOp : ScreensController {
     override val routes: List<ScreenRoute> = emptyList()
 
-    override fun push(route: ScreenRoute, arguments: Arguments?) = Unit
+    override fun push(route: ScreenRoute, arguments: ScreenArguments?) = Unit
 
     override fun pop(upToRoute: ScreenRoute?) = Unit
 }

@@ -20,8 +20,9 @@ interface WindowsController {
      * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
      *
      * @param route [WindowRoute] to open
+     * @param arguments optional [WindowArguments] passed when navigating to [route]
      */
-    fun open(route: WindowRoute)
+    fun open(route: WindowRoute, arguments: WindowArguments? = null)
 
     /**
      * Closes window for the [WindowRoute] and removes it from the [routes] stack.
@@ -35,9 +36,9 @@ interface WindowsController {
  * Actual implementation of the [WindowsController]
  */
 class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
-    internal val routesState = mutableStateOf(setOf(startRoute))
+    internal val routesState = mutableStateOf(setOf(WindowRouteWithArguments(startRoute)))
 
-    override val routes get() = routesState.value
+    override val routes get() = routesState.value.map(WindowRouteWithArguments::route).toSet()
 
     /**
      * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
@@ -48,10 +49,12 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
      *
      * @see [WindowsController.open]
      */
-    override fun open(route: WindowRoute) = if (route in routes) {
-        throw IllegalArgumentException("Window for $route is already opened")
-    } else {
-        routesState.value += route
+    override fun open(route: WindowRoute, arguments: WindowArguments?) {
+        if (route in routes) {
+            throw IllegalArgumentException("Window for $route is already opened")
+        } else {
+            routesState.value += WindowRouteWithArguments(route, arguments)
+        }
     }
 
     /**
@@ -63,10 +66,12 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
      *
      * @see [WindowsController.close]
      */
-    override fun close(route: WindowRoute) = if (route !in routes) {
-        throw IllegalArgumentException("Window for $route is not opened")
-    } else {
-        routesState.value -= route
+    override fun close(route: WindowRoute) {
+        if (route !in routes) {
+            throw IllegalArgumentException("Window for $route is not opened")
+        } else {
+            routesState.value -= routesState.value.filter { it.route == route }
+        }
     }
 }
 
@@ -76,7 +81,7 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
 internal object WindowsControllerNoOp : WindowsController {
     override val routes: Set<WindowRoute> = emptySet()
 
-    override fun open(route: WindowRoute) = Unit
+    override fun open(route: WindowRoute, arguments: WindowArguments?) = Unit
 
     override fun close(route: WindowRoute) = Unit
 }

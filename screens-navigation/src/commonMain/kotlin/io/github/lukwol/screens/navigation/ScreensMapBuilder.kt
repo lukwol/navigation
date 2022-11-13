@@ -10,7 +10,7 @@ class ScreensMapBuilder {
     /**
      * Map of all registered [routes][ScreenRoute] to their [content][Composable].
      */
-    private val screensMap = mutableMapOf<ScreenRoute, @Composable (Arguments?) -> Unit>()
+    private val screensMap = mutableMapOf<ScreenRoute, @Composable (ScreenArguments?) -> Unit>()
 
     /**
      * Declare screen [content] for [route] and add it to [screensMap].
@@ -22,7 +22,7 @@ class ScreensMapBuilder {
      */
     fun screen(
         route: ScreenRoute,
-        content: @Composable (args: Arguments?) -> Unit
+        content: @Composable (args: ScreenArguments?) -> Unit
     ) {
         if (screensMap.containsKey(route)) {
             throw IllegalArgumentException("$route is already registered")
