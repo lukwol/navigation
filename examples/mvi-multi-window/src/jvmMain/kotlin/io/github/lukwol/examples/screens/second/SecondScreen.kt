@@ -12,8 +12,12 @@ import androidx.compose.ui.unit.dp
 import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.windows.navigation.LocalWindowController
 
+@Suppress("UNUSED_PARAMETER")
 @Composable
-fun SecondScreen(viewModel: SecondScreenViewModel) {
+fun SecondScreen(
+    state: SecondScreenViewState,
+    commands: (SecondScreenCommands) -> Unit
+) {
     val windowsController = LocalWindowController.current
 
     Column(
@@ -21,7 +25,7 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize()
     ) {
-        Text(viewModel.text.ifEmpty { "No text passed" })
+        Text(state.text)
 
         Spacer(Modifier.height(20.dp))
 
@@ -38,5 +42,8 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
 @Preview
 @Composable
 private fun Preview() = MaterialTheme {
-    SecondScreen(SecondScreenViewModel("Hello World!"))
+    SecondScreen(
+        state = SecondScreenViewState(text = "Hello World!"),
+        commands = {}
+    )
 }
