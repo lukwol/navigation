@@ -6,7 +6,10 @@
 Tiny library for easy navigation in [Compose Multiplatform](https://github.com/JetBrains/compose-jb/)
 applications.
 
-Provides optional abstract `ViewModel` class with bound `CoroutineScope` to support work cancellation when navigating.
+Provides:
+ * Screens navigation - desktop and web (and hopefully iOS soon)
+ * Windows navigation - desktop only
+ * Optional `ViewModel` support for work cancellation
 
 ## Installation
 
@@ -55,6 +58,7 @@ ScreensNavigation(
     screen(AppRoutes.FirstScreenRoute) {
         FirstScreen()
     }
+    
     screen(AppRoutes.SecondScreenRoute) { args ->
         SecondScreen(args as String)
     }
@@ -73,6 +77,7 @@ ScreensNavigation(
     ) { viewModel ->
         FirstScreen(viewModel)
     }
+    
     screen(
         route = AppRoutes.SecondScreenRoute,
         viewModelFactory = { args -> SecondScreenViewModel(args as String) }
@@ -90,6 +95,7 @@ WindowsNavigation(
 ) {
     window(
         route = AppRoutes.FirstWindowRoute,
+        title = "First Window"
     ) {
         ScreensNavigation(
             startRoute = AppRoutes.FirstScreenRoute
@@ -100,6 +106,7 @@ WindowsNavigation(
 
     window(
         route = AppRoutes.SecondWindowRoute,
+        title = "Second Window"
     ) {
         ScreensNavigation(
             startRoute = AppRoutes.SecondScreenRoute
