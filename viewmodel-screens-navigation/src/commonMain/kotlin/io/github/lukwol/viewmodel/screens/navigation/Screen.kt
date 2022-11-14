@@ -38,8 +38,8 @@ fun <VM : ViewModel> ScreensMapBuilder.screen(
 
         DisposableEffect(route) {
             onDispose {
-                viewModel.viewModelScope.cancel()
                 if (route !in screensController.routes) {
+                    viewModel.viewModelScope.cancel()
                     viewModelStore.remove(route)
                 }
             }

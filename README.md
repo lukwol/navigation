@@ -9,7 +9,7 @@ applications.
 Provides:
  * Screens navigation - desktop and web (and hopefully iOS soon)
  * Windows navigation - desktop only
- * Optional `ViewModel` support for work cancellation
+ * Optional `ViewModel` with work cancellation support
 
 ## Installation
 

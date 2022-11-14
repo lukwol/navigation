@@ -12,7 +12,7 @@ import kotlinx.coroutines.SupervisorJob
 abstract class ViewModel {
     /**
      * [CoroutineScope] tied to this [ViewModel].
-     * This scope will be canceled when view connected to this [ViewModel] is no longer active
+     * This scope will be canceled when view connected to this [ViewModel] is cleared
      *
      * This scope is bound to
      * [Dispatchers.Main.immediate][kotlinx.coroutines.MainCoroutineDispatcher.immediate]
