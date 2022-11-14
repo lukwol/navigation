@@ -44,13 +44,13 @@ fun AppNavigation() {
                     content = it
                 )
             }
-        ) { windowArguments ->
+        ) { windowArgs ->
             ScreensNavigation(
                 startRoute = AppRoutes.SecondScreenRoute
             ) {
                 screen(
                     route = AppRoutes.SecondScreenRoute,
-                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArguments as String) }
+                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArgs as String) }
                 ) { viewmodel ->
                     SecondScreen(viewmodel)
                 }

@@ -21,7 +21,7 @@ fun AppNavigation() {
         }
         screen(
             route = AppRoutes.SecondScreenRoute,
-            viewModelFactory = { SecondScreenViewModel(it as String) }
+            viewModelFactory = { args -> SecondScreenViewModel(args as String) }
         ) { viewModel ->
             SecondScreen(viewModel)
         }

@@ -11,8 +11,8 @@ fun AppNavigation() {
         screen(AppRoutes.FirstScreenRoute) {
             FirstScreen()
         }
-        screen(AppRoutes.SecondScreenRoute) {
-            SecondScreen(it as String)
+        screen(AppRoutes.SecondScreenRoute) { args ->
+            SecondScreen(args as String)
         }
     }
 }
