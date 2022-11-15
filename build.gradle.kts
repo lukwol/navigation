@@ -21,7 +21,7 @@ allprojects {
     }
 
     group = "io.github.lukwol"
-    version = "0.1.0"
+    version = "0.1.1"
 
     tasks.withType<KotlinCompile> {
         kotlinOptions.jvmTarget = "11"
