@@ -33,13 +33,13 @@ Step 2. Add the dependency
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.1.0")
+    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.1.1")
     // Screens navigation with ViewModel support - multiplatform (native disabled for now)
-    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.1.0")
+    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.1.1")
     // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.1.0")
+    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.1.1")
     // ViewModel without navigation - multiplatform (native disabled for now)
-    implementation("com.github.lukwol.cm-navigation:viewmodel:0.1.0")
+    implementation("com.github.lukwol.cm-navigation:viewmodel:0.1.1")
 }
 ```
 
@@ -149,7 +149,7 @@ windowsController.open(AppRoutes.SecondWindowRoute)
 windowsController.open(AppRoutes.SecondWindowRoute, SomeArguments)
 
 // Close window
-screensController.close()
+windowsController.close(AppRoutes.SecondWindowRoute)
 ```
 
 ## API Reference
