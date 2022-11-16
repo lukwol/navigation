@@ -8,6 +8,7 @@ import io.github.lukwol.screens.navigation.ScreenArguments
 import io.github.lukwol.screens.navigation.ScreenRoute
 import io.github.lukwol.screens.navigation.ScreensMapBuilder
 import io.github.lukwol.viewmodel.ViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 
 /**
@@ -42,6 +43,14 @@ fun <VM : ViewModel> ScreensMapBuilder.screen(
                     viewModel.viewModelScope.cancel()
                     viewModelStore.remove(route)
                 }
+            }
+        }
+
+        DisposableEffect(Unit) {
+            onDispose {
+                viewModelStore.values
+                    .map(ViewModel::viewModelScope)
+                    .forEach(CoroutineScope::cancel)
             }
         }
     }
