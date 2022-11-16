@@ -3,6 +3,9 @@ name: check
 on:
   push:
     branches: main
+  pull_request:
+    branches: main
+  workflow_dispatch:
 
 jobs:
   check:
@@ -12,7 +15,7 @@ jobs:
         architecture: [ x64, arm64 ]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Checkout the repo
+      - name: Checkout
         uses: actions/checkout@v3
       - name: Setup JDK
         uses: actions/setup-java@v3
