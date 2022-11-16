@@ -45,7 +45,7 @@ dependencies {
 
 ## Usage
 
-Check out [examples](https://github.com/lukwol/cm-navigation/tree/main/examples) for actual usage in the app.
+Check out [examples](https://github.com/lukwol/cm-navigation/tree/main/examples/) for actual usage in the app.
 
 ### Build screens navigation
 
@@ -152,19 +152,9 @@ windowsController.open(AppRoutes.SecondWindowRoute, SomeArguments)
 windowsController.close(AppRoutes.SecondWindowRoute)
 ```
 
-## API Reference
+## Documentation
 
-In order to generate API Reference in `.html` format, run the following command:
-
-```shell
-$ ./gradlew dokkaHtmlMultiModule
-```
-
-or for individual module:
-
-```shell
-$ ./gradlew <module-name>:dokkaHtml
-```
+API Reference is available at https://lukwol.github.io/cm-navigation/ 
 
 ## Licensing
 
