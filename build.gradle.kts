@@ -28,7 +28,6 @@ allprojects {
     }
 
     kotlinter {
-        ignoreFailures = true
         disabledRules = arrayOf("no-wildcard-imports")
     }
 }
