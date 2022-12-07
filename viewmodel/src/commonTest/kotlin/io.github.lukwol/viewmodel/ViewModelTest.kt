@@ -1,10 +1,10 @@
 package io.github.lukwol.viewmodel
 
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.shouldBe
 import kotlinx.coroutines.*
 import kotlinx.coroutines.test.runTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class ViewModelTest {
@@ -24,7 +24,7 @@ class ViewModelTest {
 
         viewModel.viewModelScope.cancel()
 
-        shouldThrow<CancellationException> {
+        assertFailsWith<CancellationException> {
             result1.await()
             result2.await()
         }
@@ -40,8 +40,8 @@ class ViewModelTest {
             throw RuntimeException()
         }
 
-        result1.await() shouldBe 42
-        shouldThrow<RuntimeException> {
+        assertEquals(result1.await(), 42)
+        assertFailsWith<RuntimeException> {
             result2.await()
         }
     }
@@ -56,7 +56,7 @@ class ViewModelTest {
             delay(10L)
             "foo"
         }
-        result1.await() shouldBe 42
-        result2.await() shouldBe "foo"
+        assertEquals(result1.await(), 42)
+        assertEquals(result2.await(), "foo")
     }
 }

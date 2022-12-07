@@ -1,10 +1,10 @@
 package io.github.lukwol.screens.navigation
 
 import io.github.lukwol.screens.navigation.data.TestRoutes
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.shouldBe
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ScreensControllerTest {
 
@@ -17,7 +17,7 @@ class ScreensControllerTest {
 
     @Test
     fun initialRoutes() {
-        screensController.routes shouldBe listOf(TestRoutes.FirstScreen)
+        assertEquals(screensController.routes, listOf(TestRoutes.FirstScreen))
     }
 
     @Test
@@ -27,44 +27,56 @@ class ScreensControllerTest {
         screensController.push(TestRoutes.FourthScreen)
         screensController.push(TestRoutes.SecondScreen)
         screensController.push(TestRoutes.FifthScreen)
-        screensController.routes shouldBe listOf(
-            TestRoutes.FirstScreen,
-            TestRoutes.SecondScreen,
-            TestRoutes.ThirdScreen,
-            TestRoutes.FourthScreen,
-            TestRoutes.SecondScreen,
-            TestRoutes.FifthScreen
+        assertEquals(
+            screensController.routes,
+            listOf(
+                TestRoutes.FirstScreen,
+                TestRoutes.SecondScreen,
+                TestRoutes.ThirdScreen,
+                TestRoutes.FourthScreen,
+                TestRoutes.SecondScreen,
+                TestRoutes.FifthScreen
+            )
         )
         screensController.pop(TestRoutes.SecondScreen)
-        screensController.routes shouldBe listOf(
-            TestRoutes.FirstScreen,
-            TestRoutes.SecondScreen,
-            TestRoutes.ThirdScreen,
-            TestRoutes.FourthScreen,
-            TestRoutes.SecondScreen
+        assertEquals(
+            screensController.routes,
+            listOf(
+                TestRoutes.FirstScreen,
+                TestRoutes.SecondScreen,
+                TestRoutes.ThirdScreen,
+                TestRoutes.FourthScreen,
+                TestRoutes.SecondScreen
+            )
         )
         screensController.pop()
         screensController.pop(TestRoutes.SecondScreen)
-        screensController.routes shouldBe listOf(
-            TestRoutes.FirstScreen,
-            TestRoutes.SecondScreen
+        assertEquals(
+            screensController.routes,
+            listOf(
+                TestRoutes.FirstScreen,
+                TestRoutes.SecondScreen
+            )
         )
         screensController.pop()
-        screensController.routes shouldBe listOf(
-            TestRoutes.FirstScreen
+        assertEquals(
+            screensController.routes,
+            listOf(
+                TestRoutes.FirstScreen
+            )
         )
     }
 
     @Test
     fun poppingStartRoute() {
-        shouldThrow<IllegalStateException> {
+        assertFailsWith<IllegalStateException> {
             screensController.pop()
         }
     }
 
     @Test
     fun poppingRouteThatIsNotOnTheStack() {
-        shouldThrow<IllegalArgumentException> {
+        assertFailsWith<IllegalArgumentException> {
             screensController.pop(TestRoutes.SecondScreen)
         }
     }
@@ -72,7 +84,7 @@ class ScreensControllerTest {
     @Test
     fun poppingToCurrentRoute() {
         screensController.push(TestRoutes.SecondScreen)
-        shouldThrow<IllegalArgumentException> {
+        assertFailsWith<IllegalArgumentException> {
             screensController.pop(TestRoutes.SecondScreen)
         }
     }

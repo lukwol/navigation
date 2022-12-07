@@ -2,10 +2,10 @@ package io.github.lukwol.windows.navigation
 
 import androidx.compose.ui.window.Window
 import io.github.lukwol.windows.navigation.data.TestRoutes
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import org.junit.Before
 import org.junit.Test
+import kotlin.test.assertContentEquals
+import kotlin.test.assertFailsWith
 
 class WindowsMapBuilderTest {
 
@@ -21,7 +21,7 @@ class WindowsMapBuilderTest {
         with(windowsMapBuilder) {
             window(TestRoutes.FirstWindow) {}
             window(TestRoutes.SecondWindow) {}
-            build().keys shouldContainExactlyInAnyOrder listOf(TestRoutes.FirstWindow, TestRoutes.SecondWindow)
+            assertContentEquals(build().keys, listOf(TestRoutes.FirstWindow, TestRoutes.SecondWindow))
         }
     }
 
@@ -30,7 +30,7 @@ class WindowsMapBuilderTest {
         with(windowsMapBuilder) {
             window(TestRoutes.FirstWindow) {}
             window(TestRoutes.SecondWindow) {}
-            shouldThrow<IllegalArgumentException> {
+            assertFailsWith<IllegalArgumentException> {
                 window(TestRoutes.FirstWindow) {}
             }
         }
@@ -47,7 +47,7 @@ class WindowsMapBuilderTest {
                     ) {}
                 }
             ) {}
-            build().keys shouldContainExactlyInAnyOrder listOf(TestRoutes.FirstWindow)
+            assertContentEquals(build().keys, listOf(TestRoutes.FirstWindow))
         }
     }
 }

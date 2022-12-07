@@ -5,10 +5,10 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import io.github.lukwol.screens.navigation.components.TestScreenNavigation
 import io.github.lukwol.screens.navigation.data.TestRoutes
-import io.kotest.assertions.throwables.shouldThrow
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {
 
@@ -93,7 +93,7 @@ class ScreensNavigationTest {
 
     @Test
     fun `missing start route screen`() {
-        shouldThrow<NoSuchElementException> {
+        assertFailsWith<NoSuchElementException> {
             compose.setContent {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen
@@ -106,7 +106,7 @@ class ScreensNavigationTest {
 
     @Test
     fun `empty navigation graph`() {
-        shouldThrow<NoSuchElementException> {
+        assertFailsWith<NoSuchElementException> {
             compose.setContent {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen

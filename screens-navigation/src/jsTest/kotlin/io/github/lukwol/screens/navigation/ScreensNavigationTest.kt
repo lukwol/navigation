@@ -2,13 +2,13 @@ package io.github.lukwol.screens.navigation
 
 import io.github.lukwol.screens.navigation.data.TestRoutes
 import io.github.lukwol.screens.navigation.data.ThirdScreenArgs
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.shouldBe
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.testutils.ComposeWebExperimentalTestsApi
 import org.jetbrains.compose.web.testutils.runTest
 import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 @ComposeWebExperimentalTestsApi
 class ScreensNavigationTest {
@@ -47,41 +47,50 @@ class ScreensNavigationTest {
             }
         }
 
-        root.innerHTML shouldBe "<div>First screen</div>"
+        assertEquals(root.innerHTML, "<div>First screen</div>")
 
         screensController.push(TestRoutes.SecondScreen, "Foo")
         waitForRecompositionComplete()
 
-        root.innerHTML shouldBe """
+        assertEquals(
+            root.innerHTML,
+            """
             <div>Second screen</div>
             <div>args: Foo</div>
-        """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", "")
+        )
 
         screensController.push(TestRoutes.ThirdScreen, ThirdScreenArgs(text = "Bar", number = 42))
         waitForRecompositionComplete()
 
-        root.innerHTML shouldBe """
+        assertEquals(
+            root.innerHTML,
+            """
             <div>Third screen</div>
             <div>args: text = Bar, number = 42</div>
-        """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", "")
+        )
 
         screensController.pop()
         waitForRecompositionComplete()
 
-        root.innerHTML shouldBe """
+        assertEquals(
+            root.innerHTML,
+            """
             <div>Second screen</div>
             <div>args: Foo</div>
-        """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", "")
+        )
 
         screensController.pop()
         waitForRecompositionComplete()
 
-        root.innerHTML shouldBe "<div>First screen</div>"
+        assertEquals(root.innerHTML, "<div>First screen</div>")
     }
 
     @Test
     fun missingStartRouteScreen() = runTest {
-        shouldThrow<NoSuchElementException> {
+        assertFailsWith<NoSuchElementException> {
             composition {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen
@@ -94,7 +103,7 @@ class ScreensNavigationTest {
 
     @Test
     fun emptyNavigationGraph() = runTest {
-        shouldThrow<NoSuchElementException> {
+        assertFailsWith<NoSuchElementException> {
             composition {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen

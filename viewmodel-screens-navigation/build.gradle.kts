@@ -45,10 +45,10 @@ kotlin {
         val jvmMain by getting
         val jvmTest by getting {
             dependencies {
+                implementation(libs.kotlin.test)
                 implementation(compose.desktop.currentOs)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.uiTestJUnit4)
-                implementation(libs.kotest.assertions.core)
             }
         }
         val jsMain by getting

@@ -1,10 +1,10 @@
 package io.github.lukwol.screens.navigation
 
 import io.github.lukwol.screens.navigation.data.TestRoutes
-import io.kotest.assertions.throwables.shouldThrow
-import io.kotest.matchers.collections.shouldContainExactlyInAnyOrder
 import kotlin.test.BeforeTest
 import kotlin.test.Test
+import kotlin.test.assertContentEquals
+import kotlin.test.assertFailsWith
 
 class ScreensMapBuilderTest {
 
@@ -20,7 +20,7 @@ class ScreensMapBuilderTest {
         with(screensMapBuilder) {
             screen(route = TestRoutes.SecondScreen, content = {})
             screen(route = TestRoutes.ThirdScreen, content = {})
-            build().keys shouldContainExactlyInAnyOrder listOf(TestRoutes.SecondScreen, TestRoutes.ThirdScreen)
+            assertContentEquals(build().keys, listOf(TestRoutes.SecondScreen, TestRoutes.ThirdScreen))
         }
     }
 
@@ -29,7 +29,7 @@ class ScreensMapBuilderTest {
         with(screensMapBuilder) {
             screen(route = TestRoutes.SecondScreen, content = {})
             screen(route = TestRoutes.ThirdScreen, content = {})
-            shouldThrow<IllegalArgumentException> {
+            assertFailsWith<IllegalArgumentException> {
                 screen(route = TestRoutes.SecondScreen, content = {})
             }
         }
