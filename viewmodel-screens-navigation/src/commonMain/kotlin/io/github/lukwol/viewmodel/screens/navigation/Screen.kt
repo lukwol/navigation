@@ -8,13 +8,14 @@ import io.github.lukwol.screens.navigation.ScreenArguments
 import io.github.lukwol.screens.navigation.ScreenRoute
 import io.github.lukwol.screens.navigation.ScreensMapBuilder
 import io.github.lukwol.viewmodel.ViewModel
+import io.github.lukwol.viewmodel.ViewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 
 /**
  * Declare screen [content] for [route] and provide it with [ViewModel].
  *
- * @param VM generic parameter of [ViewModel]
+ * @param VM generic parameter of [ViewModel] that implements [ViewModelScope]
  * @param route [ScreenRoute] used to navigate to the [screen]
  * @param viewModelFactory lambda that takes screen [ScreenArguments] and creates [ViewModel]
  * @param content [Composable] content of the screen
@@ -22,7 +23,7 @@ import kotlinx.coroutines.cancel
  * @see ScreensMapBuilder.screen
  */
 @Suppress("UNCHECKED_CAST")
-fun <VM : ViewModel> ScreensMapBuilder.screen(
+fun <VM : ViewModelScope> ScreensMapBuilder.screen(
     route: ScreenRoute,
     viewModelFactory: (args: ScreenArguments?) -> VM,
     content: @Composable (viewModel: VM) -> Unit
@@ -49,7 +50,7 @@ fun <VM : ViewModel> ScreensMapBuilder.screen(
         DisposableEffect(Unit) {
             onDispose {
                 viewModelStore.values
-                    .map(ViewModel::viewModelScope)
+                    .map(ViewModelScope::viewModelScope)
                     .forEach(CoroutineScope::cancel)
             }
         }

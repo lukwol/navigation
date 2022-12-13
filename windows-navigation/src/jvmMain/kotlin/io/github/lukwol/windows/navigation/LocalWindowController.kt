@@ -1,9 +1,10 @@
 package io.github.lukwol.windows.navigation
 
+import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 
 /**
- *  [CompositionLocal][androidx.compose.runtime.CompositionLocal] of [WindowsController].
+ *  [CompositionLocal] of [WindowsController].
  *
  *  Defaults to [WindowsControllerNoOp] for easier creation of previews.
  */

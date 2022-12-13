@@ -2,6 +2,7 @@ package io.github.lukwol.viewmodel.screens.navigation
 
 import io.github.lukwol.screens.navigation.ScreenRoute
 import io.github.lukwol.viewmodel.ViewModel
+import io.github.lukwol.viewmodel.ViewModelScope
 
 /**
  * View model store is responsible for keeping [view models][ViewModel] state,
@@ -11,7 +12,7 @@ import io.github.lukwol.viewmodel.ViewModel
  * that registers [view models][ViewModel] for [routes][ScreenRoute]
  */
 internal class ViewModelStore private constructor(
-    private val viewModels: MutableMap<ScreenRoute, ViewModel>
-) : MutableMap<ScreenRoute, ViewModel> by viewModels {
+    private val viewModels: MutableMap<ScreenRoute, ViewModelScope>
+) : MutableMap<ScreenRoute, ViewModelScope> by viewModels {
     constructor() : this(mutableMapOf())
 }
