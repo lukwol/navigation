@@ -15,8 +15,8 @@ kotlin {
                 implementation(compose.desktop.currentOs)
                 implementation(libs.coroutines.swing)
                 implementation(libs.koin.core)
-                implementation(project(":viewmodel-screens-navigation"))
-                implementation(project(":windows-navigation"))
+                implementation(projects.viewmodelScreensNavigation)
+                implementation(projects.windowsNavigation)
             }
         }
         val jvmTest by getting

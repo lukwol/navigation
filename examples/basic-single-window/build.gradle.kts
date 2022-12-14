@@ -13,7 +13,7 @@ kotlin {
         val jvmMain by getting {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(project(":screens-navigation"))
+                implementation(projects.screensNavigation)
             }
         }
         val jvmTest by getting

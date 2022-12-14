@@ -33,8 +33,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":viewmodel"))
-                api(project(":screens-navigation"))
+                api(projects.viewmodel)
+                api(projects.screensNavigation)
                 implementation(compose.runtime)
                 implementation(libs.coroutines.core)
             }

@@ -18,7 +18,7 @@ kotlin {
         val jsMain by getting {
             dependencies {
                 implementation(compose.web.core)
-                implementation(project(":viewmodel-screens-navigation"))
+                implementation(projects.viewmodelScreensNavigation)
             }
         }
         val jsTest by getting
