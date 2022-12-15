@@ -20,7 +20,5 @@ jobs:
           java-version: 11
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
-      - name: Lint all modules
-        run: ./gradlew lintKotlin
-      - name: Test all modules
+      - name: Check all modules
         run: ./gradlew check
