@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     jvm()
+
     sourceSets {
         val jvmMain by getting {
             dependencies {
@@ -16,7 +17,6 @@ kotlin {
                 implementation(projects.screensNavigation)
             }
         }
-        val jvmTest by getting
     }
 }
 

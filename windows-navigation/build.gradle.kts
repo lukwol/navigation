@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     jvm()
+
     sourceSets {
         val jvmMain by getting {
             dependencies {

@@ -7,11 +7,7 @@ plugins {
 
 kotlin {
     js(IR) {
-        browser {
-            commonWebpackConfig {
-                cssSupport.enabled = true
-            }
-        }
+        browser()
         binaries.executable()
     }
     sourceSets {
@@ -21,7 +17,6 @@ kotlin {
                 implementation(projects.viewmodelScreensNavigation)
             }
         }
-        val jsTest by getting
     }
 }
 

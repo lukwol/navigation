@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     jvm()
+
     sourceSets {
         val jvmMain by getting {
             dependencies {
@@ -19,7 +20,6 @@ kotlin {
                 implementation(projects.windowsNavigation)
             }
         }
-        val jvmTest by getting
     }
 }
 
