@@ -3,7 +3,7 @@ kotlin = "1.7.20"
 compose = "1.2.2"
 compose-compiler = "1.3.2.2"
 coroutines = "1.6.4"
-koin = "3.2.2"
+koin = "3.3.0"
 dependency-updates = "0.44.0"
 kotlinter = "3.12.0"
 
