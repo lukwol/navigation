@@ -9,6 +9,8 @@ import kotlinx.coroutines.SupervisorJob
  * Provides [viewModelScope] that is tied to specific **view**, it exposes the **view state** and encapsulates related **business logic**.
  *
  * [ViewModelScope] persists the **view state** when **view** is not currently active until **view** is dismissed.
+ *
+ * Can be used as an alternative to [ViewModel] class, when abstract class cannot be used.
  */
 interface ViewModelScope {
 
