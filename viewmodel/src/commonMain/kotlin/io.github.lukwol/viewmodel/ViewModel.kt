@@ -5,4 +5,4 @@ package io.github.lukwol.viewmodel
  *
  * Can be used as an alternative to [ViewModelScope] interface if there is no `ViewModel` superclass.
  */
-abstract class ViewModel : ViewModelScope by ViewModelScope.SupervisorMainImmediate()
+abstract class ViewModel : ViewModelScope by ViewModelScope.Delegate()

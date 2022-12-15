@@ -16,7 +16,7 @@ interface ViewModelScope {
      * Implementation of [ViewModelScope] based on [CoroutineScope]
      * that is [SupervisorJob] and bound to [MainCoroutineDispatcher.immediate].
      */
-    class SupervisorMainImmediate : ViewModelScope {
+    class Delegate : ViewModelScope {
         override val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
     }
 
