@@ -1,4 +1,20 @@
+@file:Suppress("UnstableApiUsage")
+
 rootProject.name = "cm-navigation"
+
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        mavenCentral()
+        maven("https://jitpack.io")
+    }
+}
 
 include(":screens-navigation")
 include(":viewmodel")

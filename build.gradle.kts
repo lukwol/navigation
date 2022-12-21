@@ -16,10 +16,6 @@ allprojects {
         plugin("org.jmailen.kotlinter")
     }
 
-    repositories {
-        mavenCentral()
-    }
-
     group = "io.github.lukwol"
     version = "0.1.3"
 
