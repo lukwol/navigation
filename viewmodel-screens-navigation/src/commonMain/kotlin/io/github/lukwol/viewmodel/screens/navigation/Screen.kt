@@ -40,10 +40,13 @@ fun <VM : ViewModelScope> ScreensMapBuilder.screen(
 
         DisposableEffect(route) {
             onDispose {
-                if (route !in screensController.routes) {
-                    viewModel.viewModelScope.cancel()
-                    viewModelStore.remove(route)
-                }
+                viewModelStore
+                    .keys
+                    .filterNot { it in screensController.routes }
+                    .forEach { disposedRoute ->
+                        viewModelStore[disposedRoute]?.viewModelScope?.cancel()
+                        viewModelStore.remove(disposedRoute)
+                    }
             }
         }
 
