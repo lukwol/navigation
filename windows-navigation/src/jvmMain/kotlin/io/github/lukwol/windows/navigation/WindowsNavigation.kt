@@ -32,11 +32,9 @@ fun WindowsNavigation(
     ) {
         windowsMap.forEach { (route, content) ->
             @Composable
-            fun window() {
-                routes
-                    .find { it.route == route }
-                    ?.let { content(it.arguments) }
-            }
+            fun window() = routes
+                .find { it.route == route }
+                ?.let { content(it.arguments) }
             window()
         }
     }
