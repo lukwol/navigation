@@ -23,6 +23,7 @@ include(":windows-navigation")
 
 include(":examples:basic-single-window")
 include(":examples:mvvm-web")
+include(":examples:mvi-desktop")
 include(":examples:mvi-multi-window")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
