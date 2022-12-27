@@ -14,21 +14,15 @@ kotlin {
         browser()
     }
 
-//    iosArm32() dokka fails
-    iosArm64()
-    iosX64()
-    iosSimulatorArm64()
     linuxX64()
+    mingwX64()
     macosX64()
     macosArm64()
-    mingwX64()
-    tvosArm64()
-    tvosX64()
+    ios()
+    iosSimulatorArm64()
+    tvos()
     tvosSimulatorArm64()
-    watchosArm32()
-    watchosArm64()
-    watchosX86()
-    watchosX64()
+    watchos()
     watchosSimulatorArm64()
 
     sourceSets {

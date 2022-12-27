@@ -13,21 +13,21 @@ kotlin {
         browser()
     }
 
+    linuxX64()
+    mingwX64()
+    macosX64()
+    macosArm64()
+    ios()
+    iosSimulatorArm64()
+    tvos()
+    tvosSimulatorArm64()
+    watchos()
+    watchosSimulatorArm64()
+
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(libs.coroutines.core)
-            }
-        }
-        val commonTest by getting {
-            dependencies {
-                implementation(libs.kotlin.test)
-                implementation(libs.coroutines.test)
-            }
-        }
-        val jvmTest by getting {
-            dependencies {
-                implementation(libs.coroutines.swing)
             }
         }
     }
