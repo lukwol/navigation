@@ -7,9 +7,9 @@ Tiny library for easy navigation in [Compose Multiplatform](https://github.com/J
 applications.
 
 Provides:
- * Screens navigation - desktop and web (and hopefully iOS soon)
+ * Screens navigation - multiplatform
  * Windows navigation - desktop only
- * Optional `ViewModel` with work cancellation support
+ * Optional `ViewModel` with work cancellation support - multiplatform
 
 ## Installation
 
@@ -33,13 +33,13 @@ Step 2. Add the dependency
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.1.3")
-    // Screens navigation with ViewModel support - multiplatform (native disabled for now)
-    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.1.3")
+    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.2.0")
+    // Screens navigation with ViewModel support - multiplatform
+    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.2.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.1.3")
-    // ViewModel without navigation - multiplatform (native disabled for now)
-    implementation("com.github.lukwol.cm-navigation:viewmodel:0.1.3")
+    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.2.0")
+    // ViewModel without navigation - multiplatform
+    implementation("com.github.lukwol.cm-navigation:viewmodel:0.2.0")
 }
 ```
 
