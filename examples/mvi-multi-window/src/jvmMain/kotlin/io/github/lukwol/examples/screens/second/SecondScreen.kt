@@ -16,7 +16,7 @@ import io.github.lukwol.windows.navigation.LocalWindowController
 @Composable
 fun SecondScreen(
     state: SecondScreenViewState,
-    commands: (SecondScreenCommands) -> Unit
+    commands: (SecondScreenCommand) -> Unit
 ) {
     val windowsController = LocalWindowController.current
 

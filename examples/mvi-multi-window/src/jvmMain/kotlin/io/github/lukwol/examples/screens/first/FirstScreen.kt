@@ -16,7 +16,7 @@ import io.github.lukwol.windows.navigation.LocalWindowController
 @Composable
 fun FirstScreen(
     state: FirstScreenViewState,
-    commands: (FirstScreenCommands) -> Unit
+    commands: (FirstScreenCommand) -> Unit
 ) {
     val windowsController = LocalWindowController.current
 
@@ -31,7 +31,7 @@ fun FirstScreen(
                 Text("Type something...")
             },
             onValueChange = {
-                commands(FirstScreenCommands.UpdateText(it))
+                commands(FirstScreenCommand.UpdateText(it))
             }
         )
 

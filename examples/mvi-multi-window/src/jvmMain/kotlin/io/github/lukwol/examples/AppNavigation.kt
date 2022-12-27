@@ -1,7 +1,6 @@
 package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.window.Window
 import io.github.lukwol.examples.di.ViewModelProvider
 import io.github.lukwol.examples.screens.first.FirstScreen
@@ -28,11 +27,8 @@ fun AppNavigation() {
                     viewModelFactory = { ViewModelProvider.getFirstScreenViewModel() }
                 ) { viewModel ->
                     FirstScreen(
-                        state = viewModel
-                            .stateAsFlow()
-                            .collectAsState()
-                            .value,
-                        commands = viewModel::dispatch
+                        state = viewModel.state,
+                        commands = viewModel::onCommand
                     )
                 }
             }
@@ -60,11 +56,8 @@ fun AppNavigation() {
                     viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArgs as String) }
                 ) { viewModel ->
                     SecondScreen(
-                        state = viewModel
-                            .stateAsFlow()
-                            .collectAsState()
-                            .value,
-                        commands = viewModel::dispatch
+                        state = viewModel.state,
+                        commands = viewModel::onCommand
                     )
                 }
             }

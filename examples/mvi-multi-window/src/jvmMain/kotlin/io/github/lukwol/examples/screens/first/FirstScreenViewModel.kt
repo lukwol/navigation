@@ -1,14 +1,18 @@
 package io.github.lukwol.examples.screens.first
 
-import io.github.lukwol.examples.MviViewModel
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+import io.github.lukwol.viewmodel.ViewModel
 
-class FirstScreenViewModel : MviViewModel<FirstScreenViewState, FirstScreenCommands>(
-    initialState = FirstScreenViewState()
-) {
-    override fun onCommand(command: FirstScreenCommands) {
+class FirstScreenViewModel : ViewModel() {
+    var state by mutableStateOf(FirstScreenViewState())
+        private set
+
+    fun onCommand(command: FirstScreenCommand) {
         when (command) {
-            is FirstScreenCommands.UpdateText -> setState {
-                copy(text = command.text)
+            is FirstScreenCommand.UpdateText -> {
+                state = state.copy(text = command.text)
             }
         }
     }
