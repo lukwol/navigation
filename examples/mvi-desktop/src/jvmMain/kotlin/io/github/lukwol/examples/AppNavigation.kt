@@ -7,13 +7,13 @@ import io.github.lukwol.examples.screens.second.SecondScreen
 import io.github.lukwol.examples.screens.second.SecondScreenViewModel
 import io.github.lukwol.examples.screens.third.ThirdScreen
 import io.github.lukwol.examples.screens.third.ThirdScreenViewModel
-import io.github.lukwol.screens.navigation.ScreensNavigation
-import io.github.lukwol.viewmodel.screens.navigation.screen
+import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 
 @Composable
 fun AppNavigation() {
     ScreensNavigation(
-        startRoute = AppRoutes.firstScreen
+        startRoute = AppRoutes.firstScreen,
+        animated = true
     ) {
         screen(
             route = AppRoutes.firstScreen,

@@ -47,45 +47,45 @@ class ScreensNavigationTest {
             }
         }
 
-        assertEquals(root.innerHTML, "<div>First screen</div>")
+        assertEquals("<div>First screen</div>", root.innerHTML)
 
         screensController.push(TestRoutes.SecondScreen, "Foo")
         waitForRecompositionComplete()
 
         assertEquals(
-            root.innerHTML,
             """
             <div>Second screen</div>
             <div>args: Foo</div>
-            """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", ""),
+            root.innerHTML
         )
 
         screensController.push(TestRoutes.ThirdScreen, ThirdScreenArgs(text = "Bar", number = 42))
         waitForRecompositionComplete()
 
         assertEquals(
-            root.innerHTML,
             """
             <div>Third screen</div>
             <div>args: text = Bar, number = 42</div>
-            """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", ""),
+            root.innerHTML
         )
 
         screensController.pop()
         waitForRecompositionComplete()
 
         assertEquals(
-            root.innerHTML,
             """
             <div>Second screen</div>
             <div>args: Foo</div>
-            """.trimIndent().replace("\n", "")
+            """.trimIndent().replace("\n", ""),
+            root.innerHTML
         )
 
         screensController.pop()
         waitForRecompositionComplete()
 
-        assertEquals(root.innerHTML, "<div>First screen</div>")
+        assertEquals("<div>First screen</div>", root.innerHTML)
     }
 
     @Test

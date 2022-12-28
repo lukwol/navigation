@@ -29,7 +29,7 @@ interface ScreensController {
      *
      * @param upToRoute if provided optionally pop multiple routes [upToRoute]
      */
-    fun pop(upToRoute: ScreenRoute? = null)
+    fun pop(upToRoute: ScreenRoute? = null): Result<Unit>
 }
 
 /**
@@ -55,8 +55,8 @@ internal class ScreensControllerImpl(startRoute: ScreenRoute) : ScreensControlle
      *
      * @see [ScreensController.pop]
      */
-    override fun pop(upToRoute: ScreenRoute?) {
-        return when {
+    override fun pop(upToRoute: ScreenRoute?) = runCatching {
+        when {
             upToRoute != null && upToRoute !in routes -> throw IllegalArgumentException("There is no $upToRoute on the stack")
             upToRoute == routes.last() -> throw IllegalArgumentException("Cannot pop up to current route $upToRoute")
             routes.size == 1 -> throw IllegalStateException("Cannot pop start route ${routes.first()}")
@@ -74,5 +74,5 @@ internal object ScreensControllerNoOp : ScreensController {
 
     override fun push(route: ScreenRoute, arguments: ScreenArguments?) = Unit
 
-    override fun pop(upToRoute: ScreenRoute?) = Unit
+    override fun pop(upToRoute: ScreenRoute?) = Result.success(Unit)
 }

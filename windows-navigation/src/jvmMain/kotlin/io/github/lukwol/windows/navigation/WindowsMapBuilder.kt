@@ -24,7 +24,7 @@ class WindowsMapBuilder {
      */
     fun window(
         route: WindowRoute,
-        title: String = route.value,
+        title: String = route,
         content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit
     ) {
         window(

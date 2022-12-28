@@ -5,8 +5,7 @@ import androidx.compose.ui.window.Window
 import io.github.lukwol.examples.di.ViewModelProvider
 import io.github.lukwol.examples.screens.first.FirstScreen
 import io.github.lukwol.examples.screens.second.SecondScreen
-import io.github.lukwol.screens.navigation.ScreensNavigation
-import io.github.lukwol.viewmodel.screens.navigation.screen
+import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 import io.github.lukwol.windows.navigation.LocalWindowController
 import io.github.lukwol.windows.navigation.WindowsNavigation
 

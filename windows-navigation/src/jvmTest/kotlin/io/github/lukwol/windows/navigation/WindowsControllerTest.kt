@@ -58,14 +58,14 @@ class WindowsControllerTest {
     fun `opening window that is already opened`() {
         windowsController.open(TestRoutes.SecondWindow)
         assertFailsWith<IllegalArgumentException> {
-            windowsController.open(TestRoutes.SecondWindow)
+            windowsController.open(TestRoutes.SecondWindow).getOrThrow()
         }
     }
 
     @Test
     fun `closing window that is not opened`() {
         assertFailsWith<IllegalArgumentException> {
-            windowsController.close(TestRoutes.SecondWindow)
+            windowsController.close(TestRoutes.SecondWindow).getOrThrow()
         }
     }
 }

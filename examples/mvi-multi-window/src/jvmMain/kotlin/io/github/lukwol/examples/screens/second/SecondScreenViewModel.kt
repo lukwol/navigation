@@ -10,5 +10,6 @@ class SecondScreenViewModel(text: String) : ViewModel() {
     var state by mutableStateOf(SecondScreenViewState(text.ifEmpty { "No text passed" }))
         private set
 
+    @Suppress("UNUSED_PARAMETER")
     fun onCommand(command: SecondScreenCommand) {}
 }

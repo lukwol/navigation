@@ -20,7 +20,7 @@ class ScreensMapBuilderTest {
         with(screensMapBuilder) {
             screen(route = TestRoutes.SecondScreen, content = {})
             screen(route = TestRoutes.ThirdScreen, content = {})
-            assertContentEquals(build().keys, listOf(TestRoutes.SecondScreen, TestRoutes.ThirdScreen))
+            assertContentEquals(listOf(TestRoutes.SecondScreen, TestRoutes.ThirdScreen), build().keys)
         }
     }
 

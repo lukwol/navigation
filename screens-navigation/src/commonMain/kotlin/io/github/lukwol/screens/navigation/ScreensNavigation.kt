@@ -11,11 +11,13 @@ import androidx.compose.runtime.remember
  * Provides [LocalScreensController] that can be used for navigation inside each screen.
  *
  * @param startRoute first [route][ScreenRoute] for which screen will be displayed
+ * @param animated enables `Crossfade` animation (currently works only on jvm)
  * @param builder the builder used to construct the screens navigation map
  */
 @Composable
 fun ScreensNavigation(
     startRoute: ScreenRoute,
+    animated: Boolean = false,
     builder: ScreensMapBuilder.() -> Unit
 ) {
     val mapBuilder = ScreensMapBuilder()
@@ -23,13 +25,16 @@ fun ScreensNavigation(
 
     val screensMap = remember { mapBuilder.build() }
     val screensController = remember { ScreensControllerImpl(startRoute) }
-
     val routesWithArguments by screensController.routesState
-    val (route, arguments) = routesWithArguments.last()
 
     CompositionLocalProvider(
         LocalScreensController provides screensController
     ) {
-        screensMap.getValue(route)(arguments)
+        ChangeScreen(
+            route = routesWithArguments.last(),
+            animated = animated
+        ) { (route, arguments) ->
+            screensMap.getValue(route)(arguments)
+        }
     }
 }
