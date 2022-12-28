@@ -33,13 +33,13 @@ Step 2. Add the dependency
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.2.0")
+    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.3.1")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.2.0")
+    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.3.1")
     // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.2.0")
+    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.3.1")
     // ViewModel without navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel:0.2.0")
+    implementation("com.github.lukwol.cm-navigation:viewmodel:0.3.1")
 }
 ```
 
@@ -53,7 +53,8 @@ Basic screens navigation:
 
 ```kotlin
 ScreensNavigation(
-    startRoute = AppRoutes.FirstScreenRoute
+    startRoute = AppRoutes.FirstScreenRoute,
+    animated = true // Optionally enable Crossfade animation
 ) {
     screen(AppRoutes.FirstScreenRoute) {
         FirstScreen()
