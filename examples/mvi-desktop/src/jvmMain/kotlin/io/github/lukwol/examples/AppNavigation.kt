@@ -12,7 +12,8 @@ import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 @Composable
 fun AppNavigation() {
     ScreensNavigation(
-        startRoute = AppRoutes.firstScreen
+        startRoute = AppRoutes.firstScreen,
+        animated = true
     ) {
         screen(
             route = AppRoutes.firstScreen,

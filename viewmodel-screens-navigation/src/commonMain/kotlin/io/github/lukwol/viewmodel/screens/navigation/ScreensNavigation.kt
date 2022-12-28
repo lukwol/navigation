@@ -17,11 +17,12 @@ import io.github.lukwol.screens.navigation.ScreensNavigation as BasicScreensNavi
 @Composable
 fun ScreensNavigation(
     startRoute: ScreenRoute,
+    animated: Boolean = false,
     builder: VMScreensMapBuilder.() -> Unit
 ) {
     val viewModelStore = remember { ViewModelStore() }
 
-    BasicScreensNavigation(startRoute) {
+    BasicScreensNavigation(startRoute, animated) {
         builder(VMScreensMapBuilder(viewModelStore, this))
     }
 
