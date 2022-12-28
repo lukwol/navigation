@@ -1,10 +1,7 @@
 package io.github.lukwol.screens.navigation
 
 import io.github.lukwol.screens.navigation.data.TestRoutes
-import kotlin.test.BeforeTest
-import kotlin.test.Test
-import kotlin.test.assertEquals
-import kotlin.test.assertFailsWith
+import kotlin.test.*
 
 class ScreensControllerTest {
 
@@ -28,7 +25,6 @@ class ScreensControllerTest {
         screensController.push(TestRoutes.SecondScreen)
         screensController.push(TestRoutes.FifthScreen)
         assertEquals(
-            screensController.routes,
             listOf(
                 TestRoutes.FirstScreen,
                 TestRoutes.SecondScreen,
@@ -36,48 +32,47 @@ class ScreensControllerTest {
                 TestRoutes.FourthScreen,
                 TestRoutes.SecondScreen,
                 TestRoutes.FifthScreen
-            )
+            ),
+            screensController.routes
         )
         screensController.pop(TestRoutes.SecondScreen)
         assertEquals(
-            screensController.routes,
             listOf(
                 TestRoutes.FirstScreen,
                 TestRoutes.SecondScreen,
                 TestRoutes.ThirdScreen,
                 TestRoutes.FourthScreen,
                 TestRoutes.SecondScreen
-            )
+            ),
+            screensController.routes
         )
         screensController.pop()
         screensController.pop(TestRoutes.SecondScreen)
         assertEquals(
-            screensController.routes,
             listOf(
                 TestRoutes.FirstScreen,
                 TestRoutes.SecondScreen
-            )
+            ),
+            screensController.routes
         )
         screensController.pop()
         assertEquals(
-            screensController.routes,
-            listOf(
-                TestRoutes.FirstScreen
-            )
+            listOf(TestRoutes.FirstScreen),
+            screensController.routes
         )
     }
 
     @Test
     fun poppingStartRoute() {
         assertFailsWith<IllegalStateException> {
-            screensController.pop()
+            screensController.pop().getOrThrow()
         }
     }
 
     @Test
     fun poppingRouteThatIsNotOnTheStack() {
         assertFailsWith<IllegalArgumentException> {
-            screensController.pop(TestRoutes.SecondScreen)
+            screensController.pop(TestRoutes.SecondScreen).getOrThrow()
         }
     }
 
@@ -85,7 +80,7 @@ class ScreensControllerTest {
     fun poppingToCurrentRoute() {
         screensController.push(TestRoutes.SecondScreen)
         assertFailsWith<IllegalArgumentException> {
-            screensController.pop(TestRoutes.SecondScreen)
+            screensController.pop(TestRoutes.SecondScreen).getOrThrow()
         }
     }
 }
