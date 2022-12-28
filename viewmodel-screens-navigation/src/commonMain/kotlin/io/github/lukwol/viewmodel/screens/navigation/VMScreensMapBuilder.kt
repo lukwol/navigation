@@ -9,13 +9,13 @@ import io.github.lukwol.viewmodel.ViewModelScope
 import kotlinx.coroutines.cancel
 
 /**
- * Builds screens navigation map same as [ScreensMapBuilder],
- * however allows passing [ViewModel] via lambda.
+ * Builds screens navigation map same as [BasicScreensMapBuilder],
+ * additionally allows passing [ViewModel] via lambda.
  */
 class VMScreensMapBuilder internal constructor(
     private val viewModelStore: ViewModelStore,
-    private val screensMapBuilder: ScreensMapBuilder = ScreensMapBuilder()
-) {
+    private val basicScreensMapBuilder: BasicScreensMapBuilder = BasicScreensMapBuilder()
+) : ScreensMapBuilder by basicScreensMapBuilder {
 
     /**
      * Declare screen [content] for [route] and provide it with [ViewModel].
@@ -25,14 +25,14 @@ class VMScreensMapBuilder internal constructor(
      * @param viewModelFactory lambda that takes screen [ScreenArguments] and creates [ViewModel]
      * @param content [Composable] content of the screen
      *
-     * @see ScreensMapBuilder.screen
+     * @see BasicScreensMapBuilder.screen
      */
     @Suppress("UNCHECKED_CAST")
     fun <VM : ViewModelScope> screen(
         route: ScreenRoute,
         viewModelFactory: (args: ScreenArguments?) -> VM,
         content: @Composable (viewModel: VM) -> Unit
-    ) = screensMapBuilder.screen(route) { arguments ->
+    ) = screen(route) { arguments ->
         val screensController = LocalScreensController.current
 
         val viewModel = remember(route) {

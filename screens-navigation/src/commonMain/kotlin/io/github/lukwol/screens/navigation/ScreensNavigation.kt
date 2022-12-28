@@ -6,7 +6,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 
 /**
- * Declare screens navigation by defining all [screens][ScreensMapBuilder.screen] for [routes][ScreenRoute].
+ * Declare screens navigation by defining all [screens][BasicScreensMapBuilder.screen] for [routes][ScreenRoute].
  *
  * Provides [LocalScreensController] that can be used for navigation inside each screen.
  *
@@ -18,9 +18,9 @@ import androidx.compose.runtime.remember
 fun ScreensNavigation(
     startRoute: ScreenRoute,
     animated: Boolean = false,
-    builder: ScreensMapBuilder.() -> Unit
+    builder: BasicScreensMapBuilder.() -> Unit
 ) {
-    val mapBuilder = ScreensMapBuilder()
+    val mapBuilder = BasicScreensMapBuilder()
     builder(mapBuilder)
 
     val screensMap = remember { mapBuilder.build() }

@@ -2,16 +2,7 @@ package io.github.lukwol.screens.navigation
 
 import androidx.compose.runtime.Composable
 
-/**
- * Builds screens navigation map.
- */
-class ScreensMapBuilder {
-
-    /**
-     * Map of all registered [routes][ScreenRoute] to their [content][Composable].
-     */
-    private val screensMap = mutableMapOf<ScreenRoute, @Composable (ScreenArguments?) -> Unit>()
-
+interface ScreensMapBuilder {
     /**
      * Declare screen [content] for [route] and add it to [screensMap].
      *
@@ -23,6 +14,27 @@ class ScreensMapBuilder {
     fun screen(
         route: ScreenRoute,
         content: @Composable (args: ScreenArguments?) -> Unit
+    )
+
+    /**
+     * Build immutable map of with [ScreenRoute] as keys and contents as values.
+     */
+    fun build(): Map<ScreenRoute, @Composable (ScreenArguments?) -> Unit>
+}
+
+/**
+ * Builds screens navigation map.
+ */
+class BasicScreensMapBuilder : ScreensMapBuilder {
+
+    /**
+     * Map of all registered [routes][ScreenRoute] to their [content][Composable].
+     */
+    private val screensMap = mutableMapOf<ScreenRoute, @Composable (ScreenArguments?) -> Unit>()
+
+    override fun screen(
+        route: ScreenRoute,
+        content: @Composable (args: ScreenArguments?) -> Unit
     ) {
         if (screensMap.containsKey(route)) {
             throw IllegalArgumentException("$route is already registered")
@@ -31,8 +43,5 @@ class ScreensMapBuilder {
         }
     }
 
-    /**
-     * Build immutable [screensMap].
-     */
-    fun build() = screensMap.toMap()
+    override fun build() = screensMap.toMap()
 }

@@ -12,7 +12,7 @@ import io.github.lukwol.screens.navigation.ScreensNavigation as BasicScreensNavi
 
 /**
  * Declare screens navigation same as [ScreensNavigation][BasicScreensNavigation],
- * however allows to build [routes][ScreenRoute] by passing [ViewModel] in lambda.
+ * additionally allows to build [routes][ScreenRoute] by passing [ViewModel] in lambda.
  */
 @Composable
 fun ScreensNavigation(

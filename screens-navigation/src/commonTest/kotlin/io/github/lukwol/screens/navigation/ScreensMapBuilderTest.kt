@@ -8,16 +8,16 @@ import kotlin.test.assertFailsWith
 
 class ScreensMapBuilderTest {
 
-    private lateinit var screensMapBuilder: ScreensMapBuilder
+    private lateinit var basicScreensMapBuilder: BasicScreensMapBuilder
 
     @BeforeTest
     fun setUp() {
-        screensMapBuilder = ScreensMapBuilder()
+        basicScreensMapBuilder = BasicScreensMapBuilder()
     }
 
     @Test
     fun screensWithUniqueRoutes() {
-        with(screensMapBuilder) {
+        with(basicScreensMapBuilder) {
             screen(route = TestRoutes.SecondScreen, content = {})
             screen(route = TestRoutes.ThirdScreen, content = {})
             assertContentEquals(listOf(TestRoutes.SecondScreen, TestRoutes.ThirdScreen), build().keys)
@@ -26,7 +26,7 @@ class ScreensMapBuilderTest {
 
     @Test
     fun screensWithNotUniqueRoutes() {
-        with(screensMapBuilder) {
+        with(basicScreensMapBuilder) {
             screen(route = TestRoutes.SecondScreen, content = {})
             screen(route = TestRoutes.ThirdScreen, content = {})
             assertFailsWith<IllegalArgumentException> {
