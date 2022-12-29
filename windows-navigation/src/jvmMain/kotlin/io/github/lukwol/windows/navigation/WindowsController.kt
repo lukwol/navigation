@@ -1,6 +1,8 @@
 package io.github.lukwol.windows.navigation
 
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 
 /**
  * Manages navigation between the windows declared when building [WindowsNavigation].
@@ -36,9 +38,9 @@ interface WindowsController {
  * Actual implementation of the [WindowsController]
  */
 class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
-    internal val routesState = mutableStateOf(setOf(WindowRouteWithArguments(startRoute)))
+    internal var routesState by mutableStateOf(setOf(WindowRouteWithArguments(startRoute)))
 
-    override val routes get() = routesState.value.map(WindowRouteWithArguments::route).toSet()
+    override val routes get() = routesState.map(WindowRouteWithArguments::route).toSet()
 
     /**
      * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
@@ -53,7 +55,7 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
         if (route in routes) {
             throw IllegalArgumentException("Window for $route is already opened")
         } else {
-            routesState.value += WindowRouteWithArguments(route, arguments)
+            routesState += WindowRouteWithArguments(route, arguments)
         }
     }
 
@@ -70,7 +72,7 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
         if (route !in routes) {
             throw IllegalArgumentException("Window for $route is not opened")
         } else {
-            routesState.value -= routesState.value.filter { it.route == route }
+            routesState -= routesState.first { it.route == route }
         }
     }
 }

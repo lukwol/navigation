@@ -25,7 +25,7 @@ fun WindowsNavigation(
     val windowsMap = remember { mapBuilder.build() }
     val windowsController = remember { WindowsControllerImpl(startRoute) }
 
-    val routes by windowsController.routesState
+    val routes = windowsController.routesState
 
     CompositionLocalProvider(
         LocalWindowController provides windowsController

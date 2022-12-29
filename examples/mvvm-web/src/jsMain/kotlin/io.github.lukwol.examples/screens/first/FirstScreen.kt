@@ -16,8 +16,6 @@ import org.jetbrains.compose.web.dom.TextInput
 fun FirstScreen(viewModel: FirstScreenViewModel) {
     val screensController = LocalScreensController.current
 
-    var text by viewModel.text
-
     Div(
         attrs = {
             style {
@@ -25,10 +23,10 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
             }
         }
     ) {
-        TextInput(value = text) {
+        TextInput(value = viewModel.text) {
             placeholder("Type something...")
             onInput {
-                text = it.value
+                viewModel.text = it.value
             }
         }
     }
@@ -45,7 +43,7 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
         Button(
             attrs = {
                 onClick {
-                    screensController.push(AppRoutes.SecondScreenRoute, text)
+                    screensController.push(AppRoutes.SecondScreenRoute, viewModel.text)
                 }
             }
         ) {

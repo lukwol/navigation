@@ -25,7 +25,7 @@ fun ScreensNavigation(
 
     val screensMap = remember { mapBuilder.build() }
     val screensController = remember { ScreensControllerImpl(startRoute) }
-    val routesWithArguments by screensController.routesState
+    val routesWithArguments = screensController.routesState
 
     CompositionLocalProvider(
         LocalScreensController provides screensController
