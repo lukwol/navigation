@@ -33,13 +33,13 @@ Step 2. Add the dependency
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.3.4")
+    implementation("com.github.lukwol.cm-navigation:screens-navigation:0.4.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.3.4")
+    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:0.4.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.3.4")
+    implementation("com.github.lukwol.cm-navigation:windows-navigation:0.4.0")
     // ViewModel without navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel:0.3.4")
+    implementation("com.github.lukwol.cm-navigation:viewmodel:0.4.0")
 }
 ```
 
