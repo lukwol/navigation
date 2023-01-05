@@ -2,7 +2,6 @@ package io.github.lukwol.screens.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 
 /**
