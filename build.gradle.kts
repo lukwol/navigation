@@ -20,7 +20,19 @@ allprojects {
     version = "0.3.4"
 
     tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "11"
+        kotlinOptions {
+            jvmTarget = "11"
+
+            if (project.findProperty("enableComposeCompilerReports") == "true") {
+                val destinationDir = project.buildDir.absolutePath + "/compose_metrics"
+                freeCompilerArgs += listOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=$destinationDir",
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=$destinationDir"
+                )
+            }
+        }
     }
 
     kotlinter {

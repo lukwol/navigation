@@ -36,12 +36,12 @@ interface ScreensController {
  * Actual implementation of the [ScreensController]
  */
 internal class ScreensControllerImpl(startRoute: ScreenRoute) : ScreensController {
-    internal val routesState = mutableStateListOf(ScreenRouteWithArguments(startRoute))
+    internal val routesState = mutableStateListOf(RouteWithArguments(startRoute))
 
-    override val routes get() = routesState.map(ScreenRouteWithArguments::route)
+    override val routes get() = routesState.map(RouteWithArguments::route)
 
     override fun push(route: ScreenRoute, arguments: ScreenArguments?) {
-        routesState += ScreenRouteWithArguments(route, arguments)
+        routesState += RouteWithArguments(route, arguments)
     }
 
     /**

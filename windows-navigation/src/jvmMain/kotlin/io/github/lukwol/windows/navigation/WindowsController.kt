@@ -36,9 +36,9 @@ interface WindowsController {
  * Actual implementation of the [WindowsController]
  */
 class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
-    internal val routesState = mutableStateListOf(WindowRouteWithArguments(startRoute))
+    internal val routesState = mutableStateListOf(RouteWithArguments(startRoute))
 
-    override val routes get() = routesState.map(WindowRouteWithArguments::route).toSet()
+    override val routes get() = routesState.map(RouteWithArguments::route).toSet()
 
     /**
      * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
@@ -53,7 +53,7 @@ class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
         if (route in routes) {
             throw IllegalArgumentException("Window for $route is already opened")
         } else {
-            routesState += WindowRouteWithArguments(route, arguments)
+            routesState += RouteWithArguments(route, arguments)
         }
     }
 
