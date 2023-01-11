@@ -13,9 +13,47 @@ Provides:
 
 ## Installation
 
-`cm-navigation` is published on jitpack.io.
+Currently `cm-navigation` can be installed only via local Maven or [Jitpack](https://jitpack.io/) repositories.
 
-To get a Git project into your build:
+Installation via Jitpack is recommended but provides only a few native targets, install to local maven in order to use more native targets.
+
+### MavenLocal
+
+Step 1. Clone or download `cm-navigation` repository
+
+Step 2. Build and publish to local Maven repository by running: 
+
+```shell
+./gradlew publishToMavenLocal
+```
+
+Step 3. Add the local Maven repository to `build.gradle.kts` at the end of repositories:
+
+```kotlin
+allprojects {
+    repositories {
+        // ...
+        mavenLocal()
+    }
+}
+```
+
+Step 4. Add the dependency:
+
+```kotlin
+dependencies {
+    // Screens navigation - multiplatform
+    implementation("io.github.lukwol:screens-navigation:0.4.0")
+    // Screens navigation with ViewModel support - multiplatform
+    implementation("io.github.lukwol:viewmodel-screens-navigation:0.4.0")
+    // Windows navigation - jvm only, for desktop application
+    implementation("io.github.lukwol:windows-navigation:0.4.0")
+    // ViewModel without navigation - multiplatform
+    implementation("io.github.lukwol:viewmodel:0.4.0")
+}
+```
+
+### Jitpack
 
 Step 1. Add the JitPack repository to `build.gradle.kts` at the end of repositories:
 
@@ -28,7 +66,7 @@ allprojects {
 }
 ```
 
-Step 2. Add the dependency
+Step 2. Add the dependency:
 
 ```kotlin
 dependencies {
