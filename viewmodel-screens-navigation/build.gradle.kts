@@ -44,5 +44,3 @@ kotlin {
         }
     }
 }
-
-compose.kotlinCompilerPlugin.set(libs.versions.compose.compiler)

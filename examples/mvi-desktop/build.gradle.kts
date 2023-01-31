@@ -22,8 +22,6 @@ kotlin {
 }
 
 compose {
-    kotlinCompilerPlugin.set(libs.versions.compose.compiler)
-
     desktop {
         application {
             mainClass = "io.github.lukwol.examples.MainKt"
