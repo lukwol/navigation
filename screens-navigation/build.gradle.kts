@@ -26,29 +26,29 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting {
+        named("commonMain") {
             dependencies {
                 implementation(compose.runtime)
             }
         }
-        val commonTest by getting {
+        named("commonTest") {
             dependencies {
                 implementation(libs.kotlin.test)
             }
         }
-        val jvmMain by getting {
+        named("jvmMain") {
             dependencies {
                 implementation(compose.animation)
             }
         }
-        val jvmTest by getting {
+        named("jvmTest") {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.uiTestJUnit4)
             }
         }
-        val jsTest by getting {
+        named("jsTest") {
             dependencies {
                 implementation(compose.web.core)
                 implementation(compose.web.testUtils)

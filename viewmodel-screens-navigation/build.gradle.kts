@@ -26,7 +26,7 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting {
+        named("commonMain") {
             dependencies {
                 api(projects.viewmodel)
                 api(projects.screensNavigation)
@@ -34,7 +34,7 @@ kotlin {
                 implementation(libs.coroutines.core)
             }
         }
-        val jvmTest by getting {
+        named("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(compose.desktop.currentOs)

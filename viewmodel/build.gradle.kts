@@ -25,7 +25,7 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        val commonMain by getting {
+        named("commonMain") {
             dependencies {
                 implementation(libs.coroutines.core)
             }

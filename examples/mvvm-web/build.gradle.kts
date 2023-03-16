@@ -11,7 +11,7 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
-        val jsMain by getting {
+        named("jsMain") {
             dependencies {
                 implementation(compose.web.core)
                 implementation(projects.viewmodelScreensNavigation)

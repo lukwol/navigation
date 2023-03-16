@@ -11,12 +11,12 @@ kotlin {
     jvm()
 
     sourceSets {
-        val jvmMain by getting {
+        named("jvmMain") {
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
         }
-        val jvmTest by getting {
+        named("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.coroutines.test)
