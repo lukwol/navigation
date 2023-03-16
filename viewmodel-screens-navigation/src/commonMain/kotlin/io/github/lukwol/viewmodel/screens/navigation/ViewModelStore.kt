@@ -12,7 +12,7 @@ import io.github.lukwol.viewmodel.ViewModelScope
  * that registers [view models][ViewModel] for [routes][ScreenRoute]
  */
 internal class ViewModelStore private constructor(
-    private val viewModels: MutableMap<ScreenRoute, ViewModelScope>
+    private val viewModels: MutableMap<ScreenRoute, ViewModelScope>,
 ) : MutableMap<ScreenRoute, ViewModelScope> by viewModels {
     constructor() : this(mutableMapOf())
 }

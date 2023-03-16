@@ -6,8 +6,8 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
+    alias(libs.plugins.kotlinter) apply false
     alias(libs.plugins.dokka)
-    alias(libs.plugins.kotlinter)
     alias(libs.plugins.dependency.updates)
 }
 
@@ -33,10 +33,6 @@ allprojects {
                 )
             }
         }
-    }
-
-    kotlinter {
-        disabledRules = arrayOf("no-wildcard-imports")
     }
 }
 

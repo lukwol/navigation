@@ -13,7 +13,7 @@ interface ScreensMapBuilder {
      */
     fun screen(
         route: ScreenRoute,
-        content: @Composable (args: ScreenArguments?) -> Unit
+        content: @Composable (args: ScreenArguments?) -> Unit,
     )
 
     /**
@@ -34,7 +34,7 @@ class BasicScreensMapBuilder : ScreensMapBuilder {
 
     override fun screen(
         route: ScreenRoute,
-        content: @Composable (args: ScreenArguments?) -> Unit
+        content: @Composable (args: ScreenArguments?) -> Unit,
     ) {
         if (screensMap.containsKey(route)) {
             throw IllegalArgumentException("$route is already registered")

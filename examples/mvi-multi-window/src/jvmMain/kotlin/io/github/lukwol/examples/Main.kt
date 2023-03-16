@@ -10,7 +10,7 @@ fun main() {
     startKoin {
         printLogger(Level.INFO)
         modules(
-            appModule
+            appModule,
         )
     }
     application {

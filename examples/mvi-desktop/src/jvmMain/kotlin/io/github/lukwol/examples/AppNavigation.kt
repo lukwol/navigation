@@ -13,36 +13,36 @@ import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 fun AppNavigation() {
     ScreensNavigation(
         startRoute = AppRoutes.firstScreen,
-        animated = true
+        animated = true,
     ) {
         screen(
             route = AppRoutes.firstScreen,
-            viewModelFactory = { FirstScreenViewModel() }
+            viewModelFactory = { FirstScreenViewModel() },
         ) {
             FirstScreen(
                 state = it.state,
-                commands = it::onCommand
+                commands = it::onCommand,
             )
         }
 
         screen(
             route = AppRoutes.secondScreen,
-            viewModelFactory = { SecondScreenViewModel() }
+            viewModelFactory = { SecondScreenViewModel() },
 
         ) {
             SecondScreen(
                 state = it.state,
-                commands = it::onCommand
+                commands = it::onCommand,
             )
         }
 
         screen(
             route = AppRoutes.thirdScreen,
-            viewModelFactory = { ThirdScreenViewModel() }
+            viewModelFactory = { ThirdScreenViewModel() },
         ) {
             ThirdScreen(
                 state = it.state,
-                commands = it::onCommand
+                commands = it::onCommand,
             )
         }
     }

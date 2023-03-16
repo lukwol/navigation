@@ -12,7 +12,7 @@ fun FirstScreen() {
     val screensController = LocalScreensController.current
 
     Button(
-        onClick = { screensController.push(TestRoutes.SecondScreen, "Foo") }
+        onClick = { screensController.push(TestRoutes.SecondScreen, "Foo") },
     ) {
         Text("Push Second Screen")
     }

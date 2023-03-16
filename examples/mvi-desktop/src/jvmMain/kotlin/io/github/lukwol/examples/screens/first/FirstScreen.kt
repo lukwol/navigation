@@ -1,7 +1,11 @@
 package io.github.lukwol.examples.screens.first
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -16,7 +20,7 @@ import io.github.lukwol.screens.navigation.LocalScreensController
 @Composable
 fun FirstScreen(
     state: FirstScreenViewState,
-    commands: (FirstScreenCommand) -> Unit
+    commands: (FirstScreenCommand) -> Unit,
 ) {
     val screensController = LocalScreensController.current
 
@@ -25,7 +29,7 @@ fun FirstScreen(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .background(Color.Cyan)
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
         Text("FirstScreen")
 
@@ -33,13 +37,13 @@ fun FirstScreen(
 
         TextField(
             value = state.text,
-            onValueChange = { commands(FirstScreenCommand.UpdateText(it)) }
+            onValueChange = { commands(FirstScreenCommand.UpdateText(it)) },
         )
 
         Spacer(modifier = Modifier.width(8.dp))
 
         Button(
-            onClick = { screensController.push(AppRoutes.secondScreen) }
+            onClick = { screensController.push(AppRoutes.secondScreen) },
         ) {
             Text("Go to SecondScreen")
         }

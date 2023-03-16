@@ -9,7 +9,7 @@ import io.github.lukwol.screens.navigation.data.ThirdScreenArgs
 @Composable
 fun TestScreenNavigation() {
     ScreensNavigation(
-        startRoute = TestRoutes.FirstScreen
+        startRoute = TestRoutes.FirstScreen,
     ) {
         screen(TestRoutes.FirstScreen) {
             FirstScreen()

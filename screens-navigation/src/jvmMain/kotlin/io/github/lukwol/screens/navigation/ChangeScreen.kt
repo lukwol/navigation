@@ -7,11 +7,11 @@ import androidx.compose.runtime.Composable
 internal actual fun ChangeScreen(
     route: RouteWithArguments,
     animated: Boolean,
-    content: @Composable (RouteWithArguments) -> Unit
+    content: @Composable (RouteWithArguments) -> Unit,
 ) = when {
     animated -> Crossfade(
         targetState = route,
-        content = content
+        content = content,
     )
     else -> content(route)
 }

@@ -8,18 +8,18 @@ import io.github.lukwol.viewmodel.screens.navigation.data.TestRoutes
 @Composable
 fun TestScreenNavigation() {
     ScreensNavigation(
-        startRoute = TestRoutes.FirstScreen
+        startRoute = TestRoutes.FirstScreen,
     ) {
         screen(
             route = TestRoutes.FirstScreen,
-            viewModelFactory = { FirstScreenViewModel() }
+            viewModelFactory = { FirstScreenViewModel() },
         ) { viewModel ->
             FirstScreen(viewModel)
         }
 
         screen(
             route = TestRoutes.SecondScreen,
-            viewModelFactory = { SecondScreenViewModel(it as String) }
+            viewModelFactory = { SecondScreenViewModel(it as String) },
         ) { viewModel ->
             SecondScreen(viewModel)
         }

@@ -12,22 +12,22 @@ import io.github.lukwol.windows.navigation.WindowsNavigation
 @Composable
 fun AppNavigation() {
     WindowsNavigation(
-        startRoute = AppRoutes.FirstWindowRoute
+        startRoute = AppRoutes.FirstWindowRoute,
     ) {
         window(
             route = AppRoutes.FirstWindowRoute,
-            title = "First Window"
+            title = "First Window",
         ) {
             ScreensNavigation(
-                startRoute = AppRoutes.FirstScreenRoute
+                startRoute = AppRoutes.FirstScreenRoute,
             ) {
                 screen(
                     route = AppRoutes.FirstScreenRoute,
-                    viewModelFactory = { ViewModelProvider.getFirstScreenViewModel() }
+                    viewModelFactory = { ViewModelProvider.getFirstScreenViewModel() },
                 ) { viewModel ->
                     FirstScreen(
                         state = viewModel.state,
-                        commands = viewModel::onCommand
+                        commands = viewModel::onCommand,
                     )
                 }
             }
@@ -43,20 +43,20 @@ fun AppNavigation() {
                         windowsController.close(AppRoutes.SecondWindowRoute)
                     },
                     alwaysOnTop = true,
-                    content = it
+                    content = it,
                 )
-            }
+            },
         ) { windowArgs ->
             ScreensNavigation(
-                startRoute = AppRoutes.SecondScreenRoute
+                startRoute = AppRoutes.SecondScreenRoute,
             ) {
                 screen(
                     route = AppRoutes.SecondScreenRoute,
-                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArgs as String) }
+                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArgs as String) },
                 ) { viewModel ->
                     SecondScreen(
                         state = viewModel.state,
-                        commands = viewModel::onCommand
+                        commands = viewModel::onCommand,
                     )
                 }
             }

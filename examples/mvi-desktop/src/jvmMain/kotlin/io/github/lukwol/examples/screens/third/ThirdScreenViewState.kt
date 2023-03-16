@@ -1,5 +1,5 @@
 package io.github.lukwol.examples.screens.third
 
 data class ThirdScreenViewState(
-    val text: String = ""
+    val text: String = "",
 )

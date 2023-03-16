@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 fun ScreensNavigation(
     startRoute: ScreenRoute,
     animated: Boolean = false,
-    builder: BasicScreensMapBuilder.() -> Unit
+    builder: BasicScreensMapBuilder.() -> Unit,
 ) {
     val mapBuilder = BasicScreensMapBuilder()
     builder(mapBuilder)
@@ -27,11 +27,11 @@ fun ScreensNavigation(
     val routesWithArguments = screensController.routesState
 
     CompositionLocalProvider(
-        LocalScreensController provides screensController
+        LocalScreensController provides screensController,
     ) {
         ChangeScreen(
             route = routesWithArguments.last(),
-            animated = animated
+            animated = animated,
         ) { (route, arguments) ->
             screensMap.getValue(route)(arguments)
         }

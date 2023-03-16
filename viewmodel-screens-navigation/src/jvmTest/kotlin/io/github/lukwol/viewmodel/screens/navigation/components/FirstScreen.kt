@@ -24,11 +24,11 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
     Column {
         TextField(
             value = viewModel.text,
-            onValueChange = { viewModel.text = it }
+            onValueChange = { viewModel.text = it },
         )
 
         Button(
-            onClick = { screensController.push(TestRoutes.SecondScreen, viewModel.text) }
+            onClick = { screensController.push(TestRoutes.SecondScreen, viewModel.text) },
         ) {
             Text("Push Second Screen")
         }

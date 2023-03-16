@@ -3,7 +3,11 @@ package io.github.lukwol.viewmodel.screens.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
-import io.github.lukwol.screens.navigation.*
+import io.github.lukwol.screens.navigation.BasicScreensMapBuilder
+import io.github.lukwol.screens.navigation.LocalScreensController
+import io.github.lukwol.screens.navigation.ScreenArguments
+import io.github.lukwol.screens.navigation.ScreenRoute
+import io.github.lukwol.screens.navigation.ScreensMapBuilder
 import io.github.lukwol.viewmodel.ViewModel
 import io.github.lukwol.viewmodel.ViewModelScope
 import kotlinx.coroutines.cancel
@@ -14,7 +18,7 @@ import kotlinx.coroutines.cancel
  */
 class VMScreensMapBuilder internal constructor(
     private val viewModelStore: ViewModelStore,
-    private val basicScreensMapBuilder: BasicScreensMapBuilder = BasicScreensMapBuilder()
+    private val basicScreensMapBuilder: BasicScreensMapBuilder = BasicScreensMapBuilder(),
 ) : ScreensMapBuilder by basicScreensMapBuilder {
 
     /**
@@ -31,7 +35,7 @@ class VMScreensMapBuilder internal constructor(
     fun <VM : ViewModelScope> screen(
         route: ScreenRoute,
         viewModelFactory: (args: ScreenArguments?) -> VM,
-        content: @Composable (viewModel: VM) -> Unit
+        content: @Composable (viewModel: VM) -> Unit,
     ) = screen(route) { arguments ->
         val screensController = LocalScreensController.current
 

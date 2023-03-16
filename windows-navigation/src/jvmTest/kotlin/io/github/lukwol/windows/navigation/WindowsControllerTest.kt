@@ -27,8 +27,8 @@ class WindowsControllerTest {
             windowsController.routes,
             setOf(
                 TestRoutes.FirstWindow,
-                TestRoutes.SecondWindow
-            )
+                TestRoutes.SecondWindow,
+            ),
         )
 
         windowsController.open(TestRoutes.ThirdWindow)
@@ -37,8 +37,8 @@ class WindowsControllerTest {
             setOf(
                 TestRoutes.FirstWindow,
                 TestRoutes.SecondWindow,
-                TestRoutes.ThirdWindow
-            )
+                TestRoutes.ThirdWindow,
+            ),
         )
 
         windowsController.close(TestRoutes.FirstWindow)
@@ -46,8 +46,8 @@ class WindowsControllerTest {
             windowsController.routes,
             setOf(
                 TestRoutes.SecondWindow,
-                TestRoutes.ThirdWindow
-            )
+                TestRoutes.ThirdWindow,
+            ),
         )
 
         windowsController.close(TestRoutes.SecondWindow)

@@ -1,7 +1,11 @@
 package io.github.lukwol.examples.screens.first
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -16,14 +20,14 @@ import io.github.lukwol.windows.navigation.LocalWindowController
 @Composable
 fun FirstScreen(
     state: FirstScreenViewState,
-    commands: (FirstScreenCommand) -> Unit
+    commands: (FirstScreenCommand) -> Unit,
 ) {
     val windowsController = LocalWindowController.current
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         TextField(
             value = state.text,
@@ -32,7 +36,7 @@ fun FirstScreen(
             },
             onValueChange = {
                 commands(FirstScreenCommand.UpdateText(it))
-            }
+            },
         )
 
         Spacer(Modifier.height(20.dp))
@@ -40,7 +44,7 @@ fun FirstScreen(
         Button(
             onClick = {
                 windowsController.open(AppRoutes.SecondWindowRoute, state.text)
-            }
+            },
         ) {
             Text("Open second window")
         }
@@ -52,6 +56,6 @@ fun FirstScreen(
 private fun Preview() = MaterialTheme {
     FirstScreen(
         state = FirstScreenViewState(),
-        commands = {}
+        commands = {},
     )
 }

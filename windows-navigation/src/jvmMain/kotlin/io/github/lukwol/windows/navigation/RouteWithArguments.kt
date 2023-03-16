@@ -8,5 +8,5 @@ import androidx.compose.runtime.Immutable
 @Immutable
 internal data class RouteWithArguments(
     val route: WindowRoute,
-    val arguments: WindowArguments? = null
+    val arguments: WindowArguments? = null,
 )

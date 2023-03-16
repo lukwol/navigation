@@ -18,7 +18,7 @@ class ScreensNavigationTest {
         lateinit var screensController: ScreensController
         composition {
             ScreensNavigation(
-                startRoute = TestRoutes.FirstScreen
+                startRoute = TestRoutes.FirstScreen,
             ) {
                 screen(TestRoutes.FirstScreen) {
                     screensController = LocalScreensController.current
@@ -57,7 +57,7 @@ class ScreensNavigationTest {
             <div>Second screen</div>
             <div>args: Foo</div>
             """.trimIndent().replace("\n", ""),
-            root.innerHTML
+            root.innerHTML,
         )
 
         screensController.push(TestRoutes.ThirdScreen, ThirdScreenArgs(text = "Bar", number = 42))
@@ -68,7 +68,7 @@ class ScreensNavigationTest {
             <div>Third screen</div>
             <div>args: text = Bar, number = 42</div>
             """.trimIndent().replace("\n", ""),
-            root.innerHTML
+            root.innerHTML,
         )
 
         screensController.pop()
@@ -79,7 +79,7 @@ class ScreensNavigationTest {
             <div>Second screen</div>
             <div>args: Foo</div>
             """.trimIndent().replace("\n", ""),
-            root.innerHTML
+            root.innerHTML,
         )
 
         screensController.pop()
@@ -93,7 +93,7 @@ class ScreensNavigationTest {
         assertFailsWith<NoSuchElementException> {
             composition {
                 ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen
+                    startRoute = TestRoutes.FirstScreen,
                 ) {
                     screen(TestRoutes.SecondScreen) {}
                 }
@@ -106,7 +106,7 @@ class ScreensNavigationTest {
         assertFailsWith<NoSuchElementException> {
             composition {
                 ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen
+                    startRoute = TestRoutes.FirstScreen,
                 ) {}
             }
         }

@@ -1,7 +1,10 @@
 package io.github.lukwol.screens.navigation
 
 import io.github.lukwol.screens.navigation.data.TestRoutes
-import kotlin.test.*
+import kotlin.test.BeforeTest
+import kotlin.test.Test
+import kotlin.test.assertEquals
+import kotlin.test.assertFailsWith
 
 class ScreensControllerTest {
 
@@ -31,9 +34,9 @@ class ScreensControllerTest {
                 TestRoutes.ThirdScreen,
                 TestRoutes.FourthScreen,
                 TestRoutes.SecondScreen,
-                TestRoutes.FifthScreen
+                TestRoutes.FifthScreen,
             ),
-            screensController.routes
+            screensController.routes,
         )
         screensController.pop(TestRoutes.SecondScreen)
         assertEquals(
@@ -42,23 +45,23 @@ class ScreensControllerTest {
                 TestRoutes.SecondScreen,
                 TestRoutes.ThirdScreen,
                 TestRoutes.FourthScreen,
-                TestRoutes.SecondScreen
+                TestRoutes.SecondScreen,
             ),
-            screensController.routes
+            screensController.routes,
         )
         screensController.pop()
         screensController.pop(TestRoutes.SecondScreen)
         assertEquals(
             listOf(
                 TestRoutes.FirstScreen,
-                TestRoutes.SecondScreen
+                TestRoutes.SecondScreen,
             ),
-            screensController.routes
+            screensController.routes,
         )
         screensController.pop()
         assertEquals(
             listOf(TestRoutes.FirstScreen),
-            screensController.routes
+            screensController.routes,
         )
     }
 

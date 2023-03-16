@@ -13,5 +13,5 @@ import androidx.compose.runtime.Composable
 internal expect fun ChangeScreen(
     route: RouteWithArguments,
     animated: Boolean,
-    content: @Composable (RouteWithArguments) -> Unit
+    content: @Composable (RouteWithArguments) -> Unit,
 )

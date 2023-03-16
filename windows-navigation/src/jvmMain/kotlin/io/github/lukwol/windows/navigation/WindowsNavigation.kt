@@ -17,7 +17,7 @@ import androidx.compose.runtime.remember
 @Composable
 fun WindowsNavigation(
     startRoute: WindowRoute,
-    builder: WindowsMapBuilder.() -> Unit
+    builder: WindowsMapBuilder.() -> Unit,
 ) {
     val mapBuilder = WindowsMapBuilder()
     builder(mapBuilder)
@@ -28,7 +28,7 @@ fun WindowsNavigation(
     val routes = windowsController.routesState
 
     CompositionLocalProvider(
-        LocalWindowController provides windowsController
+        LocalWindowController provides windowsController,
     ) {
         windowsMap.forEach { (route, content) ->
             @Composable

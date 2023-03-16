@@ -2,7 +2,11 @@ package io.github.lukwol.examples.screens.second
 
 import androidx.compose.runtime.Composable
 import io.github.lukwol.screens.navigation.LocalScreensController
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.padding
+import org.jetbrains.compose.web.css.paddingBottom
+import org.jetbrains.compose.web.css.paddingLeft
+import org.jetbrains.compose.web.css.paddingRight
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
@@ -16,7 +20,7 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
             style {
                 padding(20.px)
             }
-        }
+        },
     ) {
         Text(viewModel.text)
     }
@@ -28,14 +32,14 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
                 paddingRight(20.px)
                 paddingBottom(20.px)
             }
-        }
+        },
     ) {
         Button(
             attrs = {
                 onClick {
                     screensController.pop()
                 }
-            }
+            },
         ) {
             Text("Go back")
         }

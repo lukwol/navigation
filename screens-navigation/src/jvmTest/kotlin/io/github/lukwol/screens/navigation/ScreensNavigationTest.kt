@@ -96,7 +96,7 @@ class ScreensNavigationTest {
         assertFailsWith<NoSuchElementException> {
             compose.setContent {
                 ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen
+                    startRoute = TestRoutes.FirstScreen,
                 ) {
                     screen(TestRoutes.SecondScreen) {}
                 }
@@ -109,7 +109,7 @@ class ScreensNavigationTest {
         assertFailsWith<NoSuchElementException> {
             compose.setContent {
                 ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen
+                    startRoute = TestRoutes.FirstScreen,
                 ) {}
             }
         }

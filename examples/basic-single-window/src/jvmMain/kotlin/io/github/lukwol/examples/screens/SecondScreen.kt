@@ -1,7 +1,11 @@
 package io.github.lukwol.examples.screens
 
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -18,7 +22,7 @@ fun SecondScreen(text: String) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier.fillMaxSize(),
     ) {
         Text(text.ifEmpty { "No text passed" })
 
@@ -27,7 +31,7 @@ fun SecondScreen(text: String) {
         Button(
             onClick = {
                 screensController.pop()
-            }
+            },
         ) {
             Text("Go back")
         }

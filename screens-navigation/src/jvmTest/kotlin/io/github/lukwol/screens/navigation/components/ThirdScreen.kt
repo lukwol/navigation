@@ -16,12 +16,12 @@ fun ThirdScreen(args: ThirdScreenArgs) {
     Column {
         Text(args.toString())
         Button(
-            onClick = { screensController.pop() }
+            onClick = { screensController.pop() },
         ) {
             Text("Pop Screen")
         }
         Button(
-            onClick = { screensController.pop(upToRoute = TestRoutes.FirstScreen) }
+            onClick = { screensController.pop(upToRoute = TestRoutes.FirstScreen) },
         ) {
             Text("Pop To First Screen")
         }

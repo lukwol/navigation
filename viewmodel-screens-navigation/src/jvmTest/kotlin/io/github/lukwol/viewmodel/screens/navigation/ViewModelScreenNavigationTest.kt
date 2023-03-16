@@ -1,7 +1,13 @@
 package io.github.lukwol.viewmodel.screens.navigation
 
-import androidx.compose.ui.test.*
+import androidx.compose.ui.test.assert
+import androidx.compose.ui.test.hasSetTextAction
+import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.createComposeRule
+import androidx.compose.ui.test.onNodeWithText
+import androidx.compose.ui.test.performClick
+import androidx.compose.ui.test.performTextClearance
+import androidx.compose.ui.test.performTextInput
 import io.github.lukwol.viewmodel.screens.navigation.components.TestScreenNavigation
 import org.junit.Before
 import org.junit.Rule

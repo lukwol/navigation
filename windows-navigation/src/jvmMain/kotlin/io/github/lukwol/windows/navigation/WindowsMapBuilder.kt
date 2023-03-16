@@ -25,7 +25,7 @@ class WindowsMapBuilder {
     fun window(
         route: WindowRoute,
         title: String = route,
-        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit
+        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit,
     ) {
         window(
             route = route,
@@ -37,10 +37,10 @@ class WindowsMapBuilder {
                     onCloseRequest = {
                         windowsController.close(route)
                     },
-                    content = it
+                    content = it,
                 )
             },
-            content = content
+            content = content,
         )
     }
 
@@ -58,7 +58,7 @@ class WindowsMapBuilder {
     fun window(
         route: WindowRoute,
         windowFactory: @Composable (content: @Composable FrameWindowScope.() -> Unit) -> Unit,
-        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit
+        content: @Composable FrameWindowScope.(args: WindowArguments?) -> Unit,
     ) {
         if (windowsMap.containsKey(route)) {
             throw IllegalArgumentException("$route is already registered")

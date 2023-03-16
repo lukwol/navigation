@@ -21,11 +21,11 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
 
     TextField(
         value = viewModel.text,
-        onValueChange = { viewModel.text = it }
+        onValueChange = { viewModel.text = it },
     )
 
     Button(
-        onClick = { screensController.pop() }
+        onClick = { screensController.pop() },
     ) {
         Text("Pop Screen")
     }

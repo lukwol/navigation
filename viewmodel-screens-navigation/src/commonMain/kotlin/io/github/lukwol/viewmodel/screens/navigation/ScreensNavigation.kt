@@ -18,7 +18,7 @@ import io.github.lukwol.screens.navigation.ScreensNavigation as BasicScreensNavi
 fun ScreensNavigation(
     startRoute: ScreenRoute,
     animated: Boolean = false,
-    builder: VMScreensMapBuilder.() -> Unit
+    builder: VMScreensMapBuilder.() -> Unit,
 ) {
     val viewModelStore = remember { ViewModelStore() }
 

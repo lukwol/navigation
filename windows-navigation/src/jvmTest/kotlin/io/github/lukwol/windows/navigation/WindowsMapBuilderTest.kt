@@ -43,9 +43,9 @@ class WindowsMapBuilderTest {
                 route = TestRoutes.FirstWindow,
                 windowFactory = {
                     Window(
-                        onCloseRequest = { }
+                        onCloseRequest = { },
                     ) {}
-                }
+                },
             ) {}
             assertContentEquals(build().keys, listOf(TestRoutes.FirstWindow))
         }

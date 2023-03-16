@@ -8,7 +8,7 @@ import io.github.lukwol.screens.navigation.ScreensNavigation
 @Composable
 fun AppNavigation() {
     ScreensNavigation(
-        startRoute = AppRoutes.FirstScreenRoute
+        startRoute = AppRoutes.FirstScreenRoute,
     ) {
         screen(AppRoutes.FirstScreenRoute) {
             FirstScreen()

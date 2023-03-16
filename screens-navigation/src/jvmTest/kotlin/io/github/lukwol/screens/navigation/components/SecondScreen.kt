@@ -19,9 +19,9 @@ fun SecondScreen(args: String) {
             onClick = {
                 screensController.push(
                     TestRoutes.ThirdScreen,
-                    ThirdScreenArgs(text = "Bar", number = 42)
+                    ThirdScreenArgs(text = "Bar", number = 42),
                 )
-            }
+            },
         ) {
             Text("Push Third Screen")
         }

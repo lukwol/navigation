@@ -1,7 +1,11 @@
 package io.github.lukwol.examples.screens.third
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -16,7 +20,7 @@ import io.github.lukwol.screens.navigation.LocalScreensController
 @Composable
 fun ThirdScreen(
     state: ThirdScreenViewState,
-    commands: (ThirdScreenCommand) -> Unit
+    commands: (ThirdScreenCommand) -> Unit,
 ) {
     val screensController = LocalScreensController.current
 
@@ -25,7 +29,7 @@ fun ThirdScreen(
         verticalArrangement = Arrangement.Center,
         modifier = Modifier
             .background(Color.Green)
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
         Text("ThirdScreen")
 
@@ -33,13 +37,13 @@ fun ThirdScreen(
 
         TextField(
             value = state.text,
-            onValueChange = { commands(ThirdScreenCommand.UpdateText(it)) }
+            onValueChange = { commands(ThirdScreenCommand.UpdateText(it)) },
         )
 
         Spacer(modifier = Modifier.width(8.dp))
 
         Button(
-            onClick = { screensController.pop() }
+            onClick = { screensController.pop() },
         ) {
             Text("Go back")
         }
@@ -47,7 +51,7 @@ fun ThirdScreen(
         Spacer(modifier = Modifier.width(8.dp))
 
         Button(
-            onClick = { screensController.pop(upToRoute = AppRoutes.firstScreen) }
+            onClick = { screensController.pop(upToRoute = AppRoutes.firstScreen) },
         ) {
             Text("Go back to FirstScreen")
         }

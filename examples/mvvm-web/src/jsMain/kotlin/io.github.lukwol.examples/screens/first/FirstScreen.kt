@@ -1,12 +1,14 @@
 package io.github.lukwol.examples.screens.first
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.screens.navigation.LocalScreensController
 import org.jetbrains.compose.web.attributes.placeholder
-import org.jetbrains.compose.web.css.*
+import org.jetbrains.compose.web.css.padding
+import org.jetbrains.compose.web.css.paddingBottom
+import org.jetbrains.compose.web.css.paddingLeft
+import org.jetbrains.compose.web.css.paddingRight
+import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.dom.Button
 import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
@@ -21,7 +23,7 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
             style {
                 padding(20.px)
             }
-        }
+        },
     ) {
         TextInput(value = viewModel.text) {
             placeholder("Type something...")
@@ -38,14 +40,14 @@ fun FirstScreen(viewModel: FirstScreenViewModel) {
                 paddingRight(20.px)
                 paddingBottom(20.px)
             }
-        }
+        },
     ) {
         Button(
             attrs = {
                 onClick {
                     screensController.push(AppRoutes.SecondScreenRoute, viewModel.text)
                 }
-            }
+            },
         ) {
             Text("Go to second screen")
         }
