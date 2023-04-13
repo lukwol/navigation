@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -11,9 +11,9 @@ kotlin {
         binaries.executable()
     }
     sourceSets {
-        named("jsMain") {
+        getByName("jsMain") {
             dependencies {
-                implementation(compose.web.core)
+                implementation(compose.html.core)
                 implementation(projects.viewmodelScreensNavigation)
             }
         }

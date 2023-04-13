@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION", "OPT_IN_IS_NOT_ENABLED")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -26,7 +26,7 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        named("commonMain") {
+        getByName("commonMain") {
             dependencies {
                 api(projects.viewmodel)
                 api(projects.screensNavigation)
@@ -34,7 +34,7 @@ kotlin {
                 implementation(libs.coroutines.core)
             }
         }
-        named("jvmTest") {
+        getByName("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(compose.desktop.currentOs)

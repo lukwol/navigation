@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -11,12 +11,12 @@ kotlin {
     jvm()
 
     sourceSets {
-        named("jvmMain") {
+        getByName("jvmMain") {
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
         }
-        named("jvmTest") {
+        getByName("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(libs.coroutines.test)

@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION", "OPT_IN_IS_NOT_ENABLED")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -26,33 +26,47 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        named("commonMain") {
+        getByName("commonMain") {
             dependencies {
                 implementation(compose.runtime)
             }
         }
-        named("commonTest") {
+        getByName("commonTest") {
             dependencies {
                 implementation(libs.kotlin.test)
             }
         }
-        named("jvmMain") {
+        getByName("jvmMain") {
             dependencies {
                 implementation(compose.animation)
             }
         }
-        named("jvmTest") {
+        getByName("jvmTest") {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.uiTestJUnit4)
             }
         }
-        named("jsTest") {
+        getByName("jsTest") {
             dependencies {
-                implementation(compose.web.core)
-                implementation(compose.web.testUtils)
+                implementation(compose.html.core)
+                implementation(compose.html.testUtils)
             }
+        }
+
+        create("nativeMain") {
+            dependsOn(getByName("commonMain"))
+            getByName("linuxX64Main").dependsOn(this)
+            getByName("mingwX64Main").dependsOn(this)
+            getByName("macosX64Main").dependsOn(this)
+            getByName("macosArm64Main").dependsOn(this)
+            getByName("iosMain").dependsOn(this)
+            getByName("iosSimulatorArm64Main").dependsOn(this)
+            getByName("tvosMain").dependsOn(this)
+            getByName("tvosSimulatorArm64Main").dependsOn(this)
+            getByName("watchosMain").dependsOn(this)
+            getByName("watchosSimulatorArm64Main").dependsOn(this)
         }
     }
 }

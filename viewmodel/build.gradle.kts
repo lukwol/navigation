@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -25,7 +25,7 @@ kotlin {
     watchosSimulatorArm64()
 
     sourceSets {
-        named("commonMain") {
+        getByName("commonMain") {
             dependencies {
                 implementation(libs.coroutines.core)
             }

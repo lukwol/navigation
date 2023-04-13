@@ -1,4 +1,4 @@
-@file:Suppress("UNUSED_VARIABLE", "DSL_SCOPE_VIOLATION")
+@file:Suppress("DSL_SCOPE_VIOLATION")
 
 import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 
@@ -11,7 +11,7 @@ kotlin {
     jvm()
 
     sourceSets {
-        named("jvmMain") {
+        getByName("jvmMain") {
             dependencies {
                 implementation(compose.desktop.currentOs)
                 implementation(projects.screensNavigation)
