@@ -2,8 +2,8 @@ name: documentation
 
 on:
   push:
-    branches: main
-  workflow_dispatch:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
 
 permissions:
   contents: read
