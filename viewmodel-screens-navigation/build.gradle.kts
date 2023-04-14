@@ -14,16 +14,12 @@ kotlin {
         browser()
     }
 
-    linuxX64()
-    mingwX64()
-    macosX64()
-    macosArm64()
-    ios()
+    iosX64()
+    iosArm64()
     iosSimulatorArm64()
-    tvos()
-    tvosSimulatorArm64()
-    watchos()
-    watchosSimulatorArm64()
+
+    macosArm64()
+    macosX64()
 
     sourceSets {
         getByName("commonMain") {
@@ -41,6 +37,12 @@ kotlin {
                 @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
                 implementation(compose.uiTestJUnit4)
             }
+        }
+        create("iosMain") {
+            dependsOn(getByName("commonMain"))
+            getByName("iosX64Main").dependsOn(this)
+            getByName("iosArm64Main").dependsOn(this)
+            getByName("iosSimulatorArm64Main").dependsOn(this)
         }
     }
 }
