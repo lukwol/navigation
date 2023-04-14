@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.compose.ui.test.assert
@@ -9,6 +11,8 @@ import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import io.github.lukwol.viewmodel.screens.navigation.components.TestScreenNavigation
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -33,10 +37,10 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate to second screen and update it's state`() {
+    fun `navigate to second screen and update it's state`() = runTest {
         with(compose) {
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNode(hasSetTextAction()).assert(hasText(""))
             onNode(hasSetTextAction()).performTextInput("Bar")
@@ -45,14 +49,14 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate back and forth`() {
+    fun `navigate back and forth`() = runTest {
         with(compose) {
             onNode(hasSetTextAction()).assert(hasText(""))
             onNode(hasSetTextAction()).performTextInput("Foo")
             onNode(hasSetTextAction()).assert(hasText("Foo"))
 
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNode(hasSetTextAction()).assert(hasText("Foo"))
             onNode(hasSetTextAction()).performTextClearance()
@@ -60,14 +64,14 @@ class ViewModelScreenNavigationTest {
             onNode(hasSetTextAction()).assert(hasText("The quick brown fox"))
 
             onNodeWithText("Pop Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNode(hasSetTextAction()).assert(hasText("Foo"))
             onNode(hasSetTextAction()).performTextInput("Bar")
             onNode(hasSetTextAction()).assert(hasText("FooBar"))
 
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNode(hasSetTextAction()).assert(hasText("FooBar"))
         }

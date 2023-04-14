@@ -1,3 +1,5 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package io.github.lukwol.screens.navigation
 
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -5,6 +7,8 @@ import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import io.github.lukwol.screens.navigation.components.TestScreenNavigation
 import io.github.lukwol.screens.navigation.data.TestRoutes
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.test.runTest
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -26,13 +30,13 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to second screen`() {
+    fun `navigate to second screen`() = runTest {
         with(compose) {
             onNodeWithText("Push Second Screen").assertExists()
             onNodeWithText("Foo").assertDoesNotExist()
 
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("Push Second Screen").assertDoesNotExist()
             onNodeWithText("Foo").assertExists()
@@ -40,15 +44,15 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen`() {
+    fun `navigate to third screen`() = runTest {
         with(compose) {
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("Foo").assertExists()
 
             onNodeWithText("Push Third Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("Foo").assertDoesNotExist()
             onNodeWithText("text = Bar, number = 42").assertExists()
@@ -56,17 +60,17 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to second screen`() {
+    fun `navigate to third screen then pop to second screen`() = runTest {
         with(compose) {
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("Push Third Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("text = Bar, number = 42").assertExists()
             onNodeWithText("Pop Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("text = Bar, number = 42").assertDoesNotExist()
             onNodeWithText("Foo").assertExists()
@@ -74,17 +78,17 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to first screen`() {
+    fun `navigate to third screen then pop to first screen`() = runTest {
         with(compose) {
             onNodeWithText("Push Second Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("Push Third Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("text = Bar, number = 42").assertExists()
             onNodeWithText("Pop To First Screen").performClick()
-            waitForIdle()
+            awaitIdle()
 
             onNodeWithText("text = Bar, number = 42").assertDoesNotExist()
             onNodeWithText("Push Second Screen").assertExists()

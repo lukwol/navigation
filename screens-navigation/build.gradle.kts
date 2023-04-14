@@ -46,6 +46,7 @@ kotlin {
         create("sharedTest") {
             dependencies {
                 implementation(libs.kotlin.test)
+                implementation(libs.coroutines.test)
             }
         }
         getByName("jvmTest") {
