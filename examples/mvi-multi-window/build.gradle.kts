@@ -27,11 +27,6 @@ compose {
     desktop {
         application {
             mainClass = "io.github.lukwol.examples.MainKt"
-            nativeDistributions {
-                targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-                packageName = "MvvmMultiWindow"
-                packageVersion = "1.0.0"
-            }
         }
     }
 }

@@ -24,11 +24,6 @@ compose {
     desktop {
         application {
             mainClass = "io.github.lukwol.examples.MainKt"
-            nativeDistributions {
-                targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-                packageName = "BasicSingleWindow"
-                packageVersion = "1.0.0"
-            }
         }
     }
 }
