@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 
 interface ScreensMapBuilder {
     /**
-     * Declare screen [content] for [route] and add it to [screensMap].
+     * Declare screen [content] for [route] and add it to [screensMap][BasicScreensMapBuilder.screensMap].
      *
      * @param route [ScreenRoute] used to navigate to the [screen]
      * @param content [Composable] content of the screen

@@ -6,7 +6,8 @@ coroutines = "1.6.4"
 koin = "3.4.0"
 dependency-updates = "0.46.0"
 kotlinter = "3.14.0"
-android = "7.4.2"
+android = "7.3.1"
+hilt = "2.45"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -15,6 +16,7 @@ compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" 
 dependency-updates = { id = "com.github.ben-manes.versions", version.ref = "dependency-updates" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 android-application = { id = "com.android.application", version.ref = "android" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
