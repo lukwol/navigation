@@ -7,6 +7,8 @@ import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.kotlinter) apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.hilt) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.dependency.updates)
 }
