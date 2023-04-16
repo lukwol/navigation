@@ -6,12 +6,14 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
+        google()
     }
 }
 
 dependencyResolutionManagement {
     repositories {
         mavenCentral()
+        google()
         maven("https://jitpack.io")
     }
 }
@@ -23,6 +25,7 @@ include(":windows-navigation")
 
 include(":examples:basic-single-window")
 include(":examples:mvvm-html")
+include(":examples:mvvm-android")
 include(":examples:mvi-desktop")
 include(":examples:mvi-multi-window")
 
