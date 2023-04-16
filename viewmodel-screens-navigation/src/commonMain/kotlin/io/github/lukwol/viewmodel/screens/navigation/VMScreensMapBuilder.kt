@@ -2,7 +2,6 @@ package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import io.github.lukwol.screens.navigation.BasicScreensMapBuilder
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.screens.navigation.ScreenArguments
@@ -39,11 +38,7 @@ class VMScreensMapBuilder internal constructor(
     ) = screen(route) { arguments ->
         val screensController = LocalScreensController.current
 
-        val newViewModel = viewModelFactory(arguments)
-
-        val viewModel = remember(route) {
-            viewModelStore.getOrPut(route) { newViewModel } as VM
-        }
+        val viewModel = viewModelStore.getOrPut(route) { viewModelFactory(arguments) } as VM
         content(viewModel)
 
         LaunchedEffect(route) {
