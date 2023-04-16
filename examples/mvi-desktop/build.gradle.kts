@@ -1,7 +1,5 @@
 @file:Suppress("DSL_SCOPE_VIOLATION")
 
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
@@ -25,11 +23,6 @@ compose {
     desktop {
         application {
             mainClass = "io.github.lukwol.examples.MainKt"
-            nativeDistributions {
-                targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-                packageName = "MvvmMultiWindow"
-                packageVersion = "1.0.0"
-            }
         }
     }
 }

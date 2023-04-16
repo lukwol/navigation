@@ -3,7 +3,7 @@ package io.github.lukwol.screens.navigation
 import androidx.compose.runtime.Composable
 
 /**
- * Changes current screen
+ * Changes current screen.
  *
  * @param route route to which screen should be changed
  * @param animated specifies if screen should be changed with `Crossfade` animation
