@@ -1,0 +1,16 @@
+PODS:
+  - mvvm_ios (1.0.0)
+
+DEPENDENCIES:
+  - mvvm_ios (from `..`)
+
+EXTERNAL SOURCES:
+  mvvm_ios:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  mvvm_ios: 3235ccf3fbe1f34fcb2db1b5daa1b968f3132e7c
+
+PODFILE CHECKSUM: fb03671abf1ba428bd5673944d638d21cf4ea20a
+
+COCOAPODS: 1.12.0
