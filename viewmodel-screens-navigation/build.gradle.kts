@@ -39,11 +39,13 @@ kotlin {
                 implementation(libs.coroutines.test)
             }
         }
-        create("iosMain") {
+        create("nativeMain") {
             dependsOn(getByName("commonMain"))
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
+            getByName("macosArm64Main").dependsOn(this)
+            getByName("macosX64Main").dependsOn(this)
         }
     }
 }
