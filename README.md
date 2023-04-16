@@ -43,13 +43,13 @@ Step 4. Add the dependency:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("io.github.lukwol:screens-navigation:1.3.1")
+    implementation("io.github.lukwol:screens-navigation:1.4.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("io.github.lukwol:viewmodel-screens-navigation:1.3.1")
+    implementation("io.github.lukwol:viewmodel-screens-navigation:1.4.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("io.github.lukwol:windows-navigation:1.3.1")
+    implementation("io.github.lukwol:windows-navigation:1.4.0")
     // ViewModel without navigation - multiplatform
-    implementation("io.github.lukwol:viewmodel:1.3.1")
+    implementation("io.github.lukwol:viewmodel:1.4.0")
 }
 ```
 
@@ -71,13 +71,13 @@ Step 2. Add the dependency:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:screens-navigation:1.3.1")
+    implementation("com.github.lukwol.cm-navigation:screens-navigation:1.4.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:1.3.1")
+    implementation("com.github.lukwol.cm-navigation:viewmodel-screens-navigation:1.4.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cm-navigation:windows-navigation:1.3.1")
+    implementation("com.github.lukwol.cm-navigation:windows-navigation:1.4.0")
     // ViewModel without navigation - multiplatform
-    implementation("com.github.lukwol.cm-navigation:viewmodel:1.3.1")
+    implementation("com.github.lukwol.cm-navigation:viewmodel:1.4.0")
 }
 ```
 
