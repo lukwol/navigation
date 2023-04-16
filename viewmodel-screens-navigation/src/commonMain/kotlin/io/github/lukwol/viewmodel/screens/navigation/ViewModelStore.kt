@@ -1,8 +1,8 @@
 package io.github.lukwol.viewmodel.screens.navigation
 
 import io.github.lukwol.screens.navigation.ScreenRoute
+import io.github.lukwol.viewmodel.CoroutineScopeAware
 import io.github.lukwol.viewmodel.ViewModel
-import io.github.lukwol.viewmodel.ViewModelScope
 
 /**
  * View model store is responsible for keeping [view models][ViewModel] state,
@@ -12,7 +12,7 @@ import io.github.lukwol.viewmodel.ViewModelScope
  * that registers [view models][ViewModel] for [routes][ScreenRoute]
  */
 internal class ViewModelStore private constructor(
-    private val viewModels: MutableMap<ScreenRoute, ViewModelScope>,
-) : MutableMap<ScreenRoute, ViewModelScope> by viewModels {
+    private val viewModels: MutableMap<ScreenRoute, CoroutineScopeAware>,
+) : MutableMap<ScreenRoute, CoroutineScopeAware> by viewModels {
     constructor() : this(mutableMapOf())
 }

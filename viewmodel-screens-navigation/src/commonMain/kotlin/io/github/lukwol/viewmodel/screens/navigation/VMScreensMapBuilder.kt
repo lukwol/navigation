@@ -2,14 +2,13 @@ package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import io.github.lukwol.screens.navigation.BasicScreensMapBuilder
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.screens.navigation.ScreenArguments
 import io.github.lukwol.screens.navigation.ScreenRoute
 import io.github.lukwol.screens.navigation.ScreensMapBuilder
+import io.github.lukwol.viewmodel.CoroutineScopeAware
 import io.github.lukwol.viewmodel.ViewModel
-import io.github.lukwol.viewmodel.ViewModelScope
 import kotlinx.coroutines.cancel
 
 /**
@@ -24,7 +23,7 @@ class VMScreensMapBuilder internal constructor(
     /**
      * Declare screen [content] for [route] and provide it with [ViewModel].
      *
-     * @param VM generic parameter of [ViewModel] that implements [ViewModelScope]
+     * @param VM generic parameter of [ViewModel] that implements [CoroutineScopeAware]
      * @param route [ScreenRoute] used to navigate to the [screen]
      * @param viewModelFactory lambda that takes screen [ScreenArguments] and creates [ViewModel]
      * @param content [Composable] content of the screen
@@ -32,16 +31,14 @@ class VMScreensMapBuilder internal constructor(
      * @see BasicScreensMapBuilder.screen
      */
     @Suppress("UNCHECKED_CAST")
-    fun <VM : ViewModelScope> screen(
+    fun <VM : CoroutineScopeAware> screen(
         route: ScreenRoute,
-        viewModelFactory: (args: ScreenArguments?) -> VM,
+        viewModelFactory: @Composable (args: ScreenArguments?) -> VM,
         content: @Composable (viewModel: VM) -> Unit,
     ) = screen(route) { arguments ->
         val screensController = LocalScreensController.current
 
-        val viewModel = remember(route) {
-            viewModelStore.getOrPut(route) { viewModelFactory(arguments) } as VM
-        }
+        val viewModel = viewModelStore.getOrPut(route) { viewModelFactory(arguments) } as VM
         content(viewModel)
 
         LaunchedEffect(route) {
@@ -49,7 +46,7 @@ class VMScreensMapBuilder internal constructor(
                 .keys
                 .filterNot { it in screensController.routes }
                 .forEach { disposedRoute ->
-                    viewModelStore[disposedRoute]?.viewModelScope?.cancel()
+                    viewModelStore[disposedRoute]?.coroutineScope?.cancel()
                     viewModelStore.remove(disposedRoute)
                 }
         }

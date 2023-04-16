@@ -4,8 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.remember
 import io.github.lukwol.screens.navigation.ScreenRoute
+import io.github.lukwol.viewmodel.CoroutineScopeAware
 import io.github.lukwol.viewmodel.ViewModel
-import io.github.lukwol.viewmodel.ViewModelScope
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.cancel
 import io.github.lukwol.screens.navigation.ScreensNavigation as BasicScreensNavigation
@@ -29,7 +29,7 @@ fun ScreensNavigation(
     DisposableEffect(Unit) {
         onDispose {
             viewModelStore.values
-                .map(ViewModelScope::viewModelScope)
+                .map(CoroutineScopeAware::coroutineScope)
                 .forEach(CoroutineScope::cancel)
         }
     }
