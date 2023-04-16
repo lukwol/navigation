@@ -1,8 +1,6 @@
 package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
-import androidx.hilt.navigation.compose.hiltViewModel
-import io.github.lukwol.examples.screens.androidScreen
 import io.github.lukwol.examples.screens.first.FirstScreen
 import io.github.lukwol.examples.screens.first.FirstScreenViewModel
 import io.github.lukwol.examples.screens.second.SecondScreen
@@ -15,19 +13,15 @@ fun AppNavigation() {
         startRoute = AppRoutes.FirstScreenRoute,
         animated = true,
     ) {
-        androidScreen(
+        screen(
             route = AppRoutes.FirstScreenRoute,
-            viewModelFactory = { hiltViewModel<FirstScreenViewModel>() },
+            viewModelFactory = { FirstScreenViewModel() },
         ) { viewModel ->
             FirstScreen(viewModel)
         }
-        androidScreen(
+        screen(
             route = AppRoutes.SecondScreenRoute,
-            viewModelFactory = {
-                hiltViewModel<SecondScreenViewModel>().apply {
-                    text = (it as String).ifEmpty { "No text passed" }
-                }
-            },
+            viewModelFactory = { args -> SecondScreenViewModel(args as String) },
         ) { viewModel ->
             SecondScreen(viewModel)
         }
