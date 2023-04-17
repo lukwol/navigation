@@ -22,7 +22,7 @@ include(":viewmodel")
 include(":viewmodel-screens-navigation")
 include(":windows-navigation")
 
-include(":examples:basic-single-window")
+include(":examples:basic-navigation")
 include(":examples:mvvm-html")
 include(":examples:mvvm-android")
 include(":examples:mvvm-ios")

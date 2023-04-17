@@ -8,11 +8,26 @@ plugins {
 kotlin {
     jvm()
 
+    js(IR) {
+        browser()
+        binaries.executable()
+    }
+
     sourceSets {
+        getByName("commonMain") {
+            dependencies {
+                implementation(compose.runtime)
+                implementation(projects.screensNavigation)
+            }
+        }
         getByName("jvmMain") {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(projects.screensNavigation)
+            }
+        }
+        getByName("jsMain") {
+            dependencies {
+                implementation(compose.html.core)
             }
         }
     }
