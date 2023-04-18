@@ -4,12 +4,17 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.android.application)
+    kotlin("native.cocoapods")
 }
 
 kotlin {
     jvm()
 
     android()
+
+    iosX64()
+    iosArm64()
+    iosSimulatorArm64()
 
     js(IR) {
         browser()
@@ -47,6 +52,19 @@ kotlin {
                 implementation("androidx.core:core-ktx:1.10.0")
                 implementation("androidx.activity:activity-compose:1.7.0")
                 implementation("androidx.appcompat:appcompat:1.6.1")
+            }
+        }
+
+        create("iosMain") {
+            dependsOn(getByName("commonMain"))
+            dependsOn(getByName("nonHtmlMain"))
+            getByName("iosX64Main").dependsOn(this)
+            getByName("iosArm64Main").dependsOn(this)
+            getByName("iosSimulatorArm64Main").dependsOn(this)
+            dependencies {
+                implementation(compose.runtime)
+                implementation(compose.foundation)
+                implementation(compose.material)
             }
         }
 
@@ -93,5 +111,20 @@ android {
 
     kotlin {
         jvmToolchain(11)
+    }
+}
+
+kotlin {
+    cocoapods {
+        version = "1.0.0"
+        summary = "Example iOS app with basic navigation"
+        homepage = "https://github.com/lukwol/cm-navigation"
+        ios.deploymentTarget = "14.1"
+        podfile = project.file("iosApp/Podfile")
+        framework {
+            baseName = "iosMain"
+            isStatic = true
+        }
+        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 }

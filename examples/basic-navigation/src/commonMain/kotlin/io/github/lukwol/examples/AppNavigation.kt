@@ -9,6 +9,7 @@ import io.github.lukwol.screens.navigation.ScreensNavigation
 fun AppNavigation() {
     ScreensNavigation(
         startRoute = AppRoutes.FirstScreenRoute,
+        animated = true,
     ) {
         screen(AppRoutes.FirstScreenRoute) {
             FirstScreen()

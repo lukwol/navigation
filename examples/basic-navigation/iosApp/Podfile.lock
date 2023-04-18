@@ -1,0 +1,16 @@
+PODS:
+  - basic_navigation (1.0.0)
+
+DEPENDENCIES:
+  - basic_navigation (from `..`)
+
+EXTERNAL SOURCES:
+  basic_navigation:
+    :path: ".."
+
+SPEC CHECKSUMS:
+  basic_navigation: 1a5a6c3f944b92e4f27da326605b499b5515e827
+
+PODFILE CHECKSUM: 62c28994de18a3764f401e9f940dcd81e5e70744
+
+COCOAPODS: 1.12.0
