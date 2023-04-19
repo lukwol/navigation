@@ -1,4 +1,4 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
+@file:Suppress("DSL_SCOPE_VIOLATION", "SuspiciousCollectionReassignment")
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.kotlin.multiplatform) apply false
     alias(libs.plugins.kotlinter) apply false
     alias(libs.plugins.android.application) apply false
-    alias(libs.plugins.hilt) apply false
     alias(libs.plugins.dokka)
     alias(libs.plugins.dependency.updates)
 }

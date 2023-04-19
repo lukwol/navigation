@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 import io.github.lukwol.screens.navigation.LocalScreensController
 
 @Composable
-actual fun SecondScreen(text: String) {
+actual fun SecondScreen(viewModel: SecondScreenViewModel) {
     val screensController = LocalScreensController.current
 
     Column(
@@ -22,14 +22,12 @@ actual fun SecondScreen(text: String) {
         verticalArrangement = Arrangement.Center,
         modifier = Modifier.fillMaxSize(),
     ) {
-        Text(text.ifEmpty { "No text passed" })
+        Text(viewModel.text.ifEmpty { "No text passed" })
 
         Spacer(Modifier.height(20.dp))
 
         Button(
-            onClick = {
-                screensController.pop()
-            },
+            onClick = { screensController.pop() },
         ) {
             Text("Go back")
         }

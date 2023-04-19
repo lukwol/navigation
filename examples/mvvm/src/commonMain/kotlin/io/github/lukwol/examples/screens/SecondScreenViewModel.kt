@@ -1,4 +1,4 @@
-package io.github.lukwol.examples.screens.second
+package io.github.lukwol.examples.screens
 
 import io.github.lukwol.viewmodel.ViewModel
 

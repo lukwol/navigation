@@ -2,8 +2,6 @@ package io.github.lukwol.examples.screens
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.screens.navigation.LocalScreensController
@@ -19,10 +17,8 @@ import org.jetbrains.compose.web.dom.Text
 import org.jetbrains.compose.web.dom.TextInput
 
 @Composable
-actual fun FirstScreen() {
+actual fun FirstScreen(viewModel: FirstScreenViewModel) {
     val screensController = LocalScreensController.current
-
-    var text by remember { mutableStateOf("") }
 
     Div(
         attrs = {
@@ -31,10 +27,10 @@ actual fun FirstScreen() {
             }
         },
     ) {
-        TextInput(value = text) {
+        TextInput(value = viewModel.text) {
             placeholder("Type something...")
             onInput {
-                text = it.value
+                viewModel.text = it.value
             }
         }
     }
@@ -51,7 +47,7 @@ actual fun FirstScreen() {
         Button(
             attrs = {
                 onClick {
-                    screensController.push(AppRoutes.SecondScreenRoute, text)
+                    screensController.push(AppRoutes.SecondScreenRoute, viewModel.text)
                 }
             },
         ) {

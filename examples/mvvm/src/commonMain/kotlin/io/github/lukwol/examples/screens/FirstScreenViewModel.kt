@@ -1,4 +1,4 @@
-package io.github.lukwol.examples.screens.first
+package io.github.lukwol.examples.screens
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

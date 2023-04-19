@@ -12,7 +12,7 @@ import org.jetbrains.compose.web.dom.Div
 import org.jetbrains.compose.web.dom.Text
 
 @Composable
-actual fun SecondScreen(text: String) {
+actual fun SecondScreen(viewModel: SecondScreenViewModel) {
     val screensController = LocalScreensController.current
 
     Div(
@@ -22,7 +22,7 @@ actual fun SecondScreen(text: String) {
             }
         },
     ) {
-        Text(text)
+        Text(viewModel.text)
     }
 
     Div(

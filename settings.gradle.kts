@@ -24,11 +24,6 @@ include(":windows-navigation")
 
 include(":examples:basic")
 include(":examples:mvvm")
-include(":examples:mvi-navigation")
-include(":examples:mvvm-html")
-include(":examples:mvvm-android")
-include(":examples:mvvm-ios")
-include(":examples:mvi-desktop")
 include(":examples:mvi-multi-window")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")

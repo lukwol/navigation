@@ -41,8 +41,7 @@ kotlin {
         getByName("jvmMain") {
             dependsOn(getByName("nonHtmlMain"))
             dependencies {
-                implementation(compose.uiTooling)
-                implementation(compose.preview)
+                implementation(compose.desktop.currentOs)
             }
         }
 
@@ -98,7 +97,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
+        kotlinCompilerExtensionVersion = "1.4.5"
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

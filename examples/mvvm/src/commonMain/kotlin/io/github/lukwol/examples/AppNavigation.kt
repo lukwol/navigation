@@ -2,8 +2,10 @@ package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
 import io.github.lukwol.examples.screens.FirstScreen
+import io.github.lukwol.examples.screens.FirstScreenViewModel
 import io.github.lukwol.examples.screens.SecondScreen
-import io.github.lukwol.screens.navigation.ScreensNavigation
+import io.github.lukwol.examples.screens.SecondScreenViewModel
+import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 
 @Composable
 fun AppNavigation() {
@@ -11,11 +13,17 @@ fun AppNavigation() {
         startRoute = AppRoutes.FirstScreenRoute,
         animated = true,
     ) {
-        screen(AppRoutes.FirstScreenRoute) {
-            FirstScreen()
+        screen(
+            route = AppRoutes.FirstScreenRoute,
+            viewModelFactory = { FirstScreenViewModel() },
+        ) { viewModel ->
+            FirstScreen(viewModel)
         }
-        screen(AppRoutes.SecondScreenRoute) { args ->
-            SecondScreen(args as String)
+        screen(
+            route = AppRoutes.SecondScreenRoute,
+            viewModelFactory = { args -> SecondScreenViewModel(args as String) },
+        ) { viewModel ->
+            SecondScreen(viewModel)
         }
     }
 }

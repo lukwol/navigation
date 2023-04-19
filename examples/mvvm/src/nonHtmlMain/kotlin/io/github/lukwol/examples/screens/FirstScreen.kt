@@ -10,8 +10,6 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,10 +18,8 @@ import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.screens.navigation.LocalScreensController
 
 @Composable
-actual fun FirstScreen() {
+actual fun FirstScreen(viewModel: FirstScreenViewModel) {
     val screensController = LocalScreensController.current
-
-    var text by remember { mutableStateOf("") }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -31,18 +27,18 @@ actual fun FirstScreen() {
         modifier = Modifier.fillMaxSize(),
     ) {
         TextField(
-            value = text,
+            value = viewModel.text,
             placeholder = {
                 Text("Type something...")
             },
-            onValueChange = { text = it },
+            onValueChange = { viewModel.text = it },
         )
 
         Spacer(Modifier.height(20.dp))
 
         Button(
             onClick = {
-                screensController.push(AppRoutes.SecondScreenRoute, text)
+                screensController.push(AppRoutes.SecondScreenRoute, viewModel.text)
             },
         ) {
             Text("Go to second screen")
