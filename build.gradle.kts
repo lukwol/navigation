@@ -22,7 +22,7 @@ allprojects {
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = "17"
 
             if (project.findProperty("enableComposeCompilerReports") == "true") {
                 val destinationDir = project.buildDir.absolutePath + "/compose_metrics"
