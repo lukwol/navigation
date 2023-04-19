@@ -22,11 +22,8 @@ include(":viewmodel")
 include(":viewmodel-screens-navigation")
 include(":windows-navigation")
 
-include(":examples:basic-single-window")
-include(":examples:mvvm-html")
-include(":examples:mvvm-android")
-include(":examples:mvvm-ios")
-include(":examples:mvi-desktop")
+include(":examples:basic")
+include(":examples:mvvm")
 include(":examples:mvi-multi-window")
 
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
