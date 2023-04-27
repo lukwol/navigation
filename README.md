@@ -97,8 +97,8 @@ ScreensNavigation(
         FirstScreen()
     }
     
-    screen(AppRoutes.SecondScreenRoute) { args ->
-        SecondScreen(args as String)
+    screen(AppRoutes.SecondScreenRoute) { args: String? ->
+        SecondScreen(args)
     }
 }
 ```
@@ -111,14 +111,18 @@ ScreensNavigation(
 ) {
     screen(
         route = AppRoutes.FirstScreenRoute,
-        viewModelFactory = { FirstScreenViewModel() }
+        viewModelFactory = { 
+            FirstScreenViewModel() 
+        }
     ) { viewModel ->
         FirstScreen(viewModel)
     }
     
     screen(
         route = AppRoutes.SecondScreenRoute,
-        viewModelFactory = { args -> SecondScreenViewModel(args as String) }
+        viewModelWithArgs = { args: SomeArgs? -> 
+            SecondScreenViewModel(args) 
+        }
     ) { viewModel ->
         SecondScreen(viewModel)
     }
