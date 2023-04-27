@@ -5,9 +5,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import io.github.lukwol.viewmodel.ViewModel
 
-class SecondScreenViewModel(text: String) : ViewModel() {
+class SecondScreenViewModel(text: String?) : ViewModel() {
 
-    var state by mutableStateOf(SecondScreenViewState(text.ifEmpty { "No text passed" }))
+    var state by mutableStateOf(
+        SecondScreenViewState(text = text.orEmpty().ifEmpty { "No text passed" }),
+    )
         private set
 
     @Suppress("UNUSED_PARAMETER")

@@ -19,7 +19,9 @@ fun TestScreenNavigation() {
 
         screen(
             route = TestRoutes.SecondScreen,
-            viewModelFactory = { SecondScreenViewModel(it as String) },
+            viewModelWithArgs = { args: String? ->
+                SecondScreenViewModel(args)
+            },
         ) { viewModel ->
             SecondScreen(viewModel)
         }

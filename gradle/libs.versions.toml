@@ -6,19 +6,33 @@ coroutines = "1.6.4"
 koin = "3.4.0"
 dependency-updates = "0.46.0"
 kotlinter = "3.14.0"
+serialization-json = "1.5.0"
 android = "8.0.0"
+android-core = "1.10.0"
+android-appcompat = "1.6.1"
+android-lifecycle = "2.6.1"
+android-activity-compose = "1.7.1"
+android-navigation = "2.5.3"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 dependency-updates = { id = "com.github.ben-manes.versions", version.ref = "dependency-updates" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+android-library = { id = "com.android.library", version.ref = "android" }
 android-application = { id = "com.android.application", version.ref = "android" }
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json" }
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
+android-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "android-appcompat" }
+android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
+android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
+android-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "android-navigation" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }

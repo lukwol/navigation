@@ -8,5 +8,5 @@ import org.koin.core.parameter.parametersOf
 
 object ViewModelProvider : KoinComponent {
     fun getFirstScreenViewModel(): FirstScreenViewModel = get()
-    fun getSecondScreenViewModel(text: String): SecondScreenViewModel = get(parameters = { parametersOf(text) })
+    fun getSecondScreenViewModel(text: String?): SecondScreenViewModel = get(parameters = { parametersOf(text) })
 }

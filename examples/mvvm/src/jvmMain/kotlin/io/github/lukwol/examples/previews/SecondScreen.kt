@@ -10,6 +10,6 @@ import io.github.lukwol.examples.screens.SecondScreenViewModel
 @Composable
 private fun Preview() = MaterialTheme {
     SecondScreen(
-        viewModel = SecondScreenViewModel(text = "Hello World!"),
+        viewModel = SecondScreenViewModel().apply { firstText = "Hello World!" },
     )
 }

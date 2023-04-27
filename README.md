@@ -98,7 +98,6 @@ Basic screens navigation:
 ```kotlin
 ScreensNavigation(
     startRoute = AppRoutes.FirstScreenRoute,
-    animated = true // Optionally enable Crossfade animation
 ) {
     screen(AppRoutes.FirstScreenRoute) {
         FirstScreen()
