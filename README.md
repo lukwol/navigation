@@ -85,12 +85,6 @@ dependencies {
 
 Check out [examples](https://github.com/lukwol/cm-navigation/tree/main/examples/) for actual usage in the app.
 
-#### Note
-
-There is an Android example, but it's recommended to use the official [Compose Navigation](https://developer.android.com/jetpack/compose/navigation) library for now.
-
-For more details please check [Android support issue](https://github.com/lukwol/cm-navigation/issues/3).
-
 ### Build screens navigation
 
 Basic screens navigation:
