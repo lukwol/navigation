@@ -15,12 +15,12 @@ fun TestScreenNavigation() {
             FirstScreen()
         }
 
-        screen(TestRoutes.SecondScreen) { args ->
-            SecondScreen(args as String)
+        screen(TestRoutes.SecondScreen) { args: String? ->
+            SecondScreen(args!!)
         }
 
-        screen(TestRoutes.ThirdScreen) { args ->
-            ThirdScreen(args as ThirdScreenArgs)
+        screen(TestRoutes.ThirdScreen) { args: ThirdScreenArgs? ->
+            ThirdScreen(args!!)
         }
     }
 }

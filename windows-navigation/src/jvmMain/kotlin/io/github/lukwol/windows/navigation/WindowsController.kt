@@ -7,81 +7,65 @@ import androidx.compose.runtime.mutableStateListOf
  *
  * Available via [LocalWindowController].
  */
-interface WindowsController {
+class WindowsController(startRoute: String) {
 
     /**
-     * List of current [routes][WindowRoute] on the stack.
+     * Mutable list of presented windows and their arguments.
      *
-     * For the last [route][WindowRoute] window will be displayed.
+     * Routes can be added to the list by opening new windows,
+     * and removed from the list by closing windows.
+     *
+     * Whenever content of the list changes, opened windows are changed.
      */
-    val routes: Set<WindowRoute>
+    internal val routesList = mutableStateListOf(RouteWithArgs(startRoute))
 
     /**
-     * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
+     * Read only list of current window routes along with their navigation arguments,
+     * the list is based on the [routesList].
      *
-     * @param route [WindowRoute] to open
-     * @param arguments optional [WindowArguments] passed when navigating to [route]
+     * @see routesList
      */
-    fun open(route: WindowRoute, arguments: WindowArguments? = null): Result<Unit>
+    val routes get() = routesList.map(RouteWithArgs::route).toSet()
 
     /**
-     * Closes window for the [WindowRoute] and removes it from the [routes] stack.
+     * Opens new window for the [route] and adds it to the [routes] stack.
+     * Content of the windows is based on what was declared in [WindowsNavigation].
      *
-     * @param route [WindowRoute] to close
+     * @param route for which new window will be opened
+     *
+     * @return [Result.success] if window was opened successfully or [Result.failure] with an error:
+     *
+     * [IllegalArgumentException] if window for the [route] is already opened.
+     *
+     * When there was an error, error opened windows do not change.
      */
-    fun close(route: WindowRoute): Result<Unit>
-}
-
-/**
- * Actual implementation of the [WindowsController]
- */
-class WindowsControllerImpl(startRoute: WindowRoute) : WindowsController {
-    internal val routesState = mutableStateListOf(RouteWithArguments(startRoute))
-
-    override val routes get() = routesState.map(RouteWithArguments::route).toSet()
-
-    /**
-     * Opens new window for the [WindowRoute] and adds it to the [routes] stack.
-     *
-     * @param route [WindowRoute] to open
-     *
-     * @throws IllegalArgumentException if window for [route] is already opened
-     *
-     * @see [WindowsController.open]
-     */
-    override fun open(route: WindowRoute, arguments: WindowArguments?): Result<Unit> = runCatching {
+    fun open(route: String, args: Any? = null): Result<Unit> = runCatching {
         if (route in routes) {
             throw IllegalArgumentException("Window for $route is already opened")
         } else {
-            routesState += RouteWithArguments(route, arguments)
+            routesList += RouteWithArgs(route, args)
         }
     }
 
     /**
-     * Closes window for the [WindowRoute] and removes it from the [routes] stack.
+     * Closes the window for given [route] and removes it from the [routes] list.
+     * When there was an error, error opened windows do not change.
      *
-     * @param route [WindowRoute] to close
+     * @param route for which currently opened window will be closed
      *
-     * @throws IllegalArgumentException if window for [route] is not opened
+     * @return [Result.success] if window was closed successfully or [Result.failure] with an error:
      *
-     * @see [WindowsController.close]
+     * [IllegalArgumentException] if window for the [route] was not opened.
+     *
+     * When there was an error, error opened windows do not change.
+     *
+     *  @see [WindowsController.close]
      */
-    override fun close(route: WindowRoute): Result<Unit> = runCatching {
+    fun close(route: String): Result<Unit> = runCatching {
         if (route !in routes) {
             throw IllegalArgumentException("Window for $route is not opened")
         } else {
-            routesState.removeAll { it.route == route }
+            routesList.removeAll { it.route == route }
         }
     }
-}
-
-/**
- * No-op implementation of the [WindowsController]
- */
-internal object WindowsControllerNoOp : WindowsController {
-    override val routes: Set<WindowRoute> = emptySet()
-
-    override fun open(route: WindowRoute, arguments: WindowArguments?) = Result.success(Unit)
-
-    override fun close(route: WindowRoute) = Result.success(Unit)
 }

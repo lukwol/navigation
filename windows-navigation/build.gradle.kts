@@ -16,6 +16,7 @@ kotlin {
                 implementation(compose.desktop.currentOs)
             }
         }
+
         getByName("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)

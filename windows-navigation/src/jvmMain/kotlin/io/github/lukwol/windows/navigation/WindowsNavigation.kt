@@ -5,26 +5,26 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
 
 /**
- * Declare windows navigation by defining all [windows][WindowsMapBuilder.window] for [routes][WindowRoute].
+ * Declare windows navigation by defining all [windows][WindowsMapBuilder.window] for window routes.
  *
  * Provides [LocalWindowController] that can be used for navigation inside each window.
  *
- * @param startRoute first [route][WindowRoute] for which window will be displayed
+ * @param startRoute first window route for which window will be displayed
  * @param builder the builder used to construct the windows navigation map
  */
 
 @Composable
 fun WindowsNavigation(
-    startRoute: WindowRoute,
+    startRoute: String,
     builder: WindowsMapBuilder.() -> Unit,
 ) {
     val mapBuilder = WindowsMapBuilder()
     builder(mapBuilder)
 
     val windowsMap = remember { mapBuilder.build() }
-    val windowsController = remember { WindowsControllerImpl(startRoute) }
+    val windowsController = remember { WindowsController(startRoute) }
 
-    val routes = windowsController.routesState
+    val routes = windowsController.routesList
 
     CompositionLocalProvider(
         LocalWindowController provides windowsController,
@@ -33,7 +33,7 @@ fun WindowsNavigation(
             @Composable
             fun window() = routes
                 .find { it.route == route }
-                ?.let { content(it.arguments) }
+                ?.let { content(it.args) }
             window()
         }
     }

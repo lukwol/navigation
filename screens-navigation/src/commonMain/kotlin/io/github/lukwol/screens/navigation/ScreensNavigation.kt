@@ -1,39 +1,30 @@
 package io.github.lukwol.screens.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.compositionLocalOf
 
 /**
- * Declare screens navigation by defining all [screens][BasicScreensMapBuilder.screen] for [routes][ScreenRoute].
+ * Defines screens navigation map by declaring all possible
+ * [screens][ScreensMapBuilder.screen] and their contents identified by their routes.
  *
- * Provides [LocalScreensController] that can be used for navigation inside each screen.
+ * It's later provided via [compositionLocalOf] to allow navigation
+ * to another screen within currently presented screen.
  *
- * @param startRoute first [route][ScreenRoute] for which screen will be displayed
- * @param animated enables `Crossfade` animation (currently works only on jvm)
- * @param builder the builder used to construct the screens navigation map
+ * Has separate implementations for Android and non Android targets.
+ *
+ * Android target underneath uses official **Compose Navigation** framework made by Google.
+ * Android implementation utilizes optional route arguments
+ * and JSON serialization via Kotlin Serialization.
+ *
+ * Other targets have common custom implementation that does not involve any serialization.
+ *
+ * @param startRoute first screen route for which the initial screen will be displayed
+ * @param builder the builder used to construct the underlying screens navigation map
+ *
+ * @see LocalScreensController
  */
 @Composable
-fun ScreensNavigation(
-    startRoute: ScreenRoute,
-    animated: Boolean = false,
-    builder: BasicScreensMapBuilder.() -> Unit,
-) {
-    val mapBuilder = BasicScreensMapBuilder()
-    builder(mapBuilder)
-
-    val screensMap = remember { mapBuilder.build() }
-    val screensController = remember { ScreensControllerImpl(startRoute) }
-    val routesWithArguments = screensController.routesState
-
-    CompositionLocalProvider(
-        LocalScreensController provides screensController,
-    ) {
-        ChangeScreen(
-            route = routesWithArguments.last(),
-            animated = animated,
-        ) { (route, arguments) ->
-            screensMap.getValue(route)(arguments)
-        }
-    }
-}
+expect fun ScreensNavigation(
+    startRoute: String,
+    builder: ScreensMapBuilder.() -> Unit,
+)

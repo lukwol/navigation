@@ -1,11 +1,12 @@
 package io.github.lukwol.windows.navigation
 
-import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 
 /**
- *  [CompositionLocal] of [WindowsController].
+ * Provides local [WindowsController] that can be used
+ * for opening or closing screens from within currently displayed screens
+ * in any window.
  *
- *  Defaults to [WindowsControllerNoOp] for easier creation of previews.
+ * Defaults value is set to prevent problems with screens previews.
  */
-val LocalWindowController = compositionLocalOf<WindowsController> { WindowsControllerNoOp }
+val LocalWindowController = compositionLocalOf { WindowsController("") }

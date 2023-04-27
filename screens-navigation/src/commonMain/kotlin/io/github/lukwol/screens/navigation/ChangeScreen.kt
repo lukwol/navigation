@@ -3,15 +3,19 @@ package io.github.lukwol.screens.navigation
 import androidx.compose.runtime.Composable
 
 /**
- * Changes current screen.
+ * Changes current screen with cross-fade animation.
  *
- * @param route route to which screen should be changed
- * @param animated specifies if screen should be changed with `Crossfade` animation
- * @param content content of the screen
+ * Has separate implementations for JS and non JS targets.
+ *
+ * Since Compose html doesn't include animations, screens are changed without animation.
+ *
+ * Other targets have common implementation that animates screen change with cross-fade effect.
+ *
+ * @param route Screen route to which screen should be changed
+ * @param content [Composable] lambda with content of the screen for given [route]
  */
 @Composable
 internal expect fun ChangeScreen(
-    route: RouteWithArguments,
-    animated: Boolean,
-    content: @Composable (RouteWithArguments) -> Unit,
+    route: RouteWithArgs,
+    content: @Composable (RouteWithArgs) -> Unit,
 )

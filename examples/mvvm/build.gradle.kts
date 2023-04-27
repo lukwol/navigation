@@ -29,7 +29,7 @@ kotlin {
             }
         }
 
-        create("nonHtmlMain") {
+        create("nonJsMain") {
             dependsOn(getByName("commonMain"))
             dependencies {
                 implementation(compose.foundation)
@@ -39,29 +39,41 @@ kotlin {
         }
 
         getByName("jvmMain") {
-            dependsOn(getByName("nonHtmlMain"))
+            dependsOn(getByName("nonJsMain"))
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
         }
 
         getByName("androidMain") {
-            dependsOn(getByName("nonHtmlMain"))
+            dependsOn(getByName("nonJsMain"))
             dependencies {
-                implementation("androidx.core:core-ktx:1.10.0")
-                implementation("androidx.activity:activity-compose:1.7.0")
-                implementation("androidx.appcompat:appcompat:1.6.1")
+                implementation(libs.android.core)
+                implementation(libs.android.appcompat)
+                implementation(libs.android.activity.compose)
+                implementation(libs.android.navigation.compose)
             }
         }
 
-        create("iosMain") {
+        create("nonAndroidMain") {
             dependsOn(getByName("commonMain"))
-            dependsOn(getByName("nonHtmlMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("jsMain").dependsOn(this)
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
             dependencies {
                 implementation(compose.runtime)
+            }
+        }
+
+        create("iosMain") {
+            dependsOn(getByName("commonMain"))
+            dependsOn(getByName("nonJsMain"))
+            getByName("iosX64Main").dependsOn(this)
+            getByName("iosArm64Main").dependsOn(this)
+            getByName("iosSimulatorArm64Main").dependsOn(this)
+            dependencies {
                 implementation(compose.foundation)
                 implementation(compose.material)
             }
@@ -92,24 +104,12 @@ android {
         minSdk = 24
     }
 
-    buildFeatures {
-        compose = true
-    }
-
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.5"
-    }
-
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlin {
-        jvmToolchain(17)
     }
 }
 

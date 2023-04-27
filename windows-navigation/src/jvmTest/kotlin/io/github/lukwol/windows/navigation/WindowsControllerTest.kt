@@ -12,7 +12,7 @@ class WindowsControllerTest {
 
     @Before
     fun setUp() {
-        windowsController = WindowsControllerImpl(TestRoutes.FirstWindow)
+        windowsController = WindowsController(TestRoutes.FirstWindow)
     }
 
     @Test

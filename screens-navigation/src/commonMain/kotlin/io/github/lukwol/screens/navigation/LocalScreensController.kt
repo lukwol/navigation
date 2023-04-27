@@ -1,11 +1,11 @@
 package io.github.lukwol.screens.navigation
 
-import androidx.compose.runtime.CompositionLocal
 import androidx.compose.runtime.compositionLocalOf
 
 /**
- *  [CompositionLocal] of [ScreensController].
+ * Provides local [ScreensController] that can be used
+ * for pushing or popping screens from within currently displayed screen.
  *
- *  Defaults to [ScreensControllerNoOp] for easier creation of previews.
+ * Defaults value is set to prevent problems with screens previews.
  */
-val LocalScreensController = compositionLocalOf<ScreensController> { ScreensControllerNoOp }
+val LocalScreensController = compositionLocalOf { ScreensController("") }

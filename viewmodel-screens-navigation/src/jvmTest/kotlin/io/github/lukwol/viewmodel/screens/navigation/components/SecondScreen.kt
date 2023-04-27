@@ -10,7 +10,7 @@ import androidx.compose.runtime.setValue
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.viewmodel.ViewModel
 
-class SecondScreenViewModel(initialText: String) : ViewModel() {
+class SecondScreenViewModel(initialText: String?) : ViewModel() {
     var text by mutableStateOf(initialText)
 }
 
@@ -20,7 +20,7 @@ fun SecondScreen(viewModel: SecondScreenViewModel) {
     val screensController = LocalScreensController.current
 
     TextField(
-        value = viewModel.text,
+        value = viewModel.text.orEmpty(),
         onValueChange = { viewModel.text = it },
     )
 

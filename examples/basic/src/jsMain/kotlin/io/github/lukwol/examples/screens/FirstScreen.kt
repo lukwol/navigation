@@ -51,7 +51,10 @@ actual fun FirstScreen() {
         Button(
             attrs = {
                 onClick {
-                    screensController.push(AppRoutes.SecondScreenRoute, text)
+                    screensController.push(
+                        route = AppRoutes.SecondScreenRoute,
+                        args = text,
+                    )
                 }
             },
         ) {

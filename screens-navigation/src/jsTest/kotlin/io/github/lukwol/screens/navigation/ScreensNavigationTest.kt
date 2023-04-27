@@ -27,21 +27,30 @@ class ScreensNavigationTest {
                     }
                 }
 
-                screen(TestRoutes.SecondScreen) { args ->
+                screen(TestRoutes.SecondScreen) { args: String? ->
                     Div {
                         Text("Second screen")
                     }
                     Div {
-                        Text("args: ${args as String}")
+                        Text("args: $args")
                     }
                 }
 
-                screen(TestRoutes.ThirdScreen) { args ->
+                screen(TestRoutes.ThirdScreen) { args: ThirdScreenArgs? ->
                     Div {
                         Text("Third screen")
                     }
                     Div {
-                        Text("args: ${args as ThirdScreenArgs}")
+                        Text("args: $args")
+                    }
+                }
+
+                screen(TestRoutes.FourthScreen) { args: String? ->
+                    Div {
+                        Text("Fourth screen")
+                    }
+                    Div {
+                        Text("args: $args")
                     }
                 }
             }
@@ -71,7 +80,18 @@ class ScreensNavigationTest {
             root.innerHTML,
         )
 
-        screensController.pop()
+        screensController.push(TestRoutes.FourthScreen)
+        waitForRecompositionComplete()
+
+        assertEquals(
+            """
+            <div>Fourth screen</div>
+            <div>args: null</div>
+            """.trimIndent().replace("\n", ""),
+            root.innerHTML,
+        )
+
+        screensController.pop(TestRoutes.SecondScreen)
         waitForRecompositionComplete()
 
         assertEquals(

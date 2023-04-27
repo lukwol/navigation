@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 
 @Composable
 internal actual fun ChangeScreen(
-    route: RouteWithArguments,
-    animated: Boolean,
-    content: @Composable (RouteWithArguments) -> Unit,
+    route: RouteWithArgs,
+    content: @Composable (RouteWithArgs) -> Unit,
 ) = content(route)
