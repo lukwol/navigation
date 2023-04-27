@@ -13,6 +13,7 @@ kotlin {
     android()
 
     js(IR) {
+        moduleName = "viewmodel"
         browser()
     }
 

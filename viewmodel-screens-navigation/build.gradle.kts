@@ -14,6 +14,7 @@ kotlin {
     android()
 
     js(IR) {
+        moduleName = "viewmodel-screens-navigation"
         browser()
     }
 

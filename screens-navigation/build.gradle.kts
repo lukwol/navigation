@@ -15,6 +15,7 @@ kotlin {
     android()
 
     js(IR) {
+        moduleName = "screens-navigation"
         browser()
     }
 
