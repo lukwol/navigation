@@ -32,7 +32,6 @@ kotlin {
         create("nonJsMain") {
             dependsOn(getByName("commonMain"))
             dependencies {
-                implementation(compose.foundation)
                 implementation(compose.material)
                 implementation(compose.ui)
             }
@@ -74,7 +73,6 @@ kotlin {
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
             dependencies {
-                implementation(compose.foundation)
                 implementation(compose.material)
             }
         }
