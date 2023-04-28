@@ -22,7 +22,7 @@ class ViewModelScreenNavigationTest {
     val compose = createComposeRule()
 
     @Test
-    fun `first screen`(): Unit = with(compose) {
+    fun firstScreen(): Unit = with(compose) {
         setContent { TestScreenNavigation() }
 
         onNode(hasSetTextAction()).assert(hasText(""))
@@ -31,7 +31,7 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate to second screen and update it's state`() = runTest {
+    fun navigateToSecondScreenAndUpdateItsState() = runTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -45,7 +45,7 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate back and forth`() = runTest {
+    fun navigateBackAndForth() = runTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 

@@ -10,26 +10,27 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.viewmodel.ViewModel
+import io.github.lukwol.viewmodel.screens.navigation.data.TestRoutes
 
-class SecondScreenViewModel(initialText: String?) : ViewModel() {
-    var text by mutableStateOf(initialText)
+class FirstScreenViewModel : ViewModel() {
+    var text by mutableStateOf("")
 }
 
 @Suppress("TestFunctionName")
 @Composable
-fun SecondScreen(viewModel: SecondScreenViewModel) {
+fun FirstScreen(viewModel: FirstScreenViewModel) {
     val screensController = LocalScreensController.current
 
     Column {
         TextField(
-            value = viewModel.text.orEmpty(),
+            value = viewModel.text,
             onValueChange = { viewModel.text = it },
         )
 
         Button(
-            onClick = { screensController.pop() },
+            onClick = { screensController.push(TestRoutes.SecondScreen, viewModel.text) },
         ) {
-            Text("Pop Screen")
+            Text("Push Second Screen")
         }
     }
 }

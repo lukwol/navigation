@@ -64,6 +64,19 @@ kotlin {
                 implementation(libs.coroutines.test)
             }
         }
+
+        getByName("androidInstrumentedTest") {
+            dependencies {
+                implementation(compose.ui)
+                @OptIn(ExperimentalComposeLibrary::class)
+                implementation(compose.uiTestJUnit4)
+                implementation(compose.material)
+                implementation(libs.kotlin.test)
+                implementation(libs.coroutines.test)
+                implementation(libs.android.test.core)
+                implementation(libs.android.test.runner)
+            }
+        }
     }
 }
 
@@ -73,10 +86,15 @@ android {
 
     defaultConfig {
         minSdk = 24
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    dependencies {
+        debugImplementation(libs.android.test.ui.manifest.compose)
     }
 }

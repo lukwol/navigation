@@ -11,8 +11,8 @@ import androidx.compose.runtime.setValue
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.viewmodel.ViewModel
 
-class SecondScreenViewModel(initialText: String?) : ViewModel() {
-    var text by mutableStateOf(initialText)
+class SecondScreenViewModel : ViewModel() {
+    var text: String? by mutableStateOf(null)
 }
 
 @Suppress("TestFunctionName")

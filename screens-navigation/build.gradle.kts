@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.dokka)
-    kotlin("plugin.serialization")
+    alias(libs.plugins.kotlin.serialization)
     id("maven-publish")
 }
 

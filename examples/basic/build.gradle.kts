@@ -50,7 +50,6 @@ kotlin {
             dependsOn(getByName("nonJsMain"))
             dependencies {
                 implementation(libs.android.core)
-                implementation(libs.android.appcompat)
                 implementation(libs.android.activity.compose)
                 implementation(libs.android.navigation.compose)
             }
