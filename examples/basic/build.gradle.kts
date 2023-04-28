@@ -34,8 +34,8 @@ kotlin {
         create("nonJsMain") {
             dependsOn(getByName("commonMain"))
             dependencies {
-                implementation(compose.material)
                 implementation(compose.ui)
+                implementation(compose.material)
             }
         }
 

@@ -1,5 +1,7 @@
 @file:Suppress("DSL_SCOPE_VIOLATION")
 
+import org.jetbrains.compose.ExperimentalComposeLibrary
+
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
@@ -57,7 +59,7 @@ kotlin {
             dependencies {
                 implementation(libs.kotlin.test)
                 implementation(compose.desktop.currentOs)
-                @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
+                @OptIn(ExperimentalComposeLibrary::class)
                 implementation(compose.uiTestJUnit4)
                 implementation(libs.coroutines.test)
             }

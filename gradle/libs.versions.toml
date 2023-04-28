@@ -13,6 +13,9 @@ android-appcompat = "1.6.1"
 android-lifecycle = "2.6.1"
 android-activity-compose = "1.7.1"
 android-navigation = "2.5.3"
+android-test-core = "1.5.0"
+android-test-runner = "1.5.2"
+android-test-ui-manifest-compose = "1.4.0"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
@@ -30,9 +33,12 @@ kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serializat
 coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
 android-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "android-appcompat" }
 android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
 android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
 android-navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "android-navigation" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+android-test-ui-manifest-compose = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "android-test-ui-manifest-compose" }
+android-test-core = { module = "androidx.test:core", version.ref = "android-test-core" }
+android-test-runner = { module = "androidx.test:runner", version.ref = "android-test-runner" }

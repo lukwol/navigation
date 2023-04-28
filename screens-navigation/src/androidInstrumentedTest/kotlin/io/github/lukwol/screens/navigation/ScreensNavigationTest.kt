@@ -11,6 +11,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
+import java.lang.IllegalArgumentException
 import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {
@@ -19,7 +20,7 @@ class ScreensNavigationTest {
     val compose = createComposeRule()
 
     @Test
-    fun `first screen`(): Unit = with(compose) {
+    fun firstScreen(): Unit = with(compose) {
         setContent { TestScreenNavigation() }
 
         onNodeWithText("Push Second Screen").assertExists()
@@ -42,7 +43,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen`() = runTest {
+    fun navigateToThirdScreen() = runTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -60,7 +61,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to second screen`() = runTest {
+    fun navigateToThirdScreenThenPopToSecondScreen() = runTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -80,7 +81,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to first screen`() = runTest {
+    fun navigateToThirdScreenThenPopToFirstScreen() = runTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -100,8 +101,8 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `missing start route screen`() {
-        assertFailsWith<NoSuchElementException> {
+    fun missingStartRouteScreen() {
+        assertFailsWith<IllegalArgumentException> {
             compose.setContent {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen,
@@ -113,8 +114,8 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `empty navigation graph`() {
-        assertFailsWith<NoSuchElementException> {
+    fun emptyNavigationGraph() {
+        assertFailsWith<IllegalArgumentException> {
             compose.setContent {
                 ScreensNavigation(
                     startRoute = TestRoutes.FirstScreen,
