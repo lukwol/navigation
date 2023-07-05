@@ -2,12 +2,15 @@ package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
-import io.github.lukwol.examples.di.ViewModelProvider
 import io.github.lukwol.examples.screens.first.FirstScreen
+import io.github.lukwol.examples.screens.first.FirstScreenViewModel
 import io.github.lukwol.examples.screens.second.SecondScreen
+import io.github.lukwol.examples.screens.second.SecondScreenViewModel
 import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
 import io.github.lukwol.windows.navigation.LocalWindowController
 import io.github.lukwol.windows.navigation.WindowsNavigation
+import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun AppNavigation() {
@@ -23,7 +26,7 @@ fun AppNavigation() {
             ) {
                 screen(
                     route = AppRoutes.FirstScreenRoute,
-                    viewModelFactory = { ViewModelProvider.getFirstScreenViewModel() },
+                    viewModelFactory = { koinInject<FirstScreenViewModel>() },
                 ) { viewModel ->
                     FirstScreen(
                         state = viewModel.state,
@@ -52,7 +55,7 @@ fun AppNavigation() {
             ) {
                 screen(
                     route = AppRoutes.SecondScreenRoute,
-                    viewModelFactory = { ViewModelProvider.getSecondScreenViewModel(windowArgs) },
+                    viewModelFactory = { koinInject<SecondScreenViewModel> { parametersOf(windowArgs) } },
                 ) { viewModel ->
                     SecondScreen(
                         state = viewModel.state,

@@ -3,7 +3,8 @@ kotlin = "1.8.20"
 dokka = "1.8.10"
 compose = "1.4.0"
 coroutines = "1.6.4"
-koin = "3.4.0"
+koin = "3.4.2"
+koin-compose = "3.4.5"
 dependency-updates = "0.46.0"
 kotlinter = "3.14.0"
 serialization-json = "1.5.0"
@@ -32,6 +33,7 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin-compose" }
 android-core = { module = "androidx.core:core-ktx", version.ref = "android-core" }
 android-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "android-lifecycle" }
 android-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "android-activity-compose" }
