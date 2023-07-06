@@ -1,25 +1,24 @@
 [versions]
 kotlin = "1.8.20"
-dokka = "1.8.10"
-compose = "1.4.0"
-coroutines = "1.6.4"
+compose = "1.4.1"
+coroutines = "1.7.2"
 koin = "3.4.2"
 koin-compose = "3.4.5"
-dependency-updates = "0.46.0"
-kotlinter = "3.14.0"
+dependency-updates = "0.47.0"
+kotlinter = "3.15.0"
 serialization-json = "1.5.0"
 android = "7.4.2"
 android-core = "1.10.0"
 android-lifecycle = "2.6.1"
-android-activity-compose = "1.7.1"
-android-navigation = "2.5.3"
+android-activity-compose = "1.7.2"
+android-navigation = "2.6.0"
 android-test-core = "1.5.0"
 android-test-runner = "1.5.2"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
 dependency-updates = { id = "com.github.ben-manes.versions", version.ref = "dependency-updates" }
 kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
