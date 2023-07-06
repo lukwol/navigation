@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "cm-navigation"
+rootProject.name = "cmnav"
 
 pluginManagement {
     repositories {

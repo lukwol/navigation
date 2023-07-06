@@ -104,7 +104,7 @@ kotlin {
     cocoapods {
         version = "1.0.0"
         summary = "Example iOS app with basic navigation"
-        homepage = "https://github.com/lukwol/cm-navigation"
+        homepage = "https://github.com/lukwol/cmnav"
         ios.deploymentTarget = "14.1"
         podfile = project.file("iosApp/Podfile")
         framework {
