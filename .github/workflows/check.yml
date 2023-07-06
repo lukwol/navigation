@@ -23,3 +23,8 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
       - name: Check all modules
         run: ./gradlew check --build-cache
+      - name: Run instrumented unit tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 33
+          script: ./gradlew connectedCheck
