@@ -17,9 +17,9 @@ dependencyResolutionManagement {
     }
 }
 
-include(":screens-navigation")
-include(":viewmodel-screens-navigation")
-include(":windows-navigation")
+include(":cmnav-screens")
+include(":cmnav-screens-vm")
+include(":cmnav-windows")
 
 include(":examples:basic")
 include(":examples:mvvm")

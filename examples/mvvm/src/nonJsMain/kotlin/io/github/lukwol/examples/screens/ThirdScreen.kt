@@ -11,7 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import io.github.lukwol.screens.navigation.LocalScreensController
+import io.github.lukwol.cmnav.screens.LocalScreensController
 
 @Composable
 actual fun ThirdScreen(viewModel: ThirdScreenViewModel) {

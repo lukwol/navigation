@@ -1,7 +1,7 @@
 package io.github.lukwol.examples.screens
 
 import androidx.compose.runtime.Composable
-import io.github.lukwol.screens.navigation.LocalScreensController
+import io.github.lukwol.cmnav.screens.LocalScreensController
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.paddingLeft
 import org.jetbrains.compose.web.css.paddingRight

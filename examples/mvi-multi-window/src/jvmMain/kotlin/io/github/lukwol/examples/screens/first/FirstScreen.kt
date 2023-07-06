@@ -14,8 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.github.lukwol.cmnav.windows.LocalWindowController
 import io.github.lukwol.examples.AppRoutes
-import io.github.lukwol.windows.navigation.LocalWindowController
 
 @Composable
 fun FirstScreen(

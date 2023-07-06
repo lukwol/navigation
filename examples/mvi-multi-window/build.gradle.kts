@@ -15,8 +15,8 @@ kotlin {
                 implementation(libs.coroutines.swing)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
-                implementation(projects.viewmodelScreensNavigation)
-                implementation(projects.windowsNavigation)
+                implementation(projects.cmnavScreensVm)
+                implementation(projects.cmnavWindows)
             }
         }
     }

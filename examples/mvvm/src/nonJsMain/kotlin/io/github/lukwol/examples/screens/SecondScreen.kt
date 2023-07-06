@@ -12,8 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import io.github.lukwol.cmnav.screens.LocalScreensController
 import io.github.lukwol.examples.AppRoutes
-import io.github.lukwol.screens.navigation.LocalScreensController
 
 @Composable
 actual fun SecondScreen(viewModel: SecondScreenViewModel) {

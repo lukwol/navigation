@@ -2,13 +2,13 @@ package io.github.lukwol.examples
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
+import io.github.lukwol.cmnav.screens.vm.ScreensNavigation
+import io.github.lukwol.cmnav.windows.LocalWindowController
+import io.github.lukwol.cmnav.windows.WindowsNavigation
 import io.github.lukwol.examples.screens.first.FirstScreen
 import io.github.lukwol.examples.screens.first.FirstScreenViewModel
 import io.github.lukwol.examples.screens.second.SecondScreen
 import io.github.lukwol.examples.screens.second.SecondScreenViewModel
-import io.github.lukwol.viewmodel.screens.navigation.ScreensNavigation
-import io.github.lukwol.windows.navigation.LocalWindowController
-import io.github.lukwol.windows.navigation.WindowsNavigation
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
