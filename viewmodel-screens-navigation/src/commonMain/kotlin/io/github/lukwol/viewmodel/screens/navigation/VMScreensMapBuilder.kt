@@ -2,7 +2,6 @@ package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.compose.runtime.Composable
 import io.github.lukwol.screens.navigation.ScreensMapBuilder
-import io.github.lukwol.viewmodel.ViewModel
 
 /**
  * Builds screens navigation map same as [ScreensMapBuilder],

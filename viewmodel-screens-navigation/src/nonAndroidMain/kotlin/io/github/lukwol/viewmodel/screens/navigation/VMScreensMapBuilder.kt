@@ -4,7 +4,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import io.github.lukwol.screens.navigation.LocalScreensController
 import io.github.lukwol.screens.navigation.ScreensMapBuilder
-import io.github.lukwol.viewmodel.ViewModel
 import kotlinx.coroutines.cancel
 
 actual class VMScreensMapBuilder internal constructor(

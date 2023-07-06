@@ -1,4 +1,4 @@
-package io.github.lukwol.viewmodel
+package io.github.lukwol.viewmodel.screens.navigation
 
 import kotlinx.coroutines.CoroutineScope
 

@@ -18,7 +18,6 @@ dependencyResolutionManagement {
 }
 
 include(":screens-navigation")
-include(":viewmodel")
 include(":viewmodel-screens-navigation")
 include(":windows-navigation")
 

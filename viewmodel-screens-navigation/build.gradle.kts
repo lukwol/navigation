@@ -30,7 +30,6 @@ kotlin {
     sourceSets {
         getByName("commonMain") {
             dependencies {
-                api(projects.viewmodel)
                 api(projects.screensNavigation)
                 implementation(compose.runtime)
                 implementation(libs.coroutines.core)
@@ -39,6 +38,7 @@ kotlin {
 
         getByName("androidMain") {
             dependencies {
+                implementation(libs.android.lifecycle.viewmodel)
                 implementation(libs.android.navigation.compose)
                 implementation(libs.kotlin.serialization.json)
             }

@@ -9,7 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import io.github.lukwol.screens.navigation.LocalScreensController
-import io.github.lukwol.viewmodel.ViewModel
+import io.github.lukwol.viewmodel.screens.navigation.ViewModel
 
 class SecondScreenViewModel(initialText: String?) : ViewModel() {
     var text by mutableStateOf(initialText)

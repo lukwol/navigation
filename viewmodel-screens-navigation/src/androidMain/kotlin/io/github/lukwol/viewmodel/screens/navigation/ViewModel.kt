@@ -1,4 +1,4 @@
-package io.github.lukwol.viewmodel
+package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.ViewModel as AndroidViewModel

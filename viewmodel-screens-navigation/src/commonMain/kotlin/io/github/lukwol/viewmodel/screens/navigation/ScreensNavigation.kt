@@ -1,7 +1,6 @@
 package io.github.lukwol.viewmodel.screens.navigation
 
 import androidx.compose.runtime.Composable
-import io.github.lukwol.viewmodel.ViewModel
 import io.github.lukwol.screens.navigation.ScreensNavigation as BasicScreensNavigation
 
 /**

@@ -1,7 +1,5 @@
 package io.github.lukwol.viewmodel.screens.navigation
 
-import io.github.lukwol.viewmodel.ViewModel
-
 /**
  * View model store is responsible for persisting [view models][ViewModel] state,
  * for screens that are not currently displayed but are on the navigation stack.
