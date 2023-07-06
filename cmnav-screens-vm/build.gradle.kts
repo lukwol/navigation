@@ -30,7 +30,7 @@ kotlin {
     sourceSets {
         getByName("commonMain") {
             dependencies {
-                api(projects.screensNavigation)
+                api(projects.cmnavScreens)
                 implementation(compose.runtime)
                 implementation(libs.coroutines.core)
             }

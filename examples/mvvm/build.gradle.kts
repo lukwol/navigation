@@ -25,7 +25,7 @@ kotlin {
         getByName("commonMain") {
             dependencies {
                 implementation(compose.runtime)
-                implementation(projects.viewmodelScreensNavigation)
+                implementation(projects.cmnavScreensVm)
             }
         }
 

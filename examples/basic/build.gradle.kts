@@ -26,7 +26,7 @@ kotlin {
         getByName("commonMain") {
             dependencies {
                 implementation(compose.runtime)
-                implementation(projects.screensNavigation)
+                implementation(projects.cmnavScreens)
                 implementation(libs.kotlin.serialization.json)
             }
         }

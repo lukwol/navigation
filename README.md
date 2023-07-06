@@ -43,41 +43,11 @@ Step 4. Add the dependency:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("io.github.lukwol:screens-navigation:1.4.0")
+    implementation("io.github.lukwol:cmnav-screens:0.1.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("io.github.lukwol:viewmodel-screens-navigation:1.4.0")
+    implementation("io.github.lukwol:cmnav-screens-vm:0.1.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("io.github.lukwol:windows-navigation:1.4.0")
-    // ViewModel without navigation - multiplatform
-    implementation("io.github.lukwol:viewmodel:1.4.0")
-}
-```
-
-### Jitpack
-
-Step 1. Add the JitPack repository to `build.gradle.kts` at the end of repositories:
-
-```kotlin
-allprojects {
-    repositories {
-        // ...
-        maven("https://jitpack.io")
-    }
-}
-```
-
-Step 2. Add the dependency:
-
-```kotlin
-dependencies {
-    // Screens navigation - multiplatform
-    implementation("com.github.lukwol.cmnav:screens-navigation:1.4.0")
-    // Screens navigation with ViewModel support - multiplatform
-    implementation("com.github.lukwol.cmnav:viewmodel-screens-navigation:1.4.0")
-    // Windows navigation - jvm only, for desktop application
-    implementation("com.github.lukwol.cmnav:windows-navigation:1.4.0")
-    // ViewModel without navigation - multiplatform
-    implementation("com.github.lukwol.cmnav:viewmodel:1.4.0")
+    implementation("io.github.lukwol:cmnav-windows:0.1.0")
 }
 ```
 

@@ -20,7 +20,7 @@ allprojects {
     }
 
     group = "io.github.lukwol"
-    version = "1.4.0"
+    version = "0.1.0"
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
