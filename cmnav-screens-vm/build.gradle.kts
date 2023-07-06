@@ -104,3 +104,16 @@ android {
         debugImplementation(libs.android.test.ui.manifest.compose)
     }
 }
+
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "io.github.lukwol"
+                artifactId = "cmnav-screens-vm"
+                version = "0.1.0"
+            }
+        }
+    }
+}
