@@ -1,7 +1,6 @@
 # cmnav
 
 [![check](https://github.com/lukwol/cmnav/actions/workflows/check.yml/badge.svg)](https://github.com/lukwol/cmnav/actions/workflows/check.yml)
-[![](https://jitpack.io/v/lukwol/cmnav.svg)](https://jitpack.io/#lukwol/cmnav)
 
 Tiny library for easy navigation in [Compose Multiplatform](https://github.com/JetBrains/compose-jb/)
 applications.
@@ -13,9 +12,7 @@ Provides:
 
 ## Installation
 
-Currently `cmnav` can be installed only via local Maven or [Jitpack](https://jitpack.io/) repositories.
-
-Installation via Jitpack is recommended but provides only a few native targets, install to local maven in order to use more native targets.
+Currently `cmnav` can be installed only via local Maven repository.
 
 ### MavenLocal
 
