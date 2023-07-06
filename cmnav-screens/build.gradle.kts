@@ -106,6 +106,12 @@ android {
     compileSdk = 33
     namespace = "io.github.lukwol.cmnav.screens"
 
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+
     defaultConfig {
         minSdk = 24
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
