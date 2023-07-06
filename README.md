@@ -6,9 +6,18 @@ Tiny library for easy navigation in [Compose Multiplatform](https://github.com/J
 applications.
 
 Provides:
- * Screens navigation - multiplatform
- * Windows navigation - desktop only
- * Optional `ViewModel` with work cancellation support - multiplatform
+
+* Screens navigation - multiplatform
+* Optional `ViewModel` with work cancellation support - multiplatform
+* Windows navigation - desktop only
+
+## Versions
+
+For each version of `cmnav` specific version of Compose Multiplatform is required
+
+| cmnav | compose-multiplatform |
+|:-----:|:---------------------:|
+| 0.1.0 |         1.4.1         |
 
 ## Installation
 
@@ -18,7 +27,7 @@ Currently `cmnav` can be installed only via local Maven repository.
 
 Step 1. Clone or download `cmnav` repository
 
-Step 2. Build and publish to local Maven repository by running: 
+Step 2. Build and publish to local Maven repository by running:
 
 ```shell
 ./gradlew publishToMavenLocal
@@ -63,7 +72,7 @@ ScreensNavigation(
     screen(AppRoutes.FirstScreenRoute) {
         FirstScreen()
     }
-    
+
     screen(AppRoutes.SecondScreenRoute) { args: String? ->
         SecondScreen(args)
     }
@@ -78,17 +87,17 @@ ScreensNavigation(
 ) {
     screen(
         route = AppRoutes.FirstScreenRoute,
-        viewModelFactory = { 
-            FirstScreenViewModel() 
+        viewModelFactory = {
+            FirstScreenViewModel()
         }
     ) { viewModel ->
         FirstScreen(viewModel)
     }
-    
+
     screen(
         route = AppRoutes.SecondScreenRoute,
-        viewModelWithArgs = { args: SomeArgs? -> 
-            SecondScreenViewModel(args) 
+        viewModelWithArgs = { args: SomeArgs? ->
+            SecondScreenViewModel(args)
         }
     ) { viewModel ->
         SecondScreen(viewModel)
@@ -163,7 +172,7 @@ windowsController.close(AppRoutes.SecondWindowRoute)
 
 ## Documentation
 
-API Reference is available at https://lukwol.github.io/cmnav/ 
+API Reference is available at https://lukwol.github.io/cmnav/
 
 ## Licensing
 
