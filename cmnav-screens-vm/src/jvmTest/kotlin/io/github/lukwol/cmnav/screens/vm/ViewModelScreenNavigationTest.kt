@@ -25,9 +25,11 @@ class ViewModelScreenNavigationTest {
     fun `first screen`(): Unit = with(compose) {
         setContent { TestScreenNavigation() }
 
-        onNode(hasSetTextAction()).assert(hasText(""))
-        onNode(hasSetTextAction()).performTextInput("Foo")
-        onNode(hasSetTextAction()).assert(hasText("Foo"))
+        onNode(hasSetTextAction()).run {
+            assert(hasText(""))
+            performTextInput("Foo")
+            assert(hasText("Foo"))
+        }
     }
 
     @Test
@@ -38,9 +40,11 @@ class ViewModelScreenNavigationTest {
             onNodeWithText("Push Second Screen").performClick()
             awaitIdle()
 
-            onNode(hasSetTextAction()).assert(hasText(""))
-            onNode(hasSetTextAction()).performTextInput("Bar")
-            onNode(hasSetTextAction()).assert(hasText("Bar"))
+            onNode(hasSetTextAction()).run {
+                assert(hasText(""))
+                performTextInput("Bar")
+                assert(hasText("Bar"))
+            }
         }
     }
 
@@ -49,24 +53,30 @@ class ViewModelScreenNavigationTest {
         with(compose) {
             setContent { TestScreenNavigation() }
 
-            onNode(hasSetTextAction()).assert(hasText(""))
-            onNode(hasSetTextAction()).performTextInput("Foo")
-            onNode(hasSetTextAction()).assert(hasText("Foo"))
+            onNode(hasSetTextAction()).run {
+                assert(hasText(""))
+                performTextInput("Foo")
+                assert(hasText("Foo"))
+            }
 
             onNodeWithText("Push Second Screen").performClick()
             awaitIdle()
 
-            onNode(hasSetTextAction()).assert(hasText("Foo"))
-            onNode(hasSetTextAction()).performTextClearance()
-            onNode(hasSetTextAction()).performTextInput("The quick brown fox")
-            onNode(hasSetTextAction()).assert(hasText("The quick brown fox"))
+            onNode(hasSetTextAction()).run {
+                assert(hasText("Foo"))
+                performTextClearance()
+                performTextInput("The quick brown fox")
+                assert(hasText("The quick brown fox"))
+            }
 
             onNodeWithText("Pop Screen").performClick()
             awaitIdle()
 
-            onNode(hasSetTextAction()).assert(hasText("Foo"))
-            onNode(hasSetTextAction()).performTextInput("Bar")
-            onNode(hasSetTextAction()).assert(hasText("FooBar"))
+            onNode(hasSetTextAction()).run {
+                assert(hasText("Foo"))
+                performTextInput("Bar")
+                assert(hasText("FooBar"))
+            }
 
             onNodeWithText("Push Second Screen").performClick()
             awaitIdle()
