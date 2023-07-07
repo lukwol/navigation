@@ -1,5 +1,3 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
@@ -25,7 +23,7 @@ kotlin {
 compose {
     desktop {
         application {
-            mainClass = "io.github.lukwol.examples.MainKt"
+            mainClass = "${BuildConstants.Group}.examples.MainKt"
         }
     }
 }

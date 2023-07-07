@@ -10,7 +10,7 @@ actual open class ScreensMapBuilder {
      */
     val screensMap = mutableMapOf<String, @Composable (Any?) -> Unit>()
 
-    @Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE")
+    @Suppress("UNCHECKED_CAST")
     actual inline fun <Args> screen(
         route: String,
         noinline content: @Composable (args: Args?) -> Unit,
@@ -33,7 +33,7 @@ actual open class ScreensMapBuilder {
     )
 
     /**
-     * Build immutable map of with [ScreenRoute] as keys and contents as values.
+     * Build immutable map of with screen route as keys and contents as values.
      */
     fun build() = screensMap.toMap()
 }

@@ -1,5 +1,3 @@
-@file:Suppress("DSL_SCOPE_VIOLATION", "UnstableApiUsage")
-
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.compose.multiplatform)
@@ -77,26 +75,26 @@ kotlin {
 compose {
     desktop {
         application {
-            mainClass = "io.github.lukwol.examples.MainKt"
+            mainClass = "${BuildConstants.Group}.examples.MainKt"
         }
     }
 }
 
 
 android {
-    compileSdk = 33
-    namespace = "io.github.lukwol.example"
+    compileSdk = BuildConstants.Android.CompileSdk
+    namespace = "${BuildConstants.Group}.examples"
 
     defaultConfig {
-        minSdk = 24
+        minSdk = BuildConstants.Android.MinSdk
     }
 
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     sourceSets["main"].res.srcDirs("src/androidMain/res")
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = BuildConstants.Android.JavaVersion
+        targetCompatibility = BuildConstants.Android.JavaVersion
     }
 }
 
@@ -105,7 +103,7 @@ kotlin {
         version = "1.0.0"
         summary = "Example iOS app with basic navigation"
         homepage = "https://github.com/lukwol/cmnav"
-        ios.deploymentTarget = "14.1"
+        ios.deploymentTarget = BuildConstants.IOS.ExamplesDeploymentTarget
         podfile = project.file("iosApp/Podfile")
         framework {
             baseName = "iosMain"

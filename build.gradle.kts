@@ -1,5 +1,3 @@
-@file:Suppress("DSL_SCOPE_VIOLATION", "SuspiciousCollectionReassignment")
-
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
@@ -19,12 +17,13 @@ allprojects {
         plugin("org.jmailen.kotlinter")
     }
 
-    group = "io.github.lukwol"
-    version = "0.1.0"
+
+    group = BuildConstants.Group
+    version = BuildConstants.Version
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
-            jvmTarget = "11"
+            jvmTarget = BuildConstants.JvmTarget
 
             if (project.findProperty("enableComposeCompilerReports") == "true") {
                 val destinationDir = project.buildDir.absolutePath + "/compose_metrics"

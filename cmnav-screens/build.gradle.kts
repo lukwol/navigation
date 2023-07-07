@@ -1,5 +1,4 @@
-@file:Suppress("DSL_SCOPE_VIOLATION")
-
+import BuildConstants.Modules.Namespace
 import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
@@ -17,7 +16,7 @@ kotlin {
     android()
 
     js(IR) {
-        moduleName = "cmnav-screens"
+        moduleName = BuildConstants.Modules.CmnavScreens
         browser()
     }
 
@@ -103,8 +102,8 @@ kotlin {
 }
 
 android {
-    compileSdk = 33
-    namespace = "io.github.lukwol.cmnav.screens"
+    compileSdk = BuildConstants.Android.CompileSdk
+    namespace = BuildConstants.Modules.CmnavScreens.Namespace
 
     publishing {
         singleVariant("release") {
@@ -113,13 +112,13 @@ android {
     }
 
     defaultConfig {
-        minSdk = 24
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        minSdk = BuildConstants.Android.MinSdk
+        testInstrumentationRunner = BuildConstants.Android.TestInstrumentationRunner
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = BuildConstants.Android.JavaVersion
+        targetCompatibility = BuildConstants.Android.JavaVersion
     }
 
     dependencies {
@@ -132,9 +131,9 @@ afterEvaluate {
         publications {
             register<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "io.github.lukwol"
-                artifactId = "cmnav-screens"
-                version = "0.1.0"
+                groupId = BuildConstants.Group
+                artifactId = BuildConstants.Modules.CmnavScreens
+                version = BuildConstants.Version
             }
         }
     }
