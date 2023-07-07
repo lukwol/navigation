@@ -9,7 +9,7 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -23,3 +23,8 @@ jobs:
         uses: gradle/wrapper-validation-action@v1
       - name: Check all modules
         run: ./gradlew check --build-cache
+      - name: Run instrumented unit tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 29
+          script: ./gradlew connectedCheck --build-cache
