@@ -12,7 +12,9 @@ plugins {
 kotlin {
     jvm()
 
-    android()
+    android {
+        publishLibraryVariants("release")
+    }
 
     js(IR) {
         moduleName = BuildConstants.Modules.CmnavScreensVm
@@ -83,12 +85,6 @@ android {
     compileSdk = BuildConstants.Android.CompileSdk
     namespace = BuildConstants.Modules.CmnavScreensVm.Namespace
 
-    publishing {
-        singleVariant("release") {
-            withSourcesJar()
-        }
-    }
-
     defaultConfig {
         minSdk = BuildConstants.Android.MinSdk
         testInstrumentationRunner = BuildConstants.Android.TestInstrumentationRunner
@@ -101,18 +97,5 @@ android {
 
     dependencies {
         debugImplementation(libs.android.test.ui.manifest.compose)
-    }
-}
-
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
-                from(components["release"])
-                groupId = BuildConstants.Group
-                artifactId = BuildConstants.Modules.CmnavScreensVm
-                version = BuildConstants.Version
-            }
-        }
     }
 }
