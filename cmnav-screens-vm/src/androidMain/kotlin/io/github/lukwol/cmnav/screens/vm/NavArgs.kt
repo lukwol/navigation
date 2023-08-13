@@ -2,7 +2,6 @@ package io.github.lukwol.cmnav.screens.vm
 
 import androidx.lifecycle.SavedStateHandle
 import io.github.lukwol.cmnav.screens.NavArgsKey
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 /**

@@ -5,8 +5,8 @@ import androidx.compose.runtime.Composable
 
 @Composable
 internal actual fun ChangeScreen(
-    route: io.github.lukwol.cmnav.screens.RouteWithArgs,
-    content: @Composable (io.github.lukwol.cmnav.screens.RouteWithArgs) -> Unit,
+    route: RouteWithArgs,
+    content: @Composable (RouteWithArgs) -> Unit,
 ) = Crossfade(
     targetState = route,
     content = content,
