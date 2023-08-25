@@ -21,6 +21,6 @@ object BuildConstants {
     }
 
     object IOS {
-        const val ExamplesDeploymentTarget = "14.1"
+        const val ExamplesDeploymentTarget = "15.2"
     }
 }

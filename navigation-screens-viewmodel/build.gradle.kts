@@ -76,9 +76,6 @@ kotlin {
             dependsOn(getByName("nonJsMain"))
             getByName("jvmMain").dependsOn(this)
             getByName("nativeMain").dependsOn(this)
-            dependencies {
-                implementation(compose.animation)
-            }
         }
 
         getByName("jvmTest") {
