@@ -1,9 +1,9 @@
-import org.gradle.api.JavaVersion.VERSION_11
+import org.gradle.api.JavaVersion.VERSION_17
 
 object BuildConstants {
     const val Group = "io.github.lukwol"
     const val Version = "0.1.0"
-    const val JvmTarget = "11"
+    const val JvmTarget = "17"
 
     object Modules {
         const val navigationScreens = "navigation-screens"
@@ -16,7 +16,7 @@ object BuildConstants {
     object Android {
         const val CompileSdk = 33
         const val MinSdk = 24
-        val JavaVersion = VERSION_11
+        val JavaVersion = VERSION_17
         const val TestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
