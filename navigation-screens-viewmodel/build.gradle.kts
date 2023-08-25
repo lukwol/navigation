@@ -12,12 +12,12 @@ plugins {
 kotlin {
     jvm()
 
-    android {
+    androidTarget {
         publishLibraryVariants("release")
     }
 
     js(IR) {
-        moduleName = BuildConstants.Modules.navigationScreensViewModel
+        moduleName = BuildConstants.Modules.NavigationScreensViewModel
         browser()
     }
 
@@ -83,7 +83,7 @@ kotlin {
 
 android {
     compileSdk = BuildConstants.Android.CompileSdk
-    namespace = BuildConstants.Modules.navigationScreensViewModel.Namespace
+    namespace = BuildConstants.Modules.NavigationScreensViewModel.Namespace
 
     defaultConfig {
         minSdk = BuildConstants.Android.MinSdk
