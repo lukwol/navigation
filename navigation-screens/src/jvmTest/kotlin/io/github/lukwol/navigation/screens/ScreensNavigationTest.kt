@@ -2,6 +2,7 @@
 
 package io.github.lukwol.navigation.screens
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -99,6 +100,7 @@ class ScreensNavigationTest {
         }
     }
 
+    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun `missing start route screen`() {
         assertFailsWith<NoSuchElementException> {
@@ -112,6 +114,7 @@ class ScreensNavigationTest {
         }
     }
 
+    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun `empty navigation graph`() {
         assertFailsWith<NoSuchElementException> {

@@ -1,5 +1,12 @@
 package io.github.lukwol.navigation.screens
 
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.compositionLocalOf
 
@@ -19,12 +26,29 @@ import androidx.compose.runtime.compositionLocalOf
  * Other targets have common custom implementation that does not involve any serialization.
  *
  * @param startRoute first screen route for which the initial screen will be displayed
+ * @param enterTransition defines enter transitions when pushing new screen on the stack,
+ * by default uses fade in animation
+ * @param exitTransition defines exit transitions when pushing new screen on the stack
+ * by default uses fade out animation
+ * @param popEnterTransition defines enter transitions when popping screen from the stack
+ * by default uses animation specified in [enterTransition]
+ * @param popExitTransition defines exit transitions when popping screen from the stack
+ * by default uses animation specified in [exitTransition]
  * @param builder the builder used to construct the underlying screens navigation map
  *
  * @see LocalScreensController
  */
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 expect fun ScreensNavigation(
     startRoute: String,
+    enterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+        { fadeIn(animationSpec = tween(700)) },
+    exitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+        { fadeOut(animationSpec = tween(700)) },
+    popEnterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+        enterTransition,
+    popExitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+        exitTransition,
     builder: ScreensMapBuilder.() -> Unit,
 )

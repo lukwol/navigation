@@ -1,5 +1,12 @@
 package io.github.lukwol.navigation.screens.viewmodel
 
+import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.runtime.Composable
 import io.github.lukwol.navigation.screens.ScreensNavigation as BasicScreensNavigation
 
@@ -17,8 +24,17 @@ import io.github.lukwol.navigation.screens.ScreensNavigation as BasicScreensNavi
  * Other targets share same [ViewModel] implementation and takes care
  * of cancelling [ViewModel.coroutineScope] when screens or windows are disposed.
  */
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 expect fun ScreensNavigation(
     startRoute: String,
+    enterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+        { fadeIn(animationSpec = tween(700)) },
+    exitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+        { fadeOut(animationSpec = tween(700)) },
+    popEnterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+        enterTransition,
+    popExitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+        exitTransition,
     builder: VMScreensMapBuilder.() -> Unit,
 )

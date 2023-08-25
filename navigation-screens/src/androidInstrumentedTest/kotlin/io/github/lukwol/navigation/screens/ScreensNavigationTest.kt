@@ -2,6 +2,7 @@
 
 package io.github.lukwol.navigation.screens
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
@@ -11,6 +12,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
+import java.lang.IllegalArgumentException
 import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {
@@ -99,6 +101,7 @@ class ScreensNavigationTest {
         }
     }
 
+    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun missingStartRouteScreen() {
         assertFailsWith<IllegalArgumentException> {
@@ -112,6 +115,7 @@ class ScreensNavigationTest {
         }
     }
 
+    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun emptyNavigationGraph() {
         assertFailsWith<IllegalArgumentException> {
