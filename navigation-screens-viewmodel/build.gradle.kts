@@ -45,15 +45,40 @@ kotlin {
             }
         }
 
-        create("nonAndroidMain") {
+        create("nativeMain") {
             dependsOn(getByName("commonMain"))
-            getByName("jvmMain").dependsOn(this)
-            getByName("jsMain").dependsOn(this)
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
             getByName("macosArm64Main").dependsOn(this)
             getByName("macosX64Main").dependsOn(this)
+        }
+
+        create("nonJsMain") {
+            dependsOn(getByName("commonMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("androidMain").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
+            dependencies {
+                implementation(compose.animation)
+            }
+        }
+
+        create("nonAndroidMain") {
+            dependsOn(getByName("commonMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("jsMain").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
+        }
+
+        create("nativeJvmMain") {
+            dependsOn(getByName("nonAndroidMain"))
+            dependsOn(getByName("nonJsMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
+            dependencies {
+                implementation(compose.animation)
+            }
         }
 
         getByName("jvmTest") {

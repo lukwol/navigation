@@ -22,6 +22,7 @@ actual class ScreensController actual constructor(startRoute: String) {
      */
     val routes get() = routesStack.map(RouteWithArgs::route)
 
+    @Suppress("NOTHING_TO_INLINE", "KotlinRedundantDiagnosticSuppress")
     actual inline fun <Args> push(route: String, args: Args) {
         routesStack += RouteWithArgs(route, args)
     }

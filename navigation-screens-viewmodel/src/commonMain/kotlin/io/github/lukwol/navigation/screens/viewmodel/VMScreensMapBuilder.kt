@@ -15,8 +15,6 @@ import io.github.lukwol.navigation.screens.ScreensMapBuilder
  * using `ViewModelStore` and cancels [ViewModel.coroutineScope] whenever screen or window is disposed.
  *
  * Android implementation relies on built in solutions from Google **Lifecycle* framework.
- *
- * @see ScreensNavigation
  */
 expect class VMScreensMapBuilder {
 
@@ -55,7 +53,7 @@ expect class VMScreensMapBuilder {
 }
 
 /**
- * Implementation forwarded from [ScreensNavigation]
+ * Implementation forwarded from ScreensNavigation
  * which does not involve [ViewModel] initialization.
  *
  * @see ScreensMapBuilder.screen
@@ -66,7 +64,7 @@ inline fun <reified Args> VMScreensMapBuilder.screen(
 ) = screensMapBuilder.screen(route, content)
 
 /**
- * Implementation forwarded from [ScreensNavigation] that does not pass any arguments
+ * Implementation forwarded from ScreensNavigation that does not pass any arguments
  * and does not involve [ViewModel] initialization.
  *
  * @see ScreensMapBuilder.screen

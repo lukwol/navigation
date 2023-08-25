@@ -3,7 +3,6 @@ package io.github.lukwol.navigation.screens
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 actual open class ScreensMapBuilder(

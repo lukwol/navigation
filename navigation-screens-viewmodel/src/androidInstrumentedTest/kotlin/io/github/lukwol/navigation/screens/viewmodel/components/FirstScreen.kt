@@ -10,7 +10,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import io.github.lukwol.navigation.screens.LocalScreensController
 import io.github.lukwol.navigation.screens.viewmodel.ViewModel
-import io.github.lukwol.viewmodel.navigation.screens.viewmodel.TestRoutes
+import io.github.lukwol.navigation.screens.viewmodel.data.TestRoutes
 
 class FirstScreenViewModel : ViewModel() {
     var text by mutableStateOf("")

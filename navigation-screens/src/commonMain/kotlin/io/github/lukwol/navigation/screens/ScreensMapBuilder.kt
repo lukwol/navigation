@@ -6,8 +6,6 @@ import androidx.compose.runtime.Composable
  * Builds screens navigation map.
  *
  * Has separate implementations for Android and non Android targets.
- *
- * @see ScreensNavigation
  */
 expect open class ScreensMapBuilder {
 

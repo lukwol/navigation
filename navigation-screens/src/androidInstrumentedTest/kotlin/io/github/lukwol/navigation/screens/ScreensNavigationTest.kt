@@ -11,7 +11,6 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
-import java.lang.IllegalArgumentException
 import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {

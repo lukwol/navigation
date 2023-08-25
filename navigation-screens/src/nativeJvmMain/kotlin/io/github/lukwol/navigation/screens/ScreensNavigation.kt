@@ -1,5 +1,6 @@
 package io.github.lukwol.navigation.screens
 
+import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.remember
@@ -14,13 +15,14 @@ actual fun ScreensNavigation(
 
     val screensMap = remember { mapBuilder.build() }
     val screensController = remember { ScreensController(startRoute) }
-    val routesWithArguments = screensController.routesStack
 
     CompositionLocalProvider(
         LocalScreensController provides screensController,
     ) {
-        ChangeScreen(
-            route = routesWithArguments.last(),
+        val routeWithArgs = screensController.routesStack.last()
+
+        Crossfade(
+            targetState = routeWithArgs,
         ) { (route, args) ->
             screensMap.getValue(route)(args)
         }

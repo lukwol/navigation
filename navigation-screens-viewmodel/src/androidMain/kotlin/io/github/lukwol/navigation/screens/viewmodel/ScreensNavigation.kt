@@ -8,7 +8,9 @@ actual fun ScreensNavigation(
     startRoute: String,
     builder: VMScreensMapBuilder.() -> Unit,
 ) {
-    BasicScreensNavigation(startRoute) {
+    BasicScreensNavigation(
+        startRoute = startRoute,
+    ) {
         builder(VMScreensMapBuilder(this))
     }
 }

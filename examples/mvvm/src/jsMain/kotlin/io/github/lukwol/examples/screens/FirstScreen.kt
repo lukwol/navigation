@@ -1,8 +1,6 @@
 package io.github.lukwol.examples.screens
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import io.github.lukwol.examples.AppRoutes
 import io.github.lukwol.navigation.screens.LocalScreensController
 import org.jetbrains.compose.web.attributes.placeholder

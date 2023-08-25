@@ -1,4 +1,4 @@
-package io.github.lukwol.viewmodel.navigation.screens.viewmodel
+package io.github.lukwol.navigation.screens.viewmodel.data
 
 object TestRoutes {
     const val FirstScreen = "first-screen"

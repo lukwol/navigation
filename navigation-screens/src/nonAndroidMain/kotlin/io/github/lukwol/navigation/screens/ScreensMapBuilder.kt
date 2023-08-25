@@ -10,7 +10,7 @@ actual open class ScreensMapBuilder {
      */
     val screensMap = mutableMapOf<String, @Composable (Any?) -> Unit>()
 
-    @Suppress("UNCHECKED_CAST")
+    @Suppress("UNCHECKED_CAST", "NOTHING_TO_INLINE", "KotlinRedundantDiagnosticSuppress")
     actual inline fun <Args> screen(
         route: String,
         noinline content: @Composable (args: Args?) -> Unit,

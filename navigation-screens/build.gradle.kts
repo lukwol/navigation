@@ -18,7 +18,7 @@ kotlin {
     }
 
     js(IR) {
-        moduleName = BuildConstants.Modules.navigationScreens
+        moduleName = BuildConstants.Modules.NavigationScreens
         browser()
     }
 
@@ -36,15 +36,28 @@ kotlin {
             }
         }
 
-        create("nonJsMain") {
+        getByName("androidMain") {
+            dependencies {
+                implementation(compose.animation)
+                implementation(libs.android.navigation.compose)
+                implementation(libs.kotlin.serialization.json)
+            }
+        }
+
+        create("nativeMain") {
             dependsOn(getByName("commonMain"))
-            getByName("jvmMain").dependsOn(this)
-            getByName("androidMain").dependsOn(this)
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
             getByName("macosArm64Main").dependsOn(this)
             getByName("macosX64Main").dependsOn(this)
+        }
+
+        create("nonJsMain") {
+            dependsOn(getByName("commonMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("androidMain").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
             dependencies {
                 implementation(compose.animation)
             }
@@ -54,18 +67,16 @@ kotlin {
             dependsOn(getByName("commonMain"))
             getByName("jvmMain").dependsOn(this)
             getByName("jsMain").dependsOn(this)
-            getByName("iosX64Main").dependsOn(this)
-            getByName("iosArm64Main").dependsOn(this)
-            getByName("iosSimulatorArm64Main").dependsOn(this)
-            getByName("macosArm64Main").dependsOn(this)
-            getByName("macosX64Main").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
         }
 
-        getByName("androidMain") {
-            dependsOn(getByName("commonMain"))
+        create("nativeJvmMain") {
+            dependsOn(getByName("nonAndroidMain"))
+            dependsOn(getByName("nonJsMain"))
+            getByName("jvmMain").dependsOn(this)
+            getByName("nativeMain").dependsOn(this)
             dependencies {
-                implementation(libs.android.navigation.compose)
-                implementation(libs.kotlin.serialization.json)
+                implementation(compose.animation)
             }
         }
 
@@ -105,7 +116,7 @@ kotlin {
 
 android {
     compileSdk = BuildConstants.Android.CompileSdk
-    namespace = BuildConstants.Modules.navigationScreens.Namespace
+    namespace = BuildConstants.Modules.NavigationScreens.Namespace
 
     defaultConfig {
         minSdk = BuildConstants.Android.MinSdk

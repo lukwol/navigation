@@ -8,7 +8,7 @@ import kotlinx.coroutines.cancel
 import io.github.lukwol.navigation.screens.ScreensNavigation as BasicScreensNavigation
 
 @Composable
-actual fun ScreensNavigation(
+fun ScreensNavigation(
     startRoute: String,
     builder: VMScreensMapBuilder.() -> Unit,
 ) {
