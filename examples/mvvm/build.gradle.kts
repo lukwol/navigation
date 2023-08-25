@@ -23,7 +23,7 @@ kotlin {
         getByName("commonMain") {
             dependencies {
                 implementation(compose.runtime)
-                implementation(projects.cmnavScreensVm)
+                implementation(projects.navigationScreensViewmodel)
             }
         }
 
@@ -112,7 +112,7 @@ kotlin {
     cocoapods {
         version = "1.0.0"
         summary = "Example iOS app with navigation utilizing View Models"
-        homepage = "https://github.com/lukwol/cmnav"
+        homepage = "https://github.com/lukwol/navigation"
         ios.deploymentTarget = BuildConstants.IOS.ExamplesDeploymentTarget
         podfile = project.file("iosApp/Podfile")
         framework {

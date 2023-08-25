@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "cmnav"
+rootProject.name = "navigation"
 
 pluginManagement {
     repositories {
@@ -17,9 +17,9 @@ dependencyResolutionManagement {
     }
 }
 
-include(":cmnav-screens")
-include(":cmnav-screens-vm")
-include(":cmnav-windows")
+include(":navigation-screens")
+include(":navigation-screens-viewmodel")
+include(":navigation-windows")
 
 include(":examples:basic")
 include(":examples:mvvm")

@@ -1,8 +1,8 @@
 package io.github.lukwol.examples.screens
 
 import androidx.compose.runtime.Composable
-import io.github.lukwol.cmnav.screens.LocalScreensController
 import io.github.lukwol.examples.AppRoutes
+import io.github.lukwol.navigation.screens.LocalScreensController
 import org.jetbrains.compose.web.attributes.placeholder
 import org.jetbrains.compose.web.css.padding
 import org.jetbrains.compose.web.css.paddingBottom

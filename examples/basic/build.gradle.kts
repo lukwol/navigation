@@ -24,7 +24,7 @@ kotlin {
         getByName("commonMain") {
             dependencies {
                 implementation(compose.runtime)
-                implementation(projects.cmnavScreens)
+                implementation(projects.navigationScreens)
                 implementation(libs.kotlin.serialization.json)
             }
         }
@@ -102,7 +102,7 @@ kotlin {
     cocoapods {
         version = "1.0.0"
         summary = "Example iOS app with basic navigation"
-        homepage = "https://github.com/lukwol/cmnav"
+        homepage = "https://github.com/lukwol/navigation"
         ios.deploymentTarget = BuildConstants.IOS.ExamplesDeploymentTarget
         podfile = project.file("iosApp/Podfile")
         framework {

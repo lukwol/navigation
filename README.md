@@ -1,6 +1,6 @@
-# cmnav
+# navigation
 
-[![check](https://github.com/lukwol/cmnav/actions/workflows/check.yml/badge.svg)](https://github.com/lukwol/cmnav/actions/workflows/check.yml)
+[![check](https://github.com/lukwol/navigation/actions/workflows/check.yml/badge.svg)](https://github.com/lukwol/navigation/actions/workflows/check.yml)
 
 Tiny library for easy navigation in [Compose Multiplatform](https://github.com/JetBrains/compose-jb/)
 applications.
@@ -13,19 +13,19 @@ Provides:
 
 ## Versions
 
-For each version of `cmnav` specific version of Compose Multiplatform is required
+For each version of `navigation` specific version of Compose Multiplatform is required
 
-| cmnav | compose-multiplatform |
-|:-----:|:---------------------:|
-| 0.1.0 |         1.4.1         |
+| navigation | compose-multiplatform |
+|:----------:|:---------------------:|
+|   0.1.0    |         1.4.3         |
 
 ## Installation
 
-Currently `cmnav` can be installed only via local Maven repository.
+Currently `navigation` can be installed only via local Maven repository.
 
 ### MavenLocal
 
-Step 1. Clone or download `cmnav` repository
+Step 1. Clone or download `navigation` repository
 
 Step 2. Build and publish to local Maven repository by running:
 
@@ -49,17 +49,17 @@ Step 4. Add the dependency:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("io.github.lukwol:cmnav-screens:0.1.0")
+    implementation("io.github.lukwol:navigation-screens:0.1.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("io.github.lukwol:cmnav-screens-vm:0.1.0")
+    implementation("io.github.lukwol:navigation-screens-viewmodel:0.1.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("io.github.lukwol:cmnav-windows:0.1.0")
+    implementation("io.github.lukwol:navigation-windows:0.1.0")
 }
 ```
 
 ## Usage
 
-Check out [examples](https://github.com/lukwol/cmnav/tree/main/examples/) for actual usage in the app.
+Check out [examples](https://github.com/lukwol/navigation/tree/main/examples/) for actual usage in the app.
 
 ### Build screens navigation
 
@@ -172,8 +172,8 @@ windowsController.close(AppRoutes.SecondWindowRoute)
 
 ## Documentation
 
-API Reference is available at https://lukwol.github.io/cmnav/
+API Reference is available at https://lukwol.github.io/navigation/
 
 ## Licensing
 
-Project is available under [MIT](https://github.com/lukwol/cmnav/blob/main/LICENSE) License.
+Project is available under [MIT](https://github.com/lukwol/navigation/blob/main/LICENSE) License.

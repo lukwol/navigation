@@ -6,9 +6,9 @@ object BuildConstants {
     const val JvmTarget = "11"
 
     object Modules {
-        const val CmnavScreens = "cmnav-screens"
-        const val CmnavScreensVm = "cmnav-screens-vm"
-        const val CmnavWindows = "cmnav-windows"
+        const val navigationScreens = "navigation-screens"
+        const val navigationScreensViewModel = "navigation-screens-viewmodel"
+        const val navigationWindows = "navigation-windows"
 
         val String.Namespace get() = "${Group}.${replace("-", ".")}"
     }
