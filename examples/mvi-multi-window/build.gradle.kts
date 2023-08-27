@@ -10,7 +10,6 @@ kotlin {
         getByName("jvmMain") {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                implementation(libs.coroutines.swing)
                 implementation(libs.koin.core)
                 implementation(libs.koin.compose)
                 implementation(projects.navigationScreensViewmodel)
