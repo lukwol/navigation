@@ -1,9 +1,8 @@
 package io.github.lukwol.navigation.screens
 
-import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -38,17 +37,16 @@ import androidx.compose.runtime.compositionLocalOf
  *
  * @see LocalScreensController
  */
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 expect fun ScreensNavigation(
     startRoute: String,
-    enterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+    enterTransition: (AnimatedContentTransitionScope<*>.() -> EnterTransition) =
         { fadeIn(animationSpec = tween(700)) },
-    exitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+    exitTransition: (AnimatedContentTransitionScope<*>.() -> ExitTransition) =
         { fadeOut(animationSpec = tween(700)) },
-    popEnterTransition: (AnimatedContentScope<*>.() -> EnterTransition) =
+    popEnterTransition: (AnimatedContentTransitionScope<*>.() -> EnterTransition) =
         enterTransition,
-    popExitTransition: (AnimatedContentScope<*>.() -> ExitTransition) =
+    popExitTransition: (AnimatedContentTransitionScope<*>.() -> ExitTransition) =
         exitTransition,
     builder: ScreensMapBuilder.() -> Unit,
 )

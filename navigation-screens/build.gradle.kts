@@ -1,5 +1,4 @@
 import BuildConstants.Modules.Namespace
-import org.jetbrains.compose.ExperimentalComposeLibrary
 
 plugins {
     alias(libs.plugins.kotlin.multiplatform)
@@ -80,22 +79,18 @@ kotlin {
         getByName("jvmTest") {
             dependencies {
                 implementation(compose.desktop.currentOs)
-                @OptIn(ExperimentalComposeLibrary::class)
-                implementation(compose.uiTestJUnit4)
+                implementation(compose.desktop.uiTestJUnit4)
                 implementation(compose.material)
                 implementation(libs.kotlin.test)
-                implementation(libs.coroutines.test)
             }
         }
 
         getByName("androidInstrumentedTest") {
             dependencies {
                 implementation(compose.ui)
-                @OptIn(ExperimentalComposeLibrary::class)
-                implementation(compose.uiTestJUnit4)
+                implementation(compose.desktop.uiTestJUnit4)
                 implementation(compose.material)
                 implementation(libs.kotlin.test)
-                implementation(libs.coroutines.test)
                 implementation(libs.android.test.core)
                 implementation(libs.android.test.runner)
             }

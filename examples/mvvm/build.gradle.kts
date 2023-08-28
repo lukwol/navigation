@@ -119,6 +119,5 @@ kotlin {
             baseName = "iosMain"
             isStatic = true
         }
-        extraSpecAttributes["resources"] = "['src/commonMain/resources/**', 'src/iosMain/resources/**']"
     }
 }

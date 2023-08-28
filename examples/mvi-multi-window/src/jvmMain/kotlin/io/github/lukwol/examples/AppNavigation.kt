@@ -1,6 +1,5 @@
 package io.github.lukwol.examples
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.Window
 import io.github.lukwol.examples.screens.first.FirstScreen
@@ -13,7 +12,6 @@ import io.github.lukwol.navigation.windows.WindowsNavigation
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation() {
     WindowsNavigation(
