@@ -17,7 +17,6 @@ allprojects {
         plugin("org.jmailen.kotlinter")
     }
 
-
     group = BuildConstants.Group
     version = BuildConstants.Version
 
@@ -26,7 +25,8 @@ allprojects {
             jvmTarget = BuildConstants.JvmTarget
 
             if (project.findProperty("enableComposeCompilerReports") == "true") {
-                val destinationDir = project.buildDir.absolutePath + "/compose_metrics"
+                val destinationDir =
+                    project.layout.buildDirectory.asFile.get().absolutePath + "/compose_metrics"
                 freeCompilerArgs += listOf(
                     "-P",
                     "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=$destinationDir",

@@ -1,22 +1,20 @@
 package io.github.lukwol.navigation.screens
 
-import androidx.compose.animation.AnimatedContentScope
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.animation.EnterTransition
 import androidx.compose.animation.ExitTransition
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 actual fun ScreensNavigation(
     startRoute: String,
-    enterTransition: (AnimatedContentScope<*>.() -> EnterTransition),
-    exitTransition: (AnimatedContentScope<*>.() -> ExitTransition),
-    popEnterTransition: (AnimatedContentScope<*>.() -> EnterTransition),
-    popExitTransition: (AnimatedContentScope<*>.() -> ExitTransition),
+    enterTransition: (AnimatedContentTransitionScope<*>.() -> EnterTransition),
+    exitTransition: (AnimatedContentTransitionScope<*>.() -> ExitTransition),
+    popEnterTransition: (AnimatedContentTransitionScope<*>.() -> EnterTransition),
+    popExitTransition: (AnimatedContentTransitionScope<*>.() -> ExitTransition),
     builder: ScreensMapBuilder.() -> Unit,
 ) {
     val navController = rememberNavController()
@@ -26,6 +24,10 @@ actual fun ScreensNavigation(
     ) {
         NavHost(
             navController = navController,
+            enterTransition = enterTransition,
+            exitTransition = exitTransition,
+            popEnterTransition = popEnterTransition,
+            popExitTransition = popExitTransition,
             startDestination = appendNavArgs(startRoute),
         ) {
             val mapBuilder = ScreensMapBuilder(this)

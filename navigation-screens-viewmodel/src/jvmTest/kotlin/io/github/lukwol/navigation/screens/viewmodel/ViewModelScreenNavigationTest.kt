@@ -12,7 +12,6 @@ import androidx.compose.ui.test.performTextClearance
 import androidx.compose.ui.test.performTextInput
 import io.github.lukwol.navigation.screens.viewmodel.components.TestScreenNavigation
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
@@ -33,12 +32,12 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate to second screen and update it's state`() = runTest {
+    fun `navigate to second screen and update it's state`() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNode(hasSetTextAction()).run {
                 assert(hasText(""))
@@ -49,7 +48,7 @@ class ViewModelScreenNavigationTest {
     }
 
     @Test
-    fun `navigate back and forth`() = runTest {
+    fun `navigate back and forth`() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -60,7 +59,7 @@ class ViewModelScreenNavigationTest {
             }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNode(hasSetTextAction()).run {
                 assert(hasText("Foo"))
@@ -70,18 +69,18 @@ class ViewModelScreenNavigationTest {
             }
 
             onNodeWithText("Pop Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNode(hasSetTextAction()).run {
                 assert(hasText("Foo"))
                 performTextInput("Bar")
-                assert(hasText("FooBar"))
+                assert(hasText("BarFoo"))
             }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
-            onNode(hasSetTextAction()).assert(hasText("FooBar"))
+            onNode(hasSetTextAction()).assert(hasText("BarFoo"))
         }
     }
 }

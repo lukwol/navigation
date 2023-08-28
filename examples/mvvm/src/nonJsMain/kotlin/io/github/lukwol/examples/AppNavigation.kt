@@ -1,27 +1,25 @@
 package io.github.lukwol.examples
 
-import androidx.compose.animation.AnimatedContentScope
-import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.AnimatedContentTransitionScope
 import androidx.compose.runtime.Composable
 import io.github.lukwol.navigation.screens.viewmodel.ScreensNavigation
 import io.github.lukwol.navigation.screens.viewmodel.VMScreensMapBuilder
 
-@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun AppNavigation() {
     ScreensNavigation(
         startRoute = AppRoutes.FirstScreenRoute,
         enterTransition = {
-            slideIntoContainer(AnimatedContentScope.SlideDirection.Left)
+            slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
         },
         exitTransition = {
-            slideOutOfContainer(AnimatedContentScope.SlideDirection.Left)
+            slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
         },
         popEnterTransition = {
-            slideIntoContainer(AnimatedContentScope.SlideDirection.Right)
+            slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
         },
         popExitTransition = {
-            slideOutOfContainer(AnimatedContentScope.SlideDirection.Right)
+            slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
         },
         builder = VMScreensMapBuilder::appNavigationContent,
     )

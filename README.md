@@ -2,7 +2,8 @@
 
 [![check](https://github.com/lukwol/navigation/actions/workflows/check.yml/badge.svg)](https://github.com/lukwol/navigation/actions/workflows/check.yml)
 
-Tiny library for easy navigation in [Compose Multiplatform](https://github.com/JetBrains/compose-jb/)
+Tiny library for easy navigation
+in [Compose Multiplatform](https://github.com/JetBrains/compose-jb/)
 applications.
 
 Provides:
@@ -17,7 +18,7 @@ For each version of `navigation` specific version of Compose Multiplatform is re
 
 | navigation | compose-multiplatform |
 |:----------:|:---------------------:|
-|   0.1.0    |         1.4.3         |
+|   1.0.0    |         1.5.0         |
 
 ## Installation
 
@@ -49,17 +50,19 @@ Step 4. Add the dependency:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("io.github.lukwol:navigation-screens:0.1.0")
+    implementation("io.github.lukwol:navigation-screens:1.0.0")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("io.github.lukwol:navigation-screens-viewmodel:0.1.0")
+    implementation("io.github.lukwol:navigation-screens-viewmodel:1.0.0")
     // Windows navigation - jvm only, for desktop application
-    implementation("io.github.lukwol:navigation-windows:0.1.0")
+    implementation("io.github.lukwol:navigation-windows:1.0.0")
 }
 ```
 
-## Usage
+## Quick Start
 
-Check out [examples](https://github.com/lukwol/navigation/tree/main/examples/) for actual usage in the app.
+Use [`app-template`](https://github.com/lukwol/app-template/) for creating new project.
+
+Alternatively check out [examples](https://github.com/lukwol/navigation/tree/main/examples/).
 
 ### Build screens navigation
 

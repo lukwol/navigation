@@ -1,11 +1,9 @@
 package io.github.lukwol.navigation.screens.viewmodel.components
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.runtime.Composable
 import io.github.lukwol.navigation.screens.viewmodel.ScreensNavigation
 import io.github.lukwol.navigation.screens.viewmodel.data.TestRoutes
 
-@OptIn(ExperimentalAnimationApi::class)
 @Suppress("TestFunctionName")
 @Composable
 fun TestScreenNavigation() {

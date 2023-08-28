@@ -18,7 +18,6 @@ kotlin {
         getByName("jvmTest") {
             dependencies {
                 implementation(libs.kotlin.test)
-                implementation(libs.coroutines.test)
             }
         }
     }

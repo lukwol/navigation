@@ -2,14 +2,12 @@
 
 package io.github.lukwol.navigation.screens
 
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import io.github.lukwol.navigation.screens.components.TestScreenNavigation
 import io.github.lukwol.navigation.screens.data.TestRoutes
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 import kotlin.test.assertFailsWith
@@ -27,7 +25,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun navigateToSecondScreen() = runTest {
+    fun navigateToSecondScreen() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -35,7 +33,7 @@ class ScreensNavigationTest {
             onNodeWithText("Foo").assertDoesNotExist()
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("Push Second Screen").assertDoesNotExist()
             onNodeWithText("Foo").assertExists()
@@ -43,17 +41,17 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen`() = runTest {
+    fun `navigate to third screen`() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("Foo").assertExists()
 
             onNodeWithText("Push Third Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("Foo").assertDoesNotExist()
             onNodeWithText("text = Bar, number = 42").assertExists()
@@ -61,19 +59,19 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to second screen`() = runTest {
+    fun `navigate to third screen then pop to second screen`() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("Push Third Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("text = Bar, number = 42").assertExists()
             onNodeWithText("Pop Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("text = Bar, number = 42").assertDoesNotExist()
             onNodeWithText("Foo").assertExists()
@@ -81,26 +79,25 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to first screen`() = runTest {
+    fun `navigate to third screen then pop to first screen`() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
             onNodeWithText("Push Second Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("Push Third Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("text = Bar, number = 42").assertExists()
             onNodeWithText("Pop To First Screen").performClick()
-            awaitIdle()
+            waitForIdle()
 
             onNodeWithText("text = Bar, number = 42").assertDoesNotExist()
             onNodeWithText("Push Second Screen").assertExists()
         }
     }
 
-    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun `missing start route screen`() {
         assertFailsWith<NoSuchElementException> {
@@ -114,7 +111,6 @@ class ScreensNavigationTest {
         }
     }
 
-    @OptIn(ExperimentalAnimationApi::class)
     @Test
     fun `empty navigation graph`() {
         assertFailsWith<NoSuchElementException> {
