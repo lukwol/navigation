@@ -2,8 +2,10 @@ import org.gradle.api.JavaVersion.VERSION_17
 
 object BuildConstants {
     const val Group = "io.github.lukwol"
-    const val Version = "1.0.0"
+    const val VersionCode = 1
+    const val VersionName = "1.0.0"
     const val JvmTarget = "17"
+    val JavaVersion = VERSION_17
 
     object Modules {
         const val NavigationScreens = "navigation-screens"
@@ -14,13 +16,11 @@ object BuildConstants {
     }
 
     object Android {
-        const val CompileSdk = 34
-        const val MinSdk = 24
-        val JavaVersion = VERSION_17
-        const val TestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-    }
+        const val ApplicationId = "$Group.app.android"
+        const val MinSdk = 29
+        const val TargetSdk = 34
+        const val CompileSdk = TargetSdk
 
-    object IOS {
-        const val ExamplesDeploymentTarget = "15.2"
+        const val TestInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }

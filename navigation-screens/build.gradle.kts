@@ -31,7 +31,7 @@ kotlin {
         }
         getByName("androidMain") {
             dependencies {
-                implementation(libs.android.navigation.compose)
+                implementation(libs.compose.navigation.android)
                 implementation(libs.kotlin.serialization.json)
             }
         }
@@ -48,20 +48,20 @@ kotlin {
         getByName("commonTest") {
             dependencies {
                 implementation(kotlin("test"))
+                implementation(libs.kotlin.serialization.json)
+                implementation(compose.material3)
             }
         }
         create("nonNativeTest") {
             dependsOn(getByName("commonTest"))
             dependencies {
-                implementation(libs.kotlin.serialization.json)
-                implementation(compose.material3)
                 implementation(compose.desktop.uiTestJUnit4)
             }
         }
         getByName("androidInstrumentedTest") {
             dependsOn(getByName("nonNativeTest"))
             dependencies {
-                implementation(libs.android.test.runner)
+                implementation(libs.test.runner.android)
             }
         }
         create("desktopTest") {
@@ -85,11 +85,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = BuildConstants.Android.JavaVersion
-        targetCompatibility = BuildConstants.Android.JavaVersion
+        sourceCompatibility = BuildConstants.JavaVersion
+        targetCompatibility = BuildConstants.JavaVersion
     }
 
     dependencies {
-        debugImplementation(libs.android.test.ui.manifest.compose)
+        debugImplementation(libs.compose.ui.test.manifest.android)
     }
 }

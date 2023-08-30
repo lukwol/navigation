@@ -30,8 +30,8 @@ kotlin {
 
         getByName("androidMain") {
             dependencies {
-                implementation(libs.android.lifecycle.viewmodel)
-                implementation(libs.android.navigation.compose)
+                implementation(libs.lifecycle.viewmodel.android)
+                implementation(libs.compose.navigation.android)
                 implementation(libs.kotlin.serialization.json)
             }
         }
@@ -68,7 +68,7 @@ kotlin {
 
         getByName("jvmTest") {
             dependencies {
-                implementation(libs.kotlin.test)
+                implementation(kotlin("test"))
                 implementation(compose.desktop.currentOs)
                 implementation(compose.desktop.uiTestJUnit4)
             }
@@ -79,9 +79,8 @@ kotlin {
                 implementation(compose.ui)
                 implementation(compose.desktop.uiTestJUnit4)
                 implementation(compose.material)
-                implementation(libs.kotlin.test)
-                implementation(libs.android.test.core)
-                implementation(libs.android.test.runner)
+                implementation(kotlin("test"))
+                implementation(libs.test.runner.android)
             }
         }
     }
@@ -97,11 +96,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = BuildConstants.Android.JavaVersion
-        targetCompatibility = BuildConstants.Android.JavaVersion
+        sourceCompatibility = BuildConstants.JavaVersion
+        targetCompatibility = BuildConstants.JavaVersion
     }
 
     dependencies {
-        debugImplementation(libs.android.test.ui.manifest.compose)
+        debugImplementation(libs.compose.ui.test.manifest.android)
     }
 }

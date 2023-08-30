@@ -18,7 +18,7 @@ allprojects {
     }
 
     group = BuildConstants.Group
-    version = BuildConstants.Version
+    version = BuildConstants.VersionName
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
