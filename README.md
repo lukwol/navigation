@@ -53,16 +53,14 @@ dependencies {
     implementation("io.github.lukwol:navigation-screens:1.0.0")
     // Screens navigation with ViewModel support - multiplatform
     implementation("io.github.lukwol:navigation-screens-viewmodel:1.0.0")
-    // Windows navigation - jvm only, for desktop application
+    // Windows navigation - desktop application only
     implementation("io.github.lukwol:navigation-windows:1.0.0")
 }
 ```
 
-## Quick Start
+## Usage
 
-Use [`app-template`](https://github.com/lukwol/app-template/) for creating new project.
-
-Alternatively check out [examples](https://github.com/lukwol/navigation/tree/main/examples/).
+Bootstrap new project with handy [`app-template`](https://github.com/lukwol/app-template/).
 
 ### Build screens navigation
 
@@ -82,11 +80,23 @@ ScreensNavigation(
 }
 ```
 
-Screens navigation with `ViewModel`:
+Screens navigation with `ViewModel` and custom animations:
 
 ```kotlin
 ScreensNavigation(
-    startRoute = AppRoutes.FirstScreenRoute
+    startRoute = AppRoutes.FirstScreenRoute,
+    enterTransition = {
+        slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+    },
+    exitTransition = {
+        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Left)
+    },
+    popEnterTransition = {
+        slideIntoContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+    },
+    popExitTransition = {
+        slideOutOfContainer(AnimatedContentTransitionScope.SlideDirection.Right)
+    },
 ) {
     screen(
         route = AppRoutes.FirstScreenRoute,
