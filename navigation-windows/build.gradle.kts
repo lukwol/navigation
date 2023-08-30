@@ -9,13 +9,14 @@ kotlin {
     jvm()
 
     sourceSets {
-        getByName("jvmMain") {
+        create("desktopMain") {
+            getByName("jvmMain").dependsOn(this)
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
         }
-
-        getByName("jvmTest") {
+        create("desktopTest") {
+            getByName("jvmTest").dependsOn(this)
             dependencies {
                 implementation(kotlin("test"))
             }
