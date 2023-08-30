@@ -15,17 +15,9 @@ kotlin {
         publishLibraryVariants("release")
     }
 
-    js(IR) {
-        moduleName = BuildConstants.Modules.NavigationScreensViewModel
-        browser()
-    }
-
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
-    macosArm64()
-    macosX64()
 
     sourceSets {
         getByName("commonMain") {
@@ -49,8 +41,6 @@ kotlin {
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
-            getByName("macosArm64Main").dependsOn(this)
-            getByName("macosX64Main").dependsOn(this)
         }
 
         create("nonJsMain") {
@@ -66,7 +56,6 @@ kotlin {
         create("nonAndroidMain") {
             dependsOn(getByName("commonMain"))
             getByName("jvmMain").dependsOn(this)
-            getByName("jsMain").dependsOn(this)
             getByName("nativeMain").dependsOn(this)
         }
 

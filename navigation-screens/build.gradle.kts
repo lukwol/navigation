@@ -16,17 +16,9 @@ kotlin {
         publishLibraryVariants("release")
     }
 
-    js(IR) {
-        moduleName = BuildConstants.Modules.NavigationScreens
-        browser()
-    }
-
     iosX64()
     iosArm64()
     iosSimulatorArm64()
-
-    macosArm64()
-    macosX64()
 
     sourceSets {
         getByName("commonMain") {
@@ -48,8 +40,6 @@ kotlin {
             getByName("iosX64Main").dependsOn(this)
             getByName("iosArm64Main").dependsOn(this)
             getByName("iosSimulatorArm64Main").dependsOn(this)
-            getByName("macosArm64Main").dependsOn(this)
-            getByName("macosX64Main").dependsOn(this)
         }
 
         create("nonJsMain") {
@@ -65,7 +55,6 @@ kotlin {
         create("nonAndroidMain") {
             dependsOn(getByName("commonMain"))
             getByName("jvmMain").dependsOn(this)
-            getByName("jsMain").dependsOn(this)
             getByName("nativeMain").dependsOn(this)
         }
 
@@ -93,14 +82,6 @@ kotlin {
                 implementation(libs.kotlin.test)
                 implementation(libs.android.test.core)
                 implementation(libs.android.test.runner)
-            }
-        }
-
-        getByName("jsTest") {
-            dependencies {
-                implementation(libs.kotlin.test)
-                implementation(compose.html.core)
-                implementation(compose.html.testUtils)
             }
         }
     }
