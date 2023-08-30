@@ -1,8 +1,8 @@
 package io.github.lukwol.navigation.screens.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import io.github.lukwol.navigation.screens.LocalScreensController
 import io.github.lukwol.navigation.screens.data.TestRoutes
@@ -10,20 +10,20 @@ import io.github.lukwol.navigation.screens.data.ThirdScreenArgs
 
 @Suppress("TestFunctionName")
 @Composable
-fun ThirdScreen(args: ThirdScreenArgs) {
+fun SecondScreen(args: String) {
     val screensController = LocalScreensController.current
 
     Column {
-        Text(args.toString())
+        Text(args)
         Button(
-            onClick = { screensController.pop() },
+            onClick = {
+                screensController.push(
+                    TestRoutes.ThirdScreen,
+                    ThirdScreenArgs(text = "Bar", number = 42),
+                )
+            },
         ) {
-            Text("Pop Screen")
-        }
-        Button(
-            onClick = { screensController.pop(upToRoute = TestRoutes.FirstScreen) },
-        ) {
-            Text("Pop To First Screen")
+            Text("Push Third Screen")
         }
     }
 }

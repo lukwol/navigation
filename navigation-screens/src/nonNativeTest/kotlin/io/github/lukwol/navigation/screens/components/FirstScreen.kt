@@ -1,7 +1,7 @@
 package io.github.lukwol.navigation.screens.components
 
-import androidx.compose.material.Button
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import io.github.lukwol.navigation.screens.LocalScreensController
 import io.github.lukwol.navigation.screens.data.TestRoutes

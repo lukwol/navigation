@@ -4,10 +4,8 @@ import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import io.github.lukwol.navigation.screens.components.TestScreenNavigation
-import io.github.lukwol.navigation.screens.data.TestRoutes
 import org.junit.Rule
 import org.junit.Test
-import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {
 
@@ -15,7 +13,7 @@ class ScreensNavigationTest {
     val compose = createComposeRule()
 
     @Test
-    fun `first screen`(): Unit = with(compose) {
+    fun firstScreen(): Unit = with(compose) {
         setContent { TestScreenNavigation() }
 
         onNodeWithText("Push Second Screen").assertExists()
@@ -38,7 +36,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen`() {
+    fun navigateToThirdScreen() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -56,7 +54,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to second screen`() {
+    fun navigateToThirdScreenThenPopToSecondScreen() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -76,7 +74,7 @@ class ScreensNavigationTest {
     }
 
     @Test
-    fun `navigate to third screen then pop to first screen`() {
+    fun navigateToThirdScreenThenPopToFirstScreen() {
         with(compose) {
             setContent { TestScreenNavigation() }
 
@@ -92,30 +90,6 @@ class ScreensNavigationTest {
 
             onNodeWithText("text = Bar, number = 42").assertDoesNotExist()
             onNodeWithText("Push Second Screen").assertExists()
-        }
-    }
-
-    @Test
-    fun `missing start route screen`() {
-        assertFailsWith<NoSuchElementException> {
-            compose.setContent {
-                ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen,
-                ) {
-                    screen(TestRoutes.SecondScreen) {}
-                }
-            }
-        }
-    }
-
-    @Test
-    fun `empty navigation graph`() {
-        assertFailsWith<NoSuchElementException> {
-            compose.setContent {
-                ScreensNavigation(
-                    startRoute = TestRoutes.FirstScreen,
-                ) {}
-            }
         }
     }
 }

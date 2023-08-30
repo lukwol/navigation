@@ -10,6 +10,9 @@ plugins {
 }
 
 kotlin {
+    @Suppress("OPT_IN_USAGE")
+    targetHierarchy.default()
+
     jvm()
 
     androidTarget {
@@ -23,67 +26,52 @@ kotlin {
     sourceSets {
         getByName("commonMain") {
             dependencies {
-                implementation(compose.runtime)
+                implementation(compose.animation)
             }
         }
-
         getByName("androidMain") {
             dependencies {
-                implementation(compose.animation)
                 implementation(libs.android.navigation.compose)
                 implementation(libs.kotlin.serialization.json)
             }
         }
-
-        create("nativeMain") {
-            dependsOn(getByName("commonMain"))
-            getByName("iosX64Main").dependsOn(this)
-            getByName("iosArm64Main").dependsOn(this)
-            getByName("iosSimulatorArm64Main").dependsOn(this)
-        }
-
-        create("nonJsMain") {
-            dependsOn(getByName("commonMain"))
-            getByName("jvmMain").dependsOn(this)
-            getByName("androidMain").dependsOn(this)
-            getByName("nativeMain").dependsOn(this)
-            dependencies {
-                implementation(compose.animation)
-            }
-        }
-
         create("nonAndroidMain") {
             dependsOn(getByName("commonMain"))
-            getByName("jvmMain").dependsOn(this)
-            getByName("nativeMain").dependsOn(this)
         }
-
-        create("nativeJvmMain") {
+        create("desktopMain") {
+            getByName("jvmMain").dependsOn(this)
             dependsOn(getByName("nonAndroidMain"))
-            dependsOn(getByName("nonJsMain"))
-            getByName("jvmMain").dependsOn(this)
-            getByName("nativeMain").dependsOn(this)
         }
-
-        getByName("jvmTest") {
+        getByName("iosMain") {
+            dependsOn(getByName("nonAndroidMain"))
+        }
+        getByName("commonTest") {
             dependencies {
-                implementation(compose.desktop.currentOs)
-                implementation(compose.desktop.uiTestJUnit4)
-                implementation(compose.material)
-                implementation(libs.kotlin.test)
+                implementation(kotlin("test"))
             }
         }
-
-        getByName("androidInstrumentedTest") {
+        create("nonNativeTest") {
+            dependsOn(getByName("commonTest"))
             dependencies {
-                implementation(compose.ui)
+                implementation(libs.kotlin.serialization.json)
+                implementation(compose.material3)
                 implementation(compose.desktop.uiTestJUnit4)
-                implementation(compose.material)
-                implementation(libs.kotlin.test)
-                implementation(libs.android.test.core)
+            }
+        }
+        getByName("androidInstrumentedTest") {
+            dependsOn(getByName("nonNativeTest"))
+            dependencies {
                 implementation(libs.android.test.runner)
             }
         }
+        create("desktopTest") {
+            dependsOn(getByName("nonNativeTest"))
+            getByName("jvmTest").dependsOn(this)
+            dependencies {
+                implementation(compose.desktop.currentOs)
+            }
+        }
+        getByName("iosTest")
     }
 }
 

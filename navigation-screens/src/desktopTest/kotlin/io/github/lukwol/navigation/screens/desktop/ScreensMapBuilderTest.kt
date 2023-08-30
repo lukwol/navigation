@@ -1,5 +1,6 @@
-package io.github.lukwol.navigation.screens
+package io.github.lukwol.navigation.screens.desktop
 
+import io.github.lukwol.navigation.screens.ScreensMapBuilder
 import io.github.lukwol.navigation.screens.data.TestRoutes
 import kotlin.test.BeforeTest
 import kotlin.test.Test
