@@ -1,7 +1,6 @@
 package io.github.lukwol.navigation.screens.viewmodel.components
 
 import androidx.compose.runtime.Composable
-import androidx.lifecycle.viewmodel.compose.viewModel
 import io.github.lukwol.navigation.screens.viewmodel.ScreensNavigation
 import io.github.lukwol.navigation.screens.viewmodel.data.TestRoutes
 
@@ -13,7 +12,7 @@ fun TestScreenNavigation() {
     ) {
         screen(
             route = TestRoutes.FirstScreen,
-            viewModelFactory = { viewModel<FirstScreenViewModel>() },
+            viewModelFactory = { firstViewModel() },
         ) { viewModel ->
             FirstScreen(viewModel)
         }
@@ -21,8 +20,7 @@ fun TestScreenNavigation() {
         screen(
             route = TestRoutes.SecondScreen,
             viewModelWithArgs = { args: String? ->
-                viewModel<SecondScreenViewModel>()
-                    .apply { text = args }
+                secondScreenViewModel().apply { text = args }
             },
         ) { viewModel ->
             SecondScreen(viewModel)

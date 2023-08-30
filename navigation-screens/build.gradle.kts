@@ -52,20 +52,20 @@ kotlin {
                 implementation(compose.material3)
             }
         }
-        create("nonNativeTest") {
+        create("composeUiTest") {
             dependsOn(getByName("commonTest"))
             dependencies {
                 implementation(compose.desktop.uiTestJUnit4)
             }
         }
         getByName("androidInstrumentedTest") {
-            dependsOn(getByName("nonNativeTest"))
+            dependsOn(getByName("composeUiTest"))
             dependencies {
                 implementation(libs.test.runner.android)
             }
         }
         create("desktopTest") {
-            dependsOn(getByName("nonNativeTest"))
+            dependsOn(getByName("composeUiTest"))
             getByName("jvmTest").dependsOn(this)
             dependencies {
                 implementation(compose.desktop.currentOs)

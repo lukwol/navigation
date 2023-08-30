@@ -1,19 +1,11 @@
 package io.github.lukwol.navigation.screens.viewmodel.components
 
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.material.TextField
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import io.github.lukwol.navigation.screens.LocalScreensController
-import io.github.lukwol.navigation.screens.viewmodel.ViewModel
-
-class SecondScreenViewModel : ViewModel() {
-    var text: String? by mutableStateOf(null)
-}
 
 @Suppress("TestFunctionName")
 @Composable
