@@ -89,6 +89,13 @@ android {
         targetCompatibility = BuildConstants.JavaVersion
     }
 
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+    }
+
     dependencies {
         debugImplementation(libs.compose.ui.test.manifest.android)
     }
