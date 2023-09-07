@@ -3,7 +3,7 @@ kotlin = "1.9.10"
 dokka = "1.9.0"
 compose = "1.5.1"
 compose-compiler = "1.5.3"
-koin = "3.4.3"
+koin = "3.4.6"
 coroutines = "1.7.3"
 android = "8.1.1"
 dependency-updates = "0.47.0"
@@ -16,12 +16,9 @@ android-test-runner = "1.5.2"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
-android-application = { id = "com.android.application", version.ref = "android" }
 android-library = { id = "com.android.library", version.ref = "android" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "3.16.0" }
 dependency-updates = { id = "com.github.ben-manes.versions", version = "0.47.0" }
@@ -32,9 +29,9 @@ coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", ve
 coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
 coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version = "1.0.4" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+koin-compose = { module = "io.insert-koin:koin-compose", version = "1.0.4" }
+koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version = "3.4.6" }
 lifecycle-viewmodel-android = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.6.1" }
 test-runner-android = { module = "androidx.test:runner", version = "1.5.2" }
 compose-navigation-android = { module = "androidx.navigation:navigation-compose", version = "2.7.1" }

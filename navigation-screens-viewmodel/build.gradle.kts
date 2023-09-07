@@ -5,7 +5,6 @@ plugins {
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.android.library)
     alias(libs.plugins.dokka)
-    id("maven-publish")
 }
 
 kotlin {
