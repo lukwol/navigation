@@ -1,5 +1,6 @@
 # navigation
 
+[![maven-central](https://img.shields.io/badge/Maven-Central-download.svg?style=flat-square)](https://central.sonatype.com/namespace/io.github.lukwol)
 [![check](https://github.com/lukwol/navigation/actions/workflows/check.yml/badge.svg)](https://github.com/lukwol/navigation/actions/workflows/check.yml)
 
 Tiny library for easy navigation
@@ -22,30 +23,16 @@ For each version of `navigation` specific version of Compose Multiplatform is re
 
 ## Installation
 
-Currently `navigation` can be installed only via local Maven repository.
-
-### MavenLocal
-
-Step 1. Clone or download `navigation` repository
-
-Step 2. Build and publish to local Maven repository by running:
-
-```shell
-./gradlew publishToMavenLocal
-```
-
-Step 3. Add the local Maven repository to `build.gradle.kts` at the end of repositories:
+Add `mavenCentral` and `google` repositories:
 
 ```kotlin
-allprojects {
-    repositories {
-        // ...
-        mavenLocal()
-    }
+repositories {
+    mavenCentral()
+    google()
 }
 ```
 
-Step 4. Add the dependency:
+Declare dependencies in `build.gradle.kts`:
 
 ```kotlin
 dependencies {

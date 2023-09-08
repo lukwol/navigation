@@ -14,12 +14,78 @@ plugins {
 
 subprojects {
     apply {
+        plugin("org.jetbrains.dokka")
         plugin("org.jmailen.kotlinter")
         plugin("maven-publish")
+        plugin("signing")
     }
 
     group = BuildConstants.Group
     version = BuildConstants.VersionName
+
+    extensions.configure<PublishingExtension> {
+        repositories {
+            maven {
+                name = "Staging"
+                setUrl("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                credentials {
+                    username = findProperty("ossrhUsername").toString()
+                    password = findProperty("ossrhPassword").toString()
+                }
+            }
+            maven {
+                name = "Snapshots"
+                setUrl("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+                credentials {
+                    username = findProperty("ossrhUsername").toString()
+                    password = findProperty("ossrhPassword").toString()
+                }
+            }
+        }
+
+        extensions.configure<SigningExtension> {
+            useInMemoryPgpKeys(
+                /* defaultKeyId = */ findProperty("keyId").toString(),
+                /* defaultSecretKey = */ findProperty("keyBase64").toString(),
+                /* defaultPassword = */ findProperty("keyPassword").toString()
+            )
+        }
+
+        val javadocJar by tasks.registering(Jar::class) {
+            archiveClassifier.set("javadoc")
+        }
+
+        publications {
+            withType<MavenPublication> {
+//                artifact(javadocJar)
+
+                pom {
+                    name.set(project.name)
+                    description.set("Simple navigation in Compose Multiplatform apps")
+                    url.set("https://github.com/lukwol/navigation")
+
+                    licenses {
+                        license {
+                            name.set("MIT License")
+                            url.set("https://github.com/lukwol/navigation/blob/main/LICENSE")
+                        }
+                    }
+                    scm {
+                        url.set("https://github.com/lukwol/navigation")
+                        connection.set("scm:git:git://github.com/lukwol/navigation.git")
+                    }
+                    developers {
+                        developer {
+                            name.set("Lukasz Wolanczyk")
+                            url.set("https://github.com/lukwol")
+                        }
+                    }
+                }
+
+                the<SigningExtension>().sign(this)
+            }
+        }
+    }
 
     tasks.withType<KotlinCompile> {
         compilerOptions {
