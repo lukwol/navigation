@@ -1,44 +1,21 @@
 [versions]
 kotlin = "1.9.10"
-dokka = "1.9.0"
-compose = "1.5.1"
+compose = "1.5.2"
 compose-compiler = "1.5.3"
-koin = "3.4.6"
-coroutines = "1.7.3"
-android = "8.1.1"
-dependency-updates = "0.47.0"
-kotlinter = "3.16.0"
-serialization-json = "1.6.0"
-android-lifecycle = "2.6.1"
-android-activity-compose = "1.7.2"
-android-navigation = "2.7.1"
-android-test-runner = "1.5.2"
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
-dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+dokka = { id = "org.jetbrains.dokka", version = "1.9.0" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
-android-library = { id = "com.android.library", version.ref = "android" }
+android-library = { id = "com.android.library", version = "8.1.1" }
 kotlinter = { id = "org.jmailen.kotlinter", version = "3.16.0" }
-dependency-updates = { id = "com.github.ben-manes.versions", version = "0.47.0" }
+dependency-updates = { id = "com.github.ben-manes.versions", version = "0.48.0" }
 
 [libraries]
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version = "1.6.0" }
-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
-koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
-koin-compose = { module = "io.insert-koin:koin-compose", version = "1.0.4" }
-koin-android-compose = { module = "io.insert-koin:koin-androidx-compose", version = "3.4.6" }
-lifecycle-viewmodel-android = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.6.1" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version = "1.7.3" }
+lifecycle-viewmodel-android = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version = "2.6.2" }
 test-runner-android = { module = "androidx.test:runner", version = "1.5.2" }
-compose-navigation-android = { module = "androidx.navigation:navigation-compose", version = "2.7.1" }
-compose-activity-android = { module = "androidx.activity:activity-compose", version = "1.7.2" }
-compose-material3-android = { module = "androidx.compose.material3:material3", version = "1.1.1" }
-compose-foundation-android = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
-compose-ui-android = { module = "androidx.compose.ui:ui", version.ref = "compose" }
-compose-preview-android = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose" }
-compose-ui-tooling-android = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
-compose-ui-test-manifest-android = { module = "androidx.compose.ui:ui-test-manifest", version = "1.5.0" }
+compose-navigation-android = { module = "androidx.navigation:navigation-compose", version = "2.7.3" }
+compose-ui-test-manifest-android = { module = "androidx.compose.ui:ui-test-manifest", version = "1.5.1" }

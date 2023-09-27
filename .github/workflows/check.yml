@@ -21,9 +21,12 @@ jobs:
       - name: Validate Gradle wrapper
         uses: gradle/wrapper-validation-action@v1
       - name: Check all modules
-        run: ./gradlew check --build-cache
+        run: ./gradlew check
       - name: Run instrumented unit tests
         uses: reactivecircus/android-emulator-runner@v2
         with:
-          api-level: 29
+          api-level: 33
+          target: google_apis
+          arch: x86_64
+          channel: canary
           script: ./gradlew connectedCheck
