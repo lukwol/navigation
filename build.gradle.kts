@@ -108,7 +108,7 @@ tasks.withType<DependencyUpdatesTask> {
     rejectVersionIf {
         val version = candidate.version.toLowerCaseAsciiOnly()
 
-        listOf("-alpha", "-beta", "-rc")
+        listOf("-dev", "-alpha", "-beta", "-rc")
             .any { it in version }
     }
 }
