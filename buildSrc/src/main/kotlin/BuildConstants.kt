@@ -2,7 +2,7 @@ import org.gradle.api.JavaVersion.VERSION_17
 
 object BuildConstants {
     const val Group = "io.github.lukwol"
-    const val VersionName = "1.2.0"
+    const val VersionName = "1.3.0"
     val JavaVersion = VERSION_17
 
     object Modules {
