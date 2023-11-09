@@ -8,8 +8,7 @@ plugins {
 }
 
 kotlin {
-    @Suppress("OPT_IN_USAGE")
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     jvm()
 
@@ -22,12 +21,12 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        getByName("commonMain") {
+        commonMain {
             dependencies {
                 implementation(compose.animation)
             }
         }
-        getByName("androidMain") {
+        androidMain {
             dependencies {
                 implementation(libs.compose.navigation.android)
                 implementation(libs.kotlin.serialization.json)
@@ -37,39 +36,30 @@ kotlin {
             dependsOn(getByName("commonMain"))
         }
         create("desktopMain") {
-            getByName("jvmMain").dependsOn(this)
+            jvmMain.get().dependsOn(this)
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("iosMain") {
+        iosMain {
             dependsOn(getByName("nonAndroidMain"))
-        }
-        getByName("commonTest") {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(libs.kotlin.serialization.json)
-                implementation(compose.material3)
-            }
-        }
-        create("composeUiTest") {
-            dependsOn(getByName("commonTest"))
-            dependencies {
-                implementation(compose.desktop.uiTestJUnit4)
-            }
         }
         getByName("androidInstrumentedTest") {
-            dependsOn(getByName("composeUiTest"))
             dependencies {
+                implementation(kotlin("test"))
+                implementation(compose.material3)
+                implementation(libs.kotlin.serialization.json)
                 implementation(libs.test.runner.android)
+                implementation(libs.compose.ui.test.junit4)
             }
         }
         create("desktopTest") {
-            dependsOn(getByName("composeUiTest"))
             getByName("jvmTest").dependsOn(this)
             dependencies {
+                implementation(kotlin("test"))
+                implementation(compose.material3)
                 implementation(compose.desktop.currentOs)
+                implementation(compose.desktop.uiTestJUnit4)
             }
         }
-        getByName("iosTest")
     }
 }
 

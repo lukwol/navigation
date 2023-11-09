@@ -7,8 +7,7 @@ plugins {
 }
 
 kotlin {
-    @Suppress("OPT_IN_USAGE")
-    targetHierarchy.default()
+    applyDefaultHierarchyTemplate()
 
     jvm()
 
@@ -21,7 +20,7 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        getByName("commonMain") {
+        commonMain {
             dependencies {
                 api(projects.navigationScreens)
 
@@ -29,7 +28,7 @@ kotlin {
                 implementation(libs.coroutines.core)
             }
         }
-        getByName("androidMain") {
+        androidMain {
             dependencies {
                 implementation(libs.lifecycle.viewmodel.android)
                 implementation(libs.compose.navigation.android)
@@ -43,36 +42,28 @@ kotlin {
             getByName("jvmMain").dependsOn(this)
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("iosMain") {
+        iosMain {
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("commonTest") {
+        getByName("androidInstrumentedTest") {
+            dependencies {
+                implementation(kotlin("test"))
+                implementation(compose.material3)
+                implementation(libs.kotlin.serialization.json)
+                implementation(libs.test.runner.android)
+                implementation(libs.compose.ui.test.junit4)
+            }
+        }
+        create("desktopTest") {
+            jvmTest.get().dependsOn(this)
             dependencies {
                 implementation(kotlin("test"))
                 implementation(libs.kotlin.serialization.json)
                 implementation(compose.material3)
-            }
-        }
-        create("composeUiTest") {
-            dependsOn(getByName("commonTest"))
-            dependencies {
+                implementation(compose.desktop.currentOs)
                 implementation(compose.desktop.uiTestJUnit4)
             }
         }
-        getByName("androidInstrumentedTest") {
-            dependsOn(getByName("composeUiTest"))
-            dependencies {
-                implementation(libs.test.runner.android)
-            }
-        }
-        create("desktopTest") {
-            dependsOn(getByName("composeUiTest"))
-            getByName("jvmTest").dependsOn(this)
-            dependencies {
-                implementation(compose.desktop.currentOs)
-            }
-        }
-        getByName("iosTest")
     }
 }
 

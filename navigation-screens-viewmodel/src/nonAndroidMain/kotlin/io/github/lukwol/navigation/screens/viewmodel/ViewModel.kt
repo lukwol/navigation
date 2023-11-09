@@ -10,3 +10,5 @@ actual abstract class ViewModel {
         context = SupervisorJob() + Dispatchers.Main.immediate,
     )
 }
+
+val ViewModel.viewModelScope get() = coroutineScope

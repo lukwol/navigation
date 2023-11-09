@@ -4,17 +4,19 @@ plugins {
 }
 
 kotlin {
+    applyDefaultHierarchyTemplate()
+
     jvm()
 
     sourceSets {
         create("desktopMain") {
-            getByName("jvmMain").dependsOn(this)
+            jvmMain.get().dependsOn(this)
             dependencies {
                 implementation(compose.desktop.currentOs)
             }
         }
         create("desktopTest") {
-            getByName("jvmTest").dependsOn(this)
+            jvmTest.get().dependsOn(this)
             dependencies {
                 implementation(kotlin("test"))
             }
