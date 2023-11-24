@@ -19,6 +19,7 @@ For each version of `navigation` specific version of Compose Multiplatform is re
 
 | navigation | compose-multiplatform |
 |:----------:|:---------------------:|
+|   1.3.1    |        1.5.11         |
 |   1.3.0    |        1.5.10         |
 |   1.2.0    |         1.5.3         |
 |   1.1.0    |         1.5.2         |
@@ -40,11 +41,11 @@ Declare dependencies in `build.gradle.kts`:
 ```kotlin
 dependencies {
     // Screens navigation - multiplatform
-    implementation("io.github.lukwol:navigation-screens:1.3.0")
+    implementation("io.github.lukwol:navigation-screens:1.3.1")
     // Screens navigation with ViewModel support - multiplatform
-    implementation("io.github.lukwol:navigation-screens-viewmodel:1.3.0")
+    implementation("io.github.lukwol:navigation-screens-viewmodel:1.3.1")
     // Windows navigation - desktop application only
-    implementation("io.github.lukwol:navigation-windows:1.3.0")
+    implementation("io.github.lukwol:navigation-windows:1.3.1")
 }
 ```
 
