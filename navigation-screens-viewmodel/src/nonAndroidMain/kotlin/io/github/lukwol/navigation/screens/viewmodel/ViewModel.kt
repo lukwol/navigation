@@ -5,10 +5,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 
 actual abstract class ViewModel {
-
-    actual val coroutineScope = CoroutineScope(
-        context = SupervisorJob() + Dispatchers.Main.immediate,
-    )
+    actual val coroutineScope =
+        CoroutineScope(
+            context = SupervisorJob() + Dispatchers.Main.immediate,
+        )
 }
 
 val ViewModel.viewModelScope get() = coroutineScope

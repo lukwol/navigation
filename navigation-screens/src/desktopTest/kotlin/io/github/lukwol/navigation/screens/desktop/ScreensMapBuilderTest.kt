@@ -8,7 +8,6 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertFailsWith
 
 class ScreensMapBuilderTest {
-
     private lateinit var screensMapBuilder: ScreensMapBuilder
 
     @BeforeTest

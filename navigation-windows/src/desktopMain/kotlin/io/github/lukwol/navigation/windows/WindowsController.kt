@@ -8,7 +8,6 @@ import androidx.compose.runtime.mutableStateListOf
  * Available via [LocalWindowController].
  */
 class WindowsController(startRoute: String) {
-
     /**
      * Mutable list of presented windows and their arguments.
      *
@@ -39,13 +38,17 @@ class WindowsController(startRoute: String) {
      *
      * When there was an error, error opened windows do not change.
      */
-    fun open(route: String, args: Any? = null): Result<Unit> = runCatching {
-        if (route in routes) {
-            throw IllegalArgumentException("Window for $route is already opened")
-        } else {
-            routesList += RouteWithArgs(route, args)
+    fun open(
+        route: String,
+        args: Any? = null,
+    ): Result<Unit> =
+        runCatching {
+            if (route in routes) {
+                throw IllegalArgumentException("Window for $route is already opened")
+            } else {
+                routesList += RouteWithArgs(route, args)
+            }
         }
-    }
 
     /**
      * Closes the window for given [route] and removes it from the [routes] list.
@@ -61,11 +64,12 @@ class WindowsController(startRoute: String) {
      *
      *  @see [WindowsController.close]
      */
-    fun close(route: String): Result<Unit> = runCatching {
-        if (route !in routes) {
-            throw IllegalArgumentException("Window for $route is not opened")
-        } else {
-            routesList.removeAll { it.route == route }
+    fun close(route: String): Result<Unit> =
+        runCatching {
+            if (route !in routes) {
+                throw IllegalArgumentException("Window for $route is not opened")
+            } else {
+                routesList.removeAll { it.route == route }
+            }
         }
-    }
 }

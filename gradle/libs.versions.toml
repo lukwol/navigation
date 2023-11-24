@@ -10,7 +10,7 @@ dokka = { id = "org.jetbrains.dokka", version = "1.9.10" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose-multiplatform" }
 android-library = { id = "com.android.library", version = "8.1.4" }
-kotlinter = { id = "org.jmailen.kotlinter", version = "3.16.0" }
+kotlinter = { id = "org.jmailen.kotlinter", version = "4.1.0" }
 dependency-updates = { id = "com.github.ben-manes.versions", version = "0.50.0" }
 
 [libraries]

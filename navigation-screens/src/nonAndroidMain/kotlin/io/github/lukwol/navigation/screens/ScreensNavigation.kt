@@ -30,10 +30,11 @@ actual fun ScreensNavigation(
         LocalScreensController provides screensController,
     ) {
         val routeWithArgs = screensController.routesStack.last()
-        val navigationType = when (previousRoute) {
-            in screensController.routes -> NavigationType.Push
-            else -> NavigationType.Pop
-        }
+        val navigationType =
+            when (previousRoute) {
+                in screensController.routes -> NavigationType.Push
+                else -> NavigationType.Pop
+            }
         AnimatedContent(
             targetState = routeWithArgs,
             transitionSpec = {

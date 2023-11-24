@@ -8,7 +8,6 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFailsWith
 
 class ScreensControllerTest {
-
     private lateinit var screensController: ScreensController
 
     @BeforeTest

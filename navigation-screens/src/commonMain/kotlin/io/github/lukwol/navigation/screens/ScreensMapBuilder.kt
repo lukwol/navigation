@@ -8,7 +8,6 @@ import androidx.compose.runtime.Composable
  * Has separate implementations for Android and non Android targets.
  */
 expect open class ScreensMapBuilder {
-
     /**
      * Declare screen [content] for [route] and add it to underlying screens map.
      * The screens map will be used to navigate between the screens.

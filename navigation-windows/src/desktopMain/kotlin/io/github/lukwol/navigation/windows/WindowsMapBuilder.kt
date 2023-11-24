@@ -10,7 +10,6 @@ import androidx.compose.ui.window.Window
  * @see WindowsNavigation
  */
 class WindowsMapBuilder {
-
     /**
      * Map of all registered window routes and their corresponding contents
      * represented as a [Composable] lambda.

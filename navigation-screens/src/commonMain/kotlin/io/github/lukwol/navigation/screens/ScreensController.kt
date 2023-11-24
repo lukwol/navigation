@@ -8,7 +8,6 @@ package io.github.lukwol.navigation.screens
  * Has separate implementations for Android and non Android targets.
  */
 expect class ScreensController(startRoute: String) {
-
     /**
      * Pushes new screen route on the routes stack.
      * Effectively it changes current screen to the new screen for given [route]
@@ -17,7 +16,10 @@ expect class ScreensController(startRoute: String) {
      * @param route route for which new screen will be navigated to
      * @param args optional screen arguments passed when navigating to [route]
      */
-    inline fun <reified Args> push(route: String, args: Args)
+    inline fun <reified Args> push(
+        route: String,
+        args: Args,
+    )
 
     /**
      * Pushes new screen route on the routes stack without passing arguments.

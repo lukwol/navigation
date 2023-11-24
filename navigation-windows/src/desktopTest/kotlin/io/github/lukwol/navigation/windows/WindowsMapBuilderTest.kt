@@ -8,7 +8,6 @@ import kotlin.test.assertContentEquals
 import kotlin.test.assertFailsWith
 
 class WindowsMapBuilderTest {
-
     private lateinit var windowsMapBuilder: WindowsMapBuilder
 
     @Before

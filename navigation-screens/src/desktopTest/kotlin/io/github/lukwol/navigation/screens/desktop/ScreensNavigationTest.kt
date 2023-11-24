@@ -11,16 +11,16 @@ import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class ScreensNavigationTest {
-
     @get:Rule
     val compose = createComposeRule()
 
     @Test
-    fun firstScreen(): Unit = with(compose) {
-        setContent { TestScreenNavigation() }
+    fun firstScreen(): Unit =
+        with(compose) {
+            setContent { TestScreenNavigation() }
 
-        onNodeWithText("Push Second Screen").assertExists()
-    }
+            onNodeWithText("Push Second Screen").assertExists()
+        }
 
     @Test
     fun navigateToSecondScreen() {

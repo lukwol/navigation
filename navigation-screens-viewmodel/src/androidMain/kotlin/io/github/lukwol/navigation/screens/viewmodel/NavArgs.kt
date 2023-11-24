@@ -11,5 +11,6 @@ import kotlinx.serialization.json.Json
  * @return Decoded navigation arguments
  */
 @Suppress("unused")
-inline fun <reified Args> SavedStateHandle.navArgs(): Args? = get<String>(NavArgsKey)
-    ?.let(Json.Default::decodeFromString)
+inline fun <reified Args> SavedStateHandle.navArgs(): Args? =
+    get<String>(NavArgsKey)
+        ?.let(Json.Default::decodeFromString)

@@ -17,7 +17,6 @@ import io.github.lukwol.navigation.screens.ScreensMapBuilder
  * Android implementation relies on built in solutions from Google **Lifecycle* framework.
  */
 expect class VMScreensMapBuilder {
-
     @PublishedApi
     internal val screensMapBuilder: ScreensMapBuilder
 

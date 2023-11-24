@@ -13,20 +13,20 @@ import org.junit.Rule
 import org.junit.Test
 
 class ViewModelScreenNavigationTest {
-
     @get:Rule
     val compose = createComposeRule()
 
     @Test
-    fun firstScreen(): Unit = with(compose) {
-        setContent { TestScreenNavigation() }
+    fun firstScreen(): Unit =
+        with(compose) {
+            setContent { TestScreenNavigation() }
 
-        onNode(hasSetTextAction()).run {
-            assert(hasText(""))
-            performTextInput("Foo")
-            assert(hasText("Foo"))
+            onNode(hasSetTextAction()).run {
+                assert(hasText(""))
+                performTextInput("Foo")
+                assert(hasText("Foo"))
+            }
         }
-    }
 
     @Test
     fun navigateToSecondScreenAndUpdateItsState() {

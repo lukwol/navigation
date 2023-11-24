@@ -6,7 +6,6 @@ import io.github.lukwol.navigation.screens.ScreensMapBuilder
 actual class VMScreensMapBuilder(
     actual val screensMapBuilder: ScreensMapBuilder,
 ) {
-
     actual inline fun <reified Args, VM : ViewModel> screen(
         route: String,
         noinline viewModelWithArgs: @Composable (args: Args?) -> VM,
@@ -20,11 +19,12 @@ actual class VMScreensMapBuilder(
         route: String,
         viewModelFactory: @Composable () -> VM,
         content: @Composable (viewModel: VM) -> Unit,
-    ): Unit = screen(
-        route = route,
-        viewModelWithArgs = { _: Any? ->
-            viewModelFactory()
-        },
-        content = content,
-    )
+    ): Unit =
+        screen(
+            route = route,
+            viewModelWithArgs = { _: Any? ->
+                viewModelFactory()
+            },
+            content = content,
+        )
 }

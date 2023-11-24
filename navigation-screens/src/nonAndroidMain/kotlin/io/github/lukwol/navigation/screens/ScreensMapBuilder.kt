@@ -3,7 +3,6 @@ package io.github.lukwol.navigation.screens
 import androidx.compose.runtime.Composable
 
 actual open class ScreensMapBuilder {
-
     /**
      * Map of all registered screen routes and their corresponding contents
      * represented as a [Composable] lambda.

@@ -20,7 +20,6 @@ import kotlinx.coroutines.CoroutineScope
  * and creates it's own new `coroutineScope` when instantiating this class.
  */
 expect abstract class ViewModel() {
-
     /**
      * This scope will be canceled when view connected to this CoroutineScopeAware implementation is cleared.
      */

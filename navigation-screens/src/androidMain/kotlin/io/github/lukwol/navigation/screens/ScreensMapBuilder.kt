@@ -15,10 +15,11 @@ actual open class ScreensMapBuilder(
         navGraphBuilder.composable(
             route = appendNavArgs(route),
         ) { navBackStackEntry ->
-            val args: Args? = navBackStackEntry
-                .arguments
-                ?.getString(NavArgsKey)
-                ?.let(Json.Default::decodeFromString)
+            val args: Args? =
+                navBackStackEntry
+                    .arguments
+                    ?.getString(NavArgsKey)
+                    ?.let(Json.Default::decodeFromString)
             content(args)
         }
     }

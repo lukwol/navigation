@@ -12,7 +12,6 @@ actual class VMScreensMapBuilder internal constructor(
     @PublishedApi
     internal actual val screensMapBuilder: ScreensMapBuilder = ScreensMapBuilder(),
 ) {
-
     @Suppress("UNCHECKED_CAST")
     actual inline fun <reified Args, VM : ViewModel> screen(
         route: String,
@@ -39,11 +38,12 @@ actual class VMScreensMapBuilder internal constructor(
         route: String,
         viewModelFactory: @Composable () -> VM,
         content: @Composable (viewModel: VM) -> Unit,
-    ): Unit = screen(
-        route = route,
-        viewModelWithArgs = { _: Any? ->
-            viewModelFactory()
-        },
-        content = content,
-    )
+    ): Unit =
+        screen(
+            route = route,
+            viewModelWithArgs = { _: Any? ->
+                viewModelFactory()
+            },
+            content = content,
+        )
 }

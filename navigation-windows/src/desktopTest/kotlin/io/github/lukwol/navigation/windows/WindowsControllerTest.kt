@@ -7,7 +7,6 @@ import org.junit.Test
 import kotlin.test.assertFailsWith
 
 class WindowsControllerTest {
-
     private lateinit var windowsController: WindowsController
 
     @Before
