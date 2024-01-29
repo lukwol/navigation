@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+
 plugins {
     alias(androidLibs.plugins.library)
     alias(commonLibs.plugins.kotlin.multiplatform)
@@ -6,6 +8,11 @@ plugins {
 
 kotlin {
     applyDefaultHierarchyTemplate()
+
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+    }
 
     jvm("desktop")
 
@@ -34,6 +41,9 @@ kotlin {
         getByName("desktopMain")
             .dependsOn(getByName("nonAndroidMain"))
         iosMain {
+            dependsOn(getByName("nonAndroidMain"))
+        }
+        getByName("wasmJsMain") {
             dependsOn(getByName("nonAndroidMain"))
         }
         getByName("androidInstrumentedTest").dependencies {

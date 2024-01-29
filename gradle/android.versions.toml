@@ -2,7 +2,7 @@
 min-sdk = "29"
 compile-sdk = "34"
 agp = "8.1.4"
-compose = "1.5.4"
+compose = "1.6.0"
 compose-compiler = "1.5.7"
 compose-navigation = "2.7.6"
 lifecycle = "2.7.0"
