@@ -9,7 +9,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    jvm()
+    jvm("desktop")
 
     androidTarget {
         publishLibraryVariants("release")
@@ -20,49 +20,37 @@ kotlin {
     iosSimulatorArm64()
 
     sourceSets {
-        commonMain {
-            dependencies {
-                api(projects.navigationScreens)
+        commonMain.dependencies {
+            api(projects.navigationScreens)
 
-                implementation(compose.animation)
-                implementation(libs.coroutines.core)
-            }
+            implementation(compose.animation)
+            implementation(libs.coroutines.core)
         }
-        androidMain {
-            dependencies {
-                implementation(libs.lifecycle.viewmodel.android)
-                implementation(libs.compose.navigation.android)
-                implementation(libs.kotlin.serialization.json)
-            }
+        androidMain.dependencies {
+            implementation(libs.lifecycle.viewmodel.android)
+            implementation(libs.compose.navigation.android)
+            implementation(libs.kotlin.serialization.json)
         }
-        create("nonAndroidMain") {
-            dependsOn(getByName("commonMain"))
-        }
-        create("desktopMain") {
-            getByName("jvmMain").dependsOn(this)
-            dependsOn(getByName("nonAndroidMain"))
-        }
+        create("nonAndroidMain")
+            .dependsOn(getByName("commonMain"))
+        getByName("desktopMain")
+            .dependsOn(getByName("nonAndroidMain"))
         iosMain {
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("androidInstrumentedTest") {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(compose.material3)
-                implementation(libs.kotlin.serialization.json)
-                implementation(libs.test.runner.android)
-                implementation(libs.compose.ui.test.junit4)
-            }
+        getByName("androidInstrumentedTest").dependencies {
+            implementation(kotlin("test"))
+            implementation(compose.material3)
+            implementation(libs.kotlin.serialization.json)
+            implementation(libs.test.runner.android)
+            implementation(libs.compose.ui.test.junit4)
         }
-        create("desktopTest") {
-            jvmTest.get().dependsOn(this)
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(libs.kotlin.serialization.json)
-                implementation(compose.material3)
-                implementation(compose.desktop.currentOs)
-                implementation(compose.desktop.uiTestJUnit4)
-            }
+        getByName("desktopTest").dependencies {
+            implementation(kotlin("test"))
+            implementation(libs.kotlin.serialization.json)
+            implementation(compose.material3)
+            implementation(compose.desktop.currentOs)
+            implementation(compose.desktop.uiTestJUnit4)
         }
     }
 }

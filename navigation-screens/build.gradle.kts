@@ -10,7 +10,7 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    jvm()
+    jvm("desktop")
 
     androidTarget {
         publishLibraryVariants("release")
@@ -35,30 +35,24 @@ kotlin {
         create("nonAndroidMain") {
             dependsOn(getByName("commonMain"))
         }
-        create("desktopMain") {
-            jvmMain.get().dependsOn(this)
+        getByName("desktopMain") {
             dependsOn(getByName("nonAndroidMain"))
         }
         iosMain {
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("androidInstrumentedTest") {
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(compose.material3)
-                implementation(libs.kotlin.serialization.json)
-                implementation(libs.test.runner.android)
-                implementation(libs.compose.ui.test.junit4)
-            }
+        getByName("androidInstrumentedTest").dependencies {
+            implementation(kotlin("test"))
+            implementation(compose.material3)
+            implementation(libs.kotlin.serialization.json)
+            implementation(libs.test.runner.android)
+            implementation(libs.compose.ui.test.junit4)
         }
-        create("desktopTest") {
-            getByName("jvmTest").dependsOn(this)
-            dependencies {
-                implementation(kotlin("test"))
-                implementation(compose.material3)
-                implementation(compose.desktop.currentOs)
-                implementation(compose.desktop.uiTestJUnit4)
-            }
+        getByName("desktopTest").dependencies {
+            implementation(kotlin("test"))
+            implementation(compose.material3)
+            implementation(compose.desktop.currentOs)
+            implementation(compose.desktop.uiTestJUnit4)
         }
     }
 }
