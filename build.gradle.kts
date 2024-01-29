@@ -3,13 +3,13 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jetbrains.kotlin.util.capitalizeDecapitalize.toLowerCaseAsciiOnly
 
 plugins {
-    alias(libs.plugins.android.library) apply false
-    alias(libs.plugins.kotlin.multiplatform) apply false
-    alias(libs.plugins.compose.multiplatform) apply false
-    alias(libs.plugins.kotlin.serialization) apply false
-    alias(libs.plugins.kotlinter) apply false
-    alias(libs.plugins.dokka)
-    alias(libs.plugins.dependency.updates)
+    alias(androidLibs.plugins.library) apply false
+    alias(commonLibs.plugins.kotlin.multiplatform) apply false
+    alias(commonLibs.plugins.compose.multiplatform) apply false
+    alias(commonLibs.plugins.kotlin.serialization) apply false
+    alias(commonLibs.plugins.kotlinter) apply false
+    alias(commonLibs.plugins.dokka)
+    alias(commonLibs.plugins.dependency.updates)
 }
 
 subprojects {

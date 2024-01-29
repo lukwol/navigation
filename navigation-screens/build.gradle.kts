@@ -1,10 +1,10 @@
 import BuildConstants.Modules.Namespace
 
 plugins {
-    alias(libs.plugins.kotlin.multiplatform)
-    alias(libs.plugins.compose.multiplatform)
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.serialization)
+    alias(commonLibs.plugins.kotlin.multiplatform)
+    alias(commonLibs.plugins.compose.multiplatform)
+    alias(androidLibs.plugins.library)
+    alias(commonLibs.plugins.kotlin.serialization)
 }
 
 kotlin {
@@ -28,8 +28,8 @@ kotlin {
         }
         androidMain {
             dependencies {
-                implementation(libs.compose.navigation.android)
-                implementation(libs.kotlin.serialization.json)
+                implementation(androidLibs.compose.navigation)
+                implementation(commonLibs.kotlin.serialization.json)
             }
         }
         create("nonAndroidMain") {
@@ -44,9 +44,9 @@ kotlin {
         getByName("androidInstrumentedTest").dependencies {
             implementation(kotlin("test"))
             implementation(compose.material3)
-            implementation(libs.kotlin.serialization.json)
-            implementation(libs.test.runner.android)
-            implementation(libs.compose.ui.test.junit4)
+            implementation(commonLibs.kotlin.serialization.json)
+            implementation(androidLibs.test.runner)
+            implementation(androidLibs.compose.ui.test.junit4)
         }
         getByName("desktopTest").dependencies {
             implementation(kotlin("test"))
@@ -75,10 +75,10 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
+        kotlinCompilerExtensionVersion = androidLibs.versions.compose.compiler.get()
     }
 
     dependencies {
-        debugImplementation(libs.compose.ui.test.manifest.android)
+        debugImplementation(androidLibs.compose.ui.test.manifest)
     }
 }

@@ -1,0 +1,20 @@
+[versions]
+kotlin = "1.9.21"
+compose = "1.5.11"
+coroutines = "1.7.3"
+kotlin-serialization-json = "1.6.2"
+dokka = "1.9.10"
+kotlinter = "4.2.0"
+dependency-updates = "0.51.0"
+
+[plugins]
+kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+dokka = { id = "org.jetbrains.dokka", version.ref = "dokka" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-multiplatform = { id = "org.jetbrains.compose", version.ref = "compose" }
+kotlinter = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
+dependency-updates = { id = "com.github.ben-manes.versions", version.ref = "dependency-updates" }
+
+[libraries]
+kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
+coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }

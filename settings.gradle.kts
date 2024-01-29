@@ -15,6 +15,15 @@ dependencyResolutionManagement {
         mavenCentral()
         google()
     }
+
+    versionCatalogs {
+        create("commonLibs") {
+            from(files("gradle/common.versions.toml"))
+        }
+        create("androidLibs") {
+            from(files("gradle/android.versions.toml"))
+        }
+    }
 }
 
 include(":navigation-screens")

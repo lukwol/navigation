@@ -1,0 +1,17 @@
+[versions]
+agp = "8.1.4"
+compose = "1.5.4"
+compose-compiler = "1.5.7"
+compose-navigation = "2.7.6"
+lifecycle = "2.7.0"
+test-runner = "1.5.2"
+
+[plugins]
+library = { id = "com.android.library", version.ref = "agp" }
+
+[libraries]
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose" }
+lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+test-runner = { module = "androidx.test:runner", version.ref = "test-runner" }
