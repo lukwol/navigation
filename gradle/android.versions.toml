@@ -1,4 +1,6 @@
 [versions]
+min-sdk = "29"
+compile-sdk = "34"
 agp = "8.1.4"
 compose = "1.5.4"
 compose-compiler = "1.5.7"

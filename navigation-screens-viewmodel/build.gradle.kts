@@ -1,5 +1,3 @@
-import BuildConstants.Modules.Namespace
-
 plugins {
     alias(androidLibs.plugins.library)
     alias(commonLibs.plugins.kotlin.multiplatform)
@@ -56,17 +54,17 @@ kotlin {
 }
 
 android {
-    compileSdk = BuildConstants.Android.CompileSdk
-    namespace = BuildConstants.Modules.NavigationScreensViewModel.Namespace
+    compileSdk = androidLibs.versions.compile.sdk.get().toInt()
+    namespace = "io.github.lukwol.navigation.screens.viewmodel"
 
     defaultConfig {
-        minSdk = BuildConstants.Android.MinSdk
-        testInstrumentationRunner = BuildConstants.Android.TestInstrumentationRunner
+        minSdk = androidLibs.versions.min.sdk.get().toInt()
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     compileOptions {
-        sourceCompatibility = BuildConstants.JavaVersion
-        targetCompatibility = BuildConstants.JavaVersion
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {

@@ -20,8 +20,8 @@ subprojects {
         plugin("signing")
     }
 
-    group = BuildConstants.Group
-    version = BuildConstants.VersionName
+    group = "io.github.lukwol"
+    version = "1.3.1"
 
     extensions.configure<PublishingExtension> {
         repositories {
