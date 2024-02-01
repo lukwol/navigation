@@ -21,7 +21,7 @@ subprojects {
     }
 
     group = "io.github.lukwol"
-    version = "1.3.1"
+    version = "1.3.2"
 
     extensions.configure<PublishingExtension> {
         repositories {
