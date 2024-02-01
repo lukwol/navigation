@@ -1,6 +1,6 @@
 [versions]
-kotlin = "1.9.21"
-compose = "1.6.0-beta01"
+kotlin = "1.9.22"
+compose = "1.5.12"
 coroutines = "1.7.3"
 kotlin-serialization-json = "1.6.2"
 dokka = "1.9.10"

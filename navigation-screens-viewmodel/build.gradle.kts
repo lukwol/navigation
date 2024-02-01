@@ -9,10 +9,10 @@ plugins {
 kotlin {
     applyDefaultHierarchyTemplate()
 
-    @OptIn(ExperimentalWasmDsl::class)
-    wasmJs {
-        browser()
-    }
+//    @OptIn(ExperimentalWasmDsl::class)
+//    wasmJs {
+//        browser()
+//    }
 
     jvm("desktop")
 
@@ -43,9 +43,9 @@ kotlin {
         iosMain {
             dependsOn(getByName("nonAndroidMain"))
         }
-        getByName("wasmJsMain") {
-            dependsOn(getByName("nonAndroidMain"))
-        }
+//        getByName("wasmJsMain") {
+//            dependsOn(getByName("nonAndroidMain"))
+//        }
         getByName("androidInstrumentedTest").dependencies {
             implementation(kotlin("test"))
             implementation(compose.material3)
