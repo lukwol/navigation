@@ -4,7 +4,6 @@ rootProject.name = "navigation"
 
 pluginManagement {
     repositories {
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         gradlePluginPortal()
         mavenCentral()
         google()
@@ -13,7 +12,6 @@ pluginManagement {
 
 dependencyResolutionManagement {
     repositories {
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
         mavenCentral()
         google()
     }

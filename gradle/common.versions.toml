@@ -1,9 +1,9 @@
 [versions]
 kotlin = "1.9.22"
-compose = "1.6.0-beta01"
-coroutines = "1.7.3"
-kotlin-serialization-json = "1.6.2"
-dokka = "1.9.10"
+compose = "1.6.1"
+coroutines = "1.8.0"
+kotlin-serialization-json = "1.6.3"
+dokka = "1.9.20"
 kotlinter = "4.2.0"
 dependency-updates = "0.51.0"
 
